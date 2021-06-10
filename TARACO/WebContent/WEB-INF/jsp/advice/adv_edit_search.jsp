@@ -4,9 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TARACO</title>
+
+<link rel="stylesheet" href="/TARACO/css/advise.css">
+<%-- ヘッダーフッター適用する
+<link rel="stylesheet" href="/TARACO/css/style.css"> --%>
+
 </head>
+
 <body>
+<div class="wrapper">
+<h1 class="midashi">アドバイス編集</h1>
+
+<a href="/TARACO/ADVRegistServlet">新規登録</a><br><br>
+<a href="/TARACO/ADVEditSearchServlet">既存データの編集</a><br><br>
+
+<br>
+<input type="submit" name="REGIST" value="検索"><br>
+
+
+</div>
 
 </body>
 </html>

@@ -4,9 +4,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TARACO</title>
+
+<link rel="stylesheet" href="/TARACO/css/advise.css">
+<%-- ヘッダーフッター適用する
+<link rel="stylesheet" href="/TARACO/css/style.css"> --%>
+
 </head>
+
 <body>
+<div class="wrapper">
+	<h1 class="midashi"><c:out value="${result.title}" /></h1>
+
+	<p><c:out value="${result.message}" /></p>
+
+<a href="/TARACO/AdviceSearchServlet">アドバイス検索へ戻る</a><br>
+
+
+</div>
 
 </body>
 </html>
