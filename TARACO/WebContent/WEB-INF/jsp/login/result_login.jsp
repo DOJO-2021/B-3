@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
+<link rel="stylesheet" href="/TARACO/WebContent/css/common.css">
 </head>
 <body>
 	<!-- 独自ヘッダー -->

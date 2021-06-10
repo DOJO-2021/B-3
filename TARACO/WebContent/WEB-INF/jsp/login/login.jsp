@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
+<link rel="stylesheet" href="/TARACO/WebContent/css/login_account.css">
 </head>
 <body>
 	<h2>TARACOへようこそ！</h2>

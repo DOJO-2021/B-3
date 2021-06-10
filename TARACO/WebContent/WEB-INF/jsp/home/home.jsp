@@ -5,16 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
+<link rel="stylesheet" href="/TARACO/WebContent/css/common.css">
 </head>
 <body>
 	<!-- 独自のヘッダー -->
 	<header>
 		TARACO
 		<script src="clock.js"></script>
-		<a href="MyPageServlet">マイページ</a>
+		<a href="MyPageServlet" class="mypage">マイページ</a>
 	</header>
 	<h1>ホーム</h1>
-	<table>
+	<table id="summary_table">
 		<tr>
 			<td><img src="image/profile_icon.jpg" alt="プロフィール閲覧icon"></td>
 			<td><img src="image/question_icon.jpg" alt="アンケート掲示板icon"></td>
