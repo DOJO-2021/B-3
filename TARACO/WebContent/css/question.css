@@ -4,6 +4,15 @@ html{
 	text-align:center;
 }
 
+.gotoUpload{
+	text-align:right;
+}
+.caution{
+	text-align:left;
+}
+table{
+	width:100%;
+}
 table,tr {
   border: 1px solid #000000;
   text-align:left;
@@ -13,8 +22,8 @@ table,tr {
 	width:192px;
 }
 .uploadUser{
-	width:64px
+	width:64px;
 }
 .question{
-	width:384px
+	width:auto;
 }

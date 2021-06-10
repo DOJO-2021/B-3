@@ -12,8 +12,8 @@
 </head>
 <body>
 <h1>アンケート掲示板</h1>
-<a>投稿フォームはこちら</a>
-<p>※アンケートは投稿されてから24時間後に回答を締め切ります。</p>
+<a class="gotoUpload">投稿フォームはこちら</a>
+<p class="caution">※アンケートは投稿されてから24時間後に回答を締め切ります。</p>
 
 <table>
 	<tr><th class="uploadDate">投稿日時:</th>
