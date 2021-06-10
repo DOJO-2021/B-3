@@ -32,8 +32,8 @@ public class ADVEditResultServlet extends HttpServlet {
 				return;
 			}
 
-		// アドバイス登録ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_regist.jsp");
+		// アドバイス編集検索結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_edit_result.jsp");
 			dispatcher.forward(request, response);
 		}
 
@@ -55,21 +55,33 @@ public class ADVEditResultServlet extends HttpServlet {
 						String name = request.getParameter("NAME");
 						String address = request.getParameter("ADDRESS");
 
-
-
-						// 登録処理を行う
+						// 更新または削除を行う
 						AdviceDAO aDao = new AdviceDAO();
-						if (aDao.insert(new Advice(0,comp_name,dept_name, name, furigana, zip_code, address, phone, fax, email, date, remarks))) {	// 登録成功
-							request.setAttribute("result",
-							new Result("登録完了", "アドバイスを登録しました。", "/TARACO/MyPageServlet"));
+						if (request.getParameter("SUBMIT").equals("更新")) {
+							if (aDao.update(new Advice(bc_id,comp_name,dept_name, name, furigana, zip_code, address, phone, fax, email, date, remarks))) {	// 更新成功
+								request.setAttribute("result",
+								new Result("更新完了", "レコードを更新しました。", "/TARACO/MyPageServlet"));
+							}
+							else {												// 更新失敗
+								request.setAttribute("result",
+								new Result("更新エラー", "レコードを更新できませんでした。", "/TARACO/MyPageServlet"));
+							}
 						}
-						else {												// 登録失敗
-							request.setAttribute("result",
-							new Result("登録エラー", "アドバイスを登録できませんでした。", "/TARACO/MyPageServlet"));
+						else {
+							if (aDao.delete(bc_id)) {	// 削除成功
+								request.setAttribute("result",
+								new Result("削除完了", "レコードを削除しました。", "/TARACO/MyPageServlet"));
+							}
+							else {						// 削除失敗
+								request.setAttribute("result",
+								new Result("削除エラー", "レコードを削除できませんでした。", "/TARACO/MyPageServlet"));
+							}
 						}
 
-						// 結果ページにフォワードする
+						// アドバイス結果ページにフォワードする
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/result_advice.jsp");
 						dispatcher.forward(request, response);
 					}
 				}
+
+
