@@ -6,18 +6,21 @@
 <meta charset="UTF-8">
 <title>TARACO</title>
 
-<link rel="stylesheet" href="/TARACO/css/advise.css">
+<link rel="stylesheet" href="/TARACO/css/advice.css">
 <%-- ヘッダーフッター適用する
 <link rel="stylesheet" href="/TARACO/css/style.css"> --%>
 
 </head>
-
 <body>
-<div class="wrapper">
-<h1 class="midashi">アドバイス検索</h1>
 
-<form method="POST" action="/TARACO/AdviceSearchServlet" align="center">
-<table align="center">
+<h1>アドバイス検索</h1>
+
+<form method="POST" action="/TARACO/AdviceSearchServlet" >
+<button type="submit" name="REGIST" value="code"  class="login_button">登録編集はこちら<br>(運営専用)</button>
+</form>
+
+<form method="POST" action="/TARACO/AdviceSearchServlet">
+<table>
 <tr>
 	<th>フリーワード</th><td><input type="text" name="adv_content"></td>
 </tr>
@@ -29,7 +32,6 @@
 <input type="submit" name="REGIST" value="検索"><br>
 </form>
 
-</div>
 
 </body>
 </html>

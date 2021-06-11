@@ -8,26 +8,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ADPWServlet
  */
 @WebServlet("/ADPWServlet")
-public class ADPWServlet extends HttpServlet {
+public class ADVPWServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+/*
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
 			if (session.getAttribute("id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
-
+*/
 		// 運営PW変更ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/edit_pw.jsp");
 			dispatcher.forward(request, response);
@@ -36,14 +36,15 @@ public class ADPWServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
-
 
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
@@ -53,6 +54,7 @@ public class ADPWServlet extends HttpServlet {
 
 						// ｐｗ更新を行う
 
+*/
 
 						// アドバイス結果ページにフォワードする
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/result_pw.jsp");
