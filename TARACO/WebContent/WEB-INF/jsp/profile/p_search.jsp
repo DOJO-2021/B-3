@@ -5,22 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
+<link rel="stylesheet" href = "/TARACO/css/profile.css">
 </head>
 <body>
+<!-- ヘッダー -->
+	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>プロフィール検索</h1>
 <form method="POST" action="/TARACO/PSearchSerlet">
 
-<nav>
-	<ul>
-		<li>講師</li>
-		<li>運営</li>
-		<li>Aクラス</li>
-		<li>Bクラス</li>
-		<li>Cクラス</li>
-		<li>Dクラス</li>
-		<li>Eクラス</li>
-	</ul>
-</nav>
+
+<button type="submit" name="POSITION" value="講師">講師</button>
+<button type="submit" name="POSITION" value="運営">運営</button>
+<button type="submit" name="CLASS" value="Aクラス">Aクラス</button>
+<button type="submit" name="CLASS" value="Bクラス">Bクラス</button>
+<button type="submit" name="CLASS" value="Cクラス">Cクラス</button>
+<button type="submit" name="CLASS" value="Dクラス">Dクラス</button>
+<button type="submit" name="CLASS" value="Eクラス">Eクラス</button>
+
 
 <table>
 	<tr>
@@ -36,6 +37,7 @@
 <input type="submit" name="P_REGIST" value="検索"><br>
 
 </form>
-
+<!-- フッター -->
+	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

@@ -5,20 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
+<link rel="stylesheet" href = "/TARACO/css/profile.css">
 </head>
 <body>
 	<!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 
-	<h1>マイページ</h1>
+	<h1>○○さんのプロフィール</h1>
 	<p>*は必須項目</p>
 
-	<form method="POST" action="/TARACO/PSearchResultServlet">
 		<table>
-			<tr>
-				<th>氏名*</th>
-				<td><input type="text" name="USER_NAME" value="${e.user_name}"></td>
-			</tr>
 			<tr>
 				<th>会社名or講師/事務局*</th>
 				<td><input type="text" name="USER_POSITION"
@@ -64,7 +60,6 @@
 					value="${e.user_remarks}"></td>
 			</tr>
 		</table>
-	</form>
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>

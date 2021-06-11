@@ -1,26 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
+<link rel="stylesheet" href = "/TARACO/css/profile.css">
 </head>
 <body>
+<!-- ヘッダー -->
+	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>プロフィール検索結果</h1>
 <form method="POST" action="/TARACO/PSearchSerlet">
 
-<nav>
-	<ul>
-		<li>講師</li>
-		<li>運営</li>
-		<li>Aクラス</li>
-		<li>Bクラス</li>
-		<li>Cクラス</li>
-		<li>Dクラス</li>
-		<li>Eクラス</li>
-	</ul>
-</nav>
+<button type="submit" name="POSITION" value="講師">講師</button>
+<button type="submit" name="POSITION" value="運営">運営</button>
+<button type="submit" name="CLASS" value="Aクラス">Aクラス</button>
+<button type="submit" name="CLASS" value="Bクラス">Bクラス</button>
+<button type="submit" name="CLASS" value="Cクラス">Cクラス</button>
+<button type="submit" name="CLASS" value="Dクラス">Dクラス</button>
+<button type="submit" name="CLASS" value="Eクラス">Eクラス</button>
 
 <table>
 
@@ -36,22 +36,26 @@
 
 <input type="submit" name="P_REGIST" value="検索"><br>
 
+	<table class="p_search">
+	<caption>検索結果○○件</caption>
+		<tr>
+			<th>クラス</th>
+			<th>名前</th>
+			<th>会社名</th>
+		</tr>
+		<!-- 拡張for文EL式 -->
+		<c:forEach var="e" items="${cardList}" >
+		<tr>
+			<td> value="${e.user_class}"</td>
+			<td><button type="submit" name="NAME" value="${e.user_name}"></button></td>
+			<td> value="${e.user_position}"</td>
+		</tr>
+		</c:forEach>
 
-
+	</table>
 </form>
 
-<table>
-	<caption>検索結果○○件</caption>
-	<tr>
-		<th>クラス</th>
-		<th>名前</th>
-		<th>会社名</th>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-</table>
+<!-- フッター -->
+	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>
