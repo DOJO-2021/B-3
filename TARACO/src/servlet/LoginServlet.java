@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("USER_ID");
+		String user_id = request.getParameter("USER_ID");test
 		String user_pw = request.getParameter("USER_PW");
 
 		// ログイン処理を行う
