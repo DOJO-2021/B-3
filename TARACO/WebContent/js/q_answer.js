@@ -1,9 +1,9 @@
 'use strict';
-
-new Chart(document.getElementById("resultGraph"), {
+var canvus = document.getElementById("resultGraph");
+canvus.width = 100;
+new Chart(canvus, {
 	type: "pie",
 	options: {
-
 		legend: {
 			onClick: (e) => e.stopPropagation()
 		}

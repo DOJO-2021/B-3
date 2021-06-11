@@ -15,9 +15,9 @@
 <form>
 <table>
 	<tr><th>投稿者:</th>
-	<td><input type="hidden" name="Q_USER"value=""></td></tr>
+	<td>事務局<input type="hidden" name="Q_USER"value=""></td></tr>
 	<tr><th>質問内容:</th>
-	<td><input type="hidden" name=QUESTION value=""></td></tr>
+	<td class="questionSentences">この質問について回答お願いします。<input type="hidden" name=QUESTION value=""></td></tr>
 </table>
 <table>
 <tr><th>合計79人</th><th>Aの回答30人</th><th>Bの回答39人</th></tr>
@@ -25,6 +25,6 @@
 <input type = "submit"name="POST_QUESTION" value="投稿">
 </form>
 <canvas id="resultGraph"></canvas>
-<script src="/TARACO/js/graphDisplay.js"></script>
+<script src="/TARACO/js/q_answer.js"></script>
 </body>
 </html>
