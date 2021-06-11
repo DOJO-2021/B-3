@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
-<link rel="stylesheet" href="/TARACO/WebContent/css/common.css">
+<link rel="stylesheet" href="/TARACO/css/common.css">
 </head>
 <body>
 	<!-- 独自ヘッダー -->
@@ -14,11 +14,18 @@
 		<script src="clock.js"></script>
 	</header>
 	<!-- 処理結果文 -->
-	<h1>新規登録失敗です！サーブレットから送る</h1>
-	<a href="AccountRegistServlet">戻る</a>
+	<h1>
+		新規登録失敗です！サーブレットから送る
+		<!-- <c:out value="${result.title}" /> -->
+	</h1>
+	<p>
+		<!--<c:out value="${result.message}" />-->
+	</p>
+	<a href="AccountRegistServlet"><button type="button">戻る</button></a>
 
-	<footer>
-		<p id="copyright">&copy;©Copyright Beach Sandals All right
+	<!-- 独自フッター -->
+	<footer class="footer">
+		<p id="copyright">&copy;Copyright Beach Sandals All right
 			reserved.</p>
 	</footer>
 </body>

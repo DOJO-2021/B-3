@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/*全画面共通*/
+html {
+	font-family: MingLiU;
+}
+
+body {
+	margin: 0 auto 0 auto;
+}
+
+h1 {
+	text-align: center;
+}
+/*ヘッダー*/
+header {
+	background-color: #ffb6c1;
+	height: 50px;
+}
+
+.TARACO_icon {
+	float: left;
+	width: 10%;
+	height: auto;
+	margin-left: 30px;
+	margin-top: 5px;
+}
+
+.nav li { /*ナビゲーションを横並びに*/
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;
+}
+
+.nav a:link {
+	color: #3c454d;
+	text-decoration: none;
+}
+
+.nav a:visited {
+	color: #3c454d;
+	text-decoration: none;
+}
+
+.nav a:hover {
+	color: #7b8dac;
+	text-decoration: none;
+}
+
+.nav a:active {
+	color: #5a9bc0;
+	text-decoration: none;
+}
+/*フッター*/
+footer {
+	background-color: #ffb6c1;
+	height: 50px;
+}
+
+.copyright {
+	float: left;
+	padding-top: 5px;
+	color: #3c454d;
+}
+
+.logout {
+	text-align: right;
+	margin-right: 30px;
+}
+
+.logout a:link {
+	color: #3c454d;
+	text-decoration: none;
+}
+
+.logout a:visited {
+	color: #3c454d;
+	text-decoration: none;
+}
+
+.logout a:hover {
+	color: #7b8dac;
+	text-decoration: none;
+}
+
+.logout a:active {
+	color: #5a9bc0;
+	text-decoration: none;
+}
+/*ホーム*/
+.mypage {
+	text-align: right;
+	margin-right: 30px;
+}
+
+.mypage a:link {
+	color: #3c454d;
+	text-decoration: none;
+}
+
+.mypage a:visited {
+	color: #3c454d;
+	text-decoration: none;
+}
+
+.mypage a:hover {
+	color: #7b8dac;
+	text-decoration: none;
+}
+
+.mypage a:active {
+	color: #5a9bc0;
+	text-decoration: none;
+}
+
+#summary_table {
+	margin: 100px auto;
+	text-align: center;
+	width: 800px;
+}
+
+#summary_table th, #summary_table td {
+	padding: auto 8px;
+}

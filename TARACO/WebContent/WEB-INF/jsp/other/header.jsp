@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
-<link rel="stylesheet" href="/TARACO/WebContent/css/common.css">
+<link rel="stylesheet" href="/TARACO/css/common.css">
 </head>
 <body>
 	<header>
-		<p class="logo">TARACO</p>
+		<img src="images/TARACO_icon.png" alt="TARACO" class="TARACO_icon">
 		 <script src="clock.js"></script>
 		<nav class="nav">
 			<ul>
