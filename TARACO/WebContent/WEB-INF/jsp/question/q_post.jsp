@@ -11,9 +11,9 @@
 <h1>アンケート投稿フォーム</h1>
 <form>
 <table>
-	<tr><th class="uploadUser">投稿者:</th>
+	<tr><th class="columnA">投稿者:</th>
 	<td><input type="text" name="Q_USER"placeholder="匿名希望の方は「匿名希望」と入力してください。"></td></tr>
-	<tr><th>質問内容:</th><td class="small">※400字以内</td></tr>
+	<tr><th class="columnA">質問内容:</th><td class="small">※400字以内</td></tr>
 </table>
 	<input class="questionSentences"type="text" name=QUESTION>
 <table>
