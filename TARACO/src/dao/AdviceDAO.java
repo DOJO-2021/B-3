@@ -12,7 +12,6 @@ import java.util.List;
 
 import model.Advice;
 
-
 public class AdviceDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 	public List<Advice> select(Advice param) {
@@ -75,126 +74,168 @@ public class AdviceDAO {
 	}
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-		public boolean insert(Advice card) {
-				Connection conn = null;
-				boolean result = false;
-				try {
-					// JDBCドライバを読み込む
-					Class.forName("org.h2.Driver");
+	public boolean insert(Advice card) {
+		Connection conn = null;
+		boolean result = false;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 
-					// SQL文を準備する
-					String sql = "INSERT INTO Profile VALUES (null, ?, ?, ?)";
+			// SQL文を準備する
+			String sql = "INSERT INTO Advice VALUES (?, ?, ?, ?)";
 
-							PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-					// SQL文を完成させる
-					if (card.getAdv_course() != null) {
-						pStmt.setString(1,card.getAdv_course());
-					}
-					else {
-						pStmt.setString(1, "%");
-					}
-					if (card.getAdv_year() != 0) {
-						pStmt.setInt(2,card.getAdv_year());
-					}
-					else {
-						pStmt.setString(2, "%");
-					}
-					if (card.getAdv_content() != null) {
-						pStmt.setString(3,card.getAdv_content());
-					}
-					else {
-						pStmt.setString(3, "%");
-					}
-					// SQL文を実行する
-					if (pStmt.executeUpdate() == 1) {
-						result = true;
-					}
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-				catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-				finally {
-					// データベースを切断
-					if (conn != null) {
-						try {
-							conn.close();
-						}
-						catch (SQLException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-
-				// 結果を返す
-				return result;
+			// SQL文を完成させる
+			if (card.getAdv_id() > 0) {
+				pStmt.setNull(1, java.sql.Types.NULL);
+			} else {
+				pStmt.setInt(1, card.getAdv_id());
 			}
 
-		// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-				public boolean update(Advice card) {
-					Connection conn = null;
-					boolean result = false;
-
-					try {
-						// JDBCドライバを読み込む
-						Class.forName("org.h2.Driver");
-
-						// データベースに接続する
-						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
-
-						// SQL文を準備する９個登録する
-						String sql = "UPDATE Advice SET adv_course=?, adv_year=?, adv_content=? WHERE adv_id=?";
-						PreparedStatement pStmt = conn.prepareStatement(sql);
-
-						// SQL文を完成させる
-						if (card.getAdv_course() != null) {
-							pStmt.setString(1,card.getAdv_course());
-						} else {
-							pStmt.setString(1, "%");
-						}
-						if (card.getAdv_year() != 0) {
-							pStmt.setInt(2, card.getAdv_year());
-						} else {
-							pStmt.setString(2, "%");
-						}
-						if (card.getAdv_content() != null) {
-							pStmt.setString(3, card.getAdv_content());
-						} else {
-							pStmt.setString(3, "%");
-						}
-
-						//pStmt.setString(9, card.getBc_id());
-
-						// SQL文を実行する
-						if (pStmt.executeUpdate() == 1) {
-							result = true;
-						}
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-					catch (ClassNotFoundException e) {
-						e.printStackTrace();
-					}
-					finally {
-						// データベースを切断
-						if (conn != null) {
-							try {
-								conn.close();
-							}
-							catch (SQLException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-
-					// 結果を返す
-					return result;
+			if (card.getAdv_course() != null) {
+				pStmt.setString(2, card.getAdv_course());
+			} else {
+				pStmt.setString(2, "%");
+			}
+			if (card.getAdv_year() != 0) {
+				pStmt.setInt(3, card.getAdv_year());
+			} else {
+				pStmt.setString(3, "%");
+			}
+			if (card.getAdv_content() != null) {
+				pStmt.setString(4, card.getAdv_content());
+			} else {
+				pStmt.setString(4, "%");
+			}
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
+	public boolean update(Advice card) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+
+			// SQL文を準備する
+			String sql = "UPDATE Advice SET adv_course=?, adv_year=?, adv_content=? WHERE adv_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (card.getAdv_course() != null) {
+				pStmt.setString(1, card.getAdv_course());
+			} else {
+				pStmt.setString(1, "%");
+			}
+			if (card.getAdv_year() != 0) {
+				pStmt.setInt(2, card.getAdv_year());
+			} else {
+				pStmt.setString(2, "%");
+			}
+			if (card.getAdv_content() != null) {
+				pStmt.setString(3, card.getAdv_content());
+			} else {
+				pStmt.setString(3, "%");
+			}
+			//if (card.getAdv_id() != 0) {
+			//pStmt.setInt(4, card.getAdv_id());
+			//} else {
+			//pStmt.setString(4, "%");
+			//}
+			pStmt.setInt(4, card.getAdv_id());
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+	// 引数user_idで指定されたレコードを削除し、成功したらtrueを返す
+	public boolean delete(int adv_id) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+
+			// SQL文を準備する
+			String sql = "DELETE FROM Advice WHERE adv_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, adv_id);
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
 } //終わりのカッコ

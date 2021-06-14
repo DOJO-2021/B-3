@@ -13,9 +13,9 @@ import java.io.Serializable;
 		public Advice(int adv_id, String adv_course, int adv_year,
 				String adv_content) {
 			super();
-			this.adv_id= adv_id;
+			this.adv_id = adv_id;
 			this.adv_course = adv_course;
-			this.adv_year= adv_year;
+			this.adv_year = adv_year;
 			this.adv_content = adv_content;
 			//this.adv_pw= adv_pw;
 			}
