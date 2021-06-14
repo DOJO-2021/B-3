@@ -2,6 +2,7 @@
 /*全画面共通*/
 html {
 	font-family: MingLiU;
+	text-align: center;
 }
 
 body {
@@ -24,7 +25,18 @@ header {
 	margin-left: 30px;
 	margin-top: 5px;
 }
-
+#clock{
+	text-align: left;
+	margin: 0;
+	padding-top: 20px;
+	padding-left: 180px;
+}
+.nav{
+	text-align: right;
+}
+.nav ul {
+	margin: 0;
+}
 .nav li { /*ナビゲーションを横並びに*/
 	display: inline;
 	list-style-type: none;

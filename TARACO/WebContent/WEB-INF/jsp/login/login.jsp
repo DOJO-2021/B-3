@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>TARACO</title>
 <link rel="stylesheet" href="/TARACO/css/login_account.css">
-<script type="text/javascript" src="/TARACO/js/login.js"></script>
 </head>
 <body class="login_body">
+
 	<div class="introduction">
 		<h2>TARACOへようこそ！</h2>
 		<p id="sub">
@@ -30,12 +30,15 @@
 					<td><input type="password" name="USER_PW"></td>
 				</tr>
 			</table>
+			<!-- エラーメッセージ -->
 			<p id="errormsg"></p>
 			<!-- ボタン -->
 			<input type="submit" name="LOGIN" value="ログイン">
 		</form>
-		<br>
-		<a href="AccountRegistServlet" class="btn1">  <button type="button">新規登録</button></a>
+		<br> <a href="AccountRegistServlet" class="btn1">
+			<button type="button">新規登録</button>
+		</a>
 	</div>
+	<script src="/TARACO/js/login.js"></script>
 </body>
 </html>

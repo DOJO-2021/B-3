@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>TARACO</title>
 <link rel="stylesheet" href="/TARACO/css/common.css">
-<script type="text/javascript" src="/TARACO/js/clock.js"></script>
+<script src="/TARACO/js/clock.js" defer></script>
 </head>
 <body>
 	<!-- 独自のヘッダー -->
@@ -19,9 +19,9 @@
 
 		<table id="summary_table">
 			<tr>
-				<td><a href="ProfileServlet"><img src="images/profile_icon.png" alt="プロフィール閲覧icon"></a></td>
-				<td><a href="QustionServlet"><img src="images/question_icon.png" alt="アンケート掲示板icon"></a></td>
-				<td><a href="AdviceServlet"><img src="images/advice_icon.png" alt="アドバイス閲覧icon"></a></td>
+				<td><a href="PSearchServlet"><img src="images/profile_icon.png" alt="プロフィール閲覧icon"></a></td>
+				<td><a href="QuestionServlet"><img src="images/question_icon.png" alt="アンケート掲示板icon"></a></td>
+				<td><a href="AdviceSearchServlet"><img src="images/advice_icon.png" alt="アドバイス閲覧icon"></a></td>
 			</tr>
 			<tr>
 				<th>プロフィール閲覧</th>

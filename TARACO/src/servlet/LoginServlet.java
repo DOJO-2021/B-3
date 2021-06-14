@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.ProfileDAO;
+import model.LoginUser;
+import model.Result;
 
 /**
  * Servlet implementation class LoginServlet
@@ -29,11 +34,11 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-/*	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("USER_ID");test
+		String user_id = request.getParameter("USER_ID");
 		String user_pw = request.getParameter("USER_PW");
 
 		// ログイン処理を行う
@@ -42,7 +47,6 @@ public class LoginServlet extends HttpServlet {
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("user_id", new LoginUser(user_id));
-
 			// ホームサーブレットにリダイレクトする
 			response.sendRedirect("/TARACO/HomeServlet");
 		} else { // ログイン失敗
@@ -50,9 +54,9 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("result",
 					new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/TARACO/LoginServlet"));
 
-			// ログインページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp");
+			// 処理結果ログインページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login/result_login.jsp");
 			dispatcher.forward(request, response);
 		}
-	}*/
+	}
 }

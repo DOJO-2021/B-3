@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title>TARACO</title>
 <link rel="stylesheet" href="/TARACO/css/login_account.css">
-<script type="text/javascript" src="clock.js"></script>
-<script type="text/javascript" src="/TARACO/js/regist_account.js"></script>
 </head>
 <body>
 	<!-- 独自のヘッダー -->
@@ -54,19 +52,21 @@
 				</th>
 			</tr>
 			<tr>
-				<td><input type="password" name="pw_confirm"></td>
+				<td><input type="password" name="PW_CONFIRM"></td>
 			</tr>
-
 		</table>
+		<!-- エラーメッセージ -->
 		<p id="errormsg"></p>
 		<div class="regist_btn">
 			<input type="submit" name="REGIST" value="登録">
 		</div>
 	</form>
+
 	<!-- 独自のフッター -->
 	<p id="copyright">&copy;Copyright Beach Sandals. All right
 		reserved.</p>
 
-
+	<script src="/TARACO/js/regist_account.js"></script>
+	<script src="/TARACO/js/clock.js"></script>
 </body>
 </html>

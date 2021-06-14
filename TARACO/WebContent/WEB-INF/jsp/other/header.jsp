@@ -10,16 +10,17 @@
 <body>
 	<header>
 		<img src="images/TARACO_icon.png" alt="TARACO" class="TARACO_icon">
-		 <script src="clock.js"></script>
+		<h5 id="clock"></h5>
 		<nav class="nav">
 			<ul>
 				<li><a href="HomeServlet"> ホーム</a> </li>
-				<li><a href="RegistServlet"></a> プロフィール</li>
-				<li><a href="SearchServlet"></a> アンケート</li>
-				<li><a href="LoginServlet"></a> アドバイス</li>
-				<li><a href="MyPageServlet"></a> マイページ</li>
+				<li><a href="PSerchServlet"> プロフィール</a></li>
+				<li><a href="QuestionServlet"> アンケート</a></li>
+				<li><a href="AdviceSearchServlet"> アドバイス</a></li>
+				<li><a href="MyPageServlet">マイページ</a></li>
 			</ul>
 		</nav>
 	</header>
+<script src="/TARACO/js/clock.js"></script>
 </body>
 </html>
