@@ -7,17 +7,17 @@ import java.io.Serializable;
 		private String adv_course;
 		private int adv_year;
 		private String adv_content;
-		private String adv_pw;
+		//private String adv_pw;
 
-		//引数があるコンストラクタ
+		//引数があるコンストラクタ #String adv_pw
 		public Advice(int adv_id, String adv_course, int adv_year,
-				String adv_content, String adv_pw ) {
+				String adv_content) {
 			super();
 			this.adv_id= adv_id;
 			this.adv_course = adv_course;
 			this.adv_year= adv_year;
 			this.adv_content = adv_content;
-			this.adv_pw= adv_pw;
+			//this.adv_pw= adv_pw;
 			}
 
 		//引数がないコンストラクタ(デフォルトコンストラクタ)
@@ -27,7 +27,7 @@ import java.io.Serializable;
 			this.adv_course = "";
 			this.adv_year = 0;
 			this.adv_content = "";
-			this.adv_pw= "";
+			//this.adv_pw= "";
 			}
 
 		public int getAdv_id() {
@@ -62,12 +62,12 @@ import java.io.Serializable;
 			this.adv_content = adv_content;
 		}
 
-		public String getAdv_pw() {
-			return adv_pw;
-		}
+		//public String getAdv_pw() {
+			//return adv_pw;
+		//}
 
-		public void setAdv_pw(String adv_pw) {
-			this.adv_pw = adv_pw;
-		}
+		//public void setAdv_pw(String adv_pw) {
+			//this.adv_pw = adv_pw;
+		//}
 
 }

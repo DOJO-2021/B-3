@@ -10,7 +10,7 @@ public class ProfileDAOTest {
 		ProfileDAO dao = new ProfileDAO();
 		//項目の作り替えをする！
 		System.out.println("---------- select()のテスト ----------");
-		List<Profile> cardList = dao.select(new Profile("", "", "", "講師", "", "", "", "", "", 0, "", "", ""));
+		List<Profile> cardList = dao.select(new Profile("ozeki", "", "", "", "", "", "", "", "", 0, "", "", ""));
 		//System.out.println(cardList.size());
 		for (Profile card : cardList) {
 			System.out.println(card.getUser_id());

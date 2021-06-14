@@ -25,7 +25,7 @@ public class ProfileDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 			// SQL文を準備する
-			String sql = "SELECT * FROM profile WHERE user_id LIKE ? OR user_pw LIKE ? OR user_name LIKE ? OR user_position LIKE ? OR user_class LIKE ? OR user_gender LIKE ? OR user_major LIKE ? OR user_hobby LIKE ? OR user_personarity LIKE ? OR user_star LIKE ?";
+			String sql = "SELECT * FROM Profile WHERE user_id LIKE ? AND user_pw LIKE ? AND user_name LIKE ? AND user_position LIKE ? AND user_class LIKE ? AND user_gender LIKE ? AND user_major LIKE ? AND user_hobby LIKE ? AND user_personarity LIKE ? AND user_star LIKE ?";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -271,8 +271,8 @@ public class ProfileDAO {
 				} else {
 					pStmt.setString(12, "%");
 				}
-				if (card.getUser_id() != null) {
-					pStmt.setString(13,card.getUser_id());
+				if (card.getUser_date() != null) {
+					pStmt.setString(13,card.getUser_date());
 				} else {
 					pStmt.setString(13, "%");
 				}
@@ -350,6 +350,59 @@ public class ProfileDAO {
 
 			// 結果を返す
 			return result;
+		}
+
+		//ログイン処理用のメソッド
+		// ログインできるならtrueを返す
+		public boolean isLoginOK(String user_id, String user_pw) {
+			Connection conn = null;
+			boolean loginResult = false;
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+
+				// SELECT文を準備する count?profile?
+				String sql = "SELECT count(*) FROM Profile WHERE user_id = ? AND user_pw = ?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				pStmt.setString(1, user_id);
+				pStmt.setString(2, user_pw);
+
+				// SELECT文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+				rs.next();
+				if (rs.getInt("count(*)") == 1) {
+					loginResult = true;
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				loginResult = false;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				loginResult = false;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						loginResult = false;
+					}
+				}
+			}
+
+			// 結果を返す
+			return loginResult;
 		}
 }
 //ここまで完成
