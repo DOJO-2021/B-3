@@ -1,44 +1,50 @@
 @charset "UTF-8";
 
-html{
-	text-align:center;
+
+/* question.jsp */
+.gotoUpload {
+	text-align: right;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
-.gotoUpload{
-	text-align:right;
-}
-.caution{
+.caution {
 	text-align:left;
-}
-table{
-	text-align:center;
-	border: 1px solid #000000;
-}
-.uploadDate{
-	width:auto;
-}
-.uploadUser{
-	width:auto;
-}
-.question{
-	width:auto;
+	margin-left: 10%;
+	margin-right: 10%;
+	font-size:50%
 }
 
-.columnA{
-	width:auto;
+.questionFerris{
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	border-collapse: collapse;
+	border:3px solid #000000;
 }
-.small{
-	font-size:8px;
+.questionFerris th, .questionFerris td{
+	border:1px solid #999999;
 }
-.questionSentences{
-	width:512px;
-	height:128px;
+
+/* q_post.jsp */
+.post_question{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.post_table{
+
+	width: 80%;
+}
+
+.small {
+	font-size: 8px;
+}
+
+.questionSentences {
+	width: 512px;
+	height: 128px;
 	vertical-align: top;
 	text-align: left;
-
-}
-#canvas{
-	width:50px;
-	height:50px;
-
 }

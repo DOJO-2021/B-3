@@ -17,5 +17,7 @@
 	<tr><th>質問内容:</th>
 	<td><input type="hidden" name=QUESTION value=""></td></tr>
 </table>
+<!-- フッター -->
+	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

@@ -9,10 +9,12 @@
 <link rel="stylesheet" href="/TARACO/css/question.css">
 </head>
 <body>
+<!-- ヘッダー -->
+	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>回答/集計</h1>
 <a class="deleteQuestion">削除</a>
 <p class="deadlineTimer"id="timer"></p>
-<form>
+
 <table>
 	<tr><th>投稿者:</th>
 	<td>事務局<input type="hidden" name="Q_USER"value=""></td></tr>
@@ -22,9 +24,19 @@
 <table>
 <tr><th>合計79人</th><th>Aの回答30人</th><th>Bの回答39人</th></tr>
 </table>
-<input type = "submit"name="POST_QUESTION" value="投稿">
-</form>
+<div class="Graph">
 <canvas id="resultGraph"></canvas>
+</div>
+<form method="POST" action="/TARACO/QAnswerServlet">
+<label>
+<input id="select_answer" type="radio" name="ANSWER" value = "A" required>Aの回答
+</label><label>
+<input id="select_answer" type="radio" name="ANSWER" value = "B">Bの回答
+</label>
+<input id="send_answer" type = "submit"name="POST_QUESTION" value="投稿">
+</form>
 <script src="/TARACO/js/q_answer.js"></script>
+<!-- フッター -->
+	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

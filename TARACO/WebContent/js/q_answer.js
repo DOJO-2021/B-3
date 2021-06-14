@@ -1,11 +1,11 @@
 'use strict';
-var canvus = document.getElementById("resultGraph");
-canvus.width = 100;
-new Chart(canvus, {
+new Chart(document.getElementById("resultGraph"), {
 	type: "pie",
 	options: {
 		legend: {
-			onClick: (e) => e.stopPropagation()
+			onClick: (e) => e.stopPropagation(),
+			responsive: true,
+			maintainAspectRatio: false
 		}
 	},
 	data: {
