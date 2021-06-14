@@ -29,11 +29,11 @@
 </div>
 <form method="POST" action="/TARACO/QAnswerServlet">
 <label>
-<input id="select_answer" type="radio" name="ANSWER" value = "A" required>Aの回答
+<input id="select_answer" type="radio" name="ANSWER" value = "A" required disabled>Aの回答
 </label><label>
-<input id="select_answer" type="radio" name="ANSWER" value = "B">Bの回答
+<input id="select_answer" type="radio" name="ANSWER" value = "B" disabled>Bの回答
 </label>
-<input id="send_answer" type = "submit"name="POST_QUESTION" value="投稿">
+<input id="send_answer" type = "submit"name="POST_QUESTION" value="投稿" disabled>
 </form>
 <script src="/TARACO/js/q_answer.js"></script>
 <!-- フッター -->

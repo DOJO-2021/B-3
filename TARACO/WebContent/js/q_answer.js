@@ -21,4 +21,5 @@ new Chart(document.getElementById("resultGraph"), {
 		]
 	}
 });
+send_answer.disabled = false;
 
