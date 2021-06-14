@@ -17,47 +17,53 @@
 		<table>
 			<tr>
 				<th>会社名or講師/事務局*</th>
-				<td><input type="text" name="USER_POSITION"
-					value="${e.user_position}"></td>
+				<td><input type="text" name="USER_POSITION"></td>
 			</tr>
 
 			<tr>
 				<th>所属クラス</th>
-				<td><input type="text" name="USER_CLASS"
-					value="${e.user_class}"></td>
+				<td><input type="text" name="USER_CLASS"></td>
 			</tr>
 
 			<tr>
 				<th>性別</th>
-				<td><input type="text" name="USER_GENDER"
-					value="${e.user_gender}"></td>
+				<td><input type="text" name="USER_GENDER"></td>
 			</tr>
 
 			<tr>
 				<th>出身の専攻</th>
-				<td><input type="text" name="USER_MAJOR"
-					value="${e.user_major}"></td>
+				<td><input type="text" name="USER_MAJOR"></td>
 
 			</tr>
 			<tr>
 				<th>趣味</th>
-				<td><input type="text" name="USER_HOBBY"
-					value="${e.user_hobby}"></td>
+				<td><input type="text" name="USER_HOBBY"></td>
 			</tr>
 			<tr>
 				<th>性格</th>
-				<td><input type="text" name="USER_PERSONARITY"
-					value="${e.user_personarity}"></td>
+				<td><input type="text" name="USER_PERSONARITY"></td>
 			</tr>
 			<tr>
-				<!-- 星評価ってどうやるの？
+				<!-- 星評価ってどうやるの？ -->
 				<th>気にかけて欲しい度</th>
-				<td><input type="text" name="USER_STAR" value="${e.user_star}"></td> -->
+				<td>
+					<div class="star">
+						<input type="radio" name="USER_STAR">
+						<label for="star5">★</label>
+						<input type="radio" name="USER_STAR">
+						<label for="star4">★</label>
+						<input type="radio" name="USER_STAR">
+						<label for="star3">★</label>
+						<input type="radio" name="USER_STAR">
+						<label for="star2">★</label>
+						<input type="radio" name="USER_STAR">
+						<label for="star1">★</label>
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<th>備考※200字以内</th>
-				<td><input type="text" name="USER_REMARKS"
-					value="${e.user_remarks}"></td>
+				<td><input type="text" name="USER_REMARKS"></td>
 			</tr>
 		</table>
 	<!-- フッター -->
