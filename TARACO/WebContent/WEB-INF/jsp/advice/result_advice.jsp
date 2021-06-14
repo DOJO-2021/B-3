@@ -7,11 +7,11 @@
 <title>TARACO</title>
 
 <link rel="stylesheet" href="/TARACO/css/advice.css">
-<%-- ヘッダーフッター適用する
-<link rel="stylesheet" href="/TARACO/css/style.css"> --%>
+<link rel="stylesheet" href="/TARACO/css/common.css">
 
 </head>
 <body>
+<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 
 	<h1><c:out value="${result.title}" /></h1>
 
@@ -19,6 +19,6 @@
 
 <a href="/TARACO/ADVRegistServlet">	アドバイス登録へ戻る</a><br>
 
-
+<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

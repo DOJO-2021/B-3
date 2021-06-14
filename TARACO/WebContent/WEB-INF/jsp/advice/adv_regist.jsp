@@ -7,31 +7,38 @@
 <title>TARACO</title>
 
 <link rel="stylesheet" href="/TARACO/css/advice.css">
-<%-- ヘッダーフッター適用する
-<link rel="stylesheet" href="/TARACO/css/style.css"> --%>
+<link rel="stylesheet" href="/TARACO/css/common.css">
 
 </head>
 <body>
+<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>アドバイス登録</h1>
 
 <a href="/TARACO/ADVRegistServlet">新規登録</a>
-<a href="/TARACO/ADVEditSearchServlet">既存データの編集</a><br><br>
+<a href="/TARACO/ADVEditSearchServlet">既存データの編集</a>
 
+<input type="submit" name="REGIST" class="edit_login_button" value="PW変更はこちらから"><br><br>
 
 <form method="POST" action="/TARACO/ADVRegistServlet">
 <table>
 	<tr>
-		<th>項目:</th><td><input type="text"size="5" name="adv_course" value="${e.adv_course}"></td>
+		<th>項目:</th><td><input type="text" name="adv_course" value="${e.adv_course}"></td>
 		<th>受講年度:</th><td><input type="text" name="adv_year" value="${e.adv_year}"></td>
 	</tr>
 	<tr>
-		<th>アドバイス本文※400字以内</th><td><input type="text" name="adv_content" value="${e.adv_content}"></td>
+		<th colspan="2">アドバイス本文<span class="small">※400字以内</span></th>
+	</tr>
+	<tr>
+		<td colspan="4">
+		<textarea name="adv_content" cols="65" rows="6">${e.adv_content}</textarea>
+		</td>
 	</tr>
 	</table>
-<br>
+
 <input type="submit" name="REGIST" value="新規登録"><br>
 </form>
 
-
+<br>
+<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>
