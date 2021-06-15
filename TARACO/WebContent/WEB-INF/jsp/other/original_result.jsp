@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,6 @@
 		<img src="images/TARACO_icon.png" alt="TARACO" class="TARACO_icon">
 		<h5 id="clock"></h5>
 	</header>
-
 	<!-- 処理結果文 -->
 	<h1>
 		<c:out value="${result.title}" />
@@ -30,6 +29,6 @@
 			reserved.</p>
 	</footer>
 
-<script type="text/javascript" src="TARACO/js/clock.js"></script>
+	<script type="text/javascript" src="TARACO/js/clock.js"></script>
 </body>
 </html>
