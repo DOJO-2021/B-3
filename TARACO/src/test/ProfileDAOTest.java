@@ -32,6 +32,8 @@ public class ProfileDAOTest {
 		// insert()のテスト登録のテスト 前から4項目追加される。
 		System.out.println("---------- insert()のテスト ----------");
 		Profile insRec = new Profile("TEST3", "TEST", "TEST", "TEST", "TEST", "男", "TEST", "TEST", "TEST", '3', "TEST", "TEST",  "CURRENT_TIMESTAMP");
+		//Profile insRec = new Profile("TEST3", "TEST", "TEST", "TEST", "", "", "", "", "", 0, "", "",  "CURRENT_TIMESTAMP");
+
 		if (dao.insert(insRec)) {
 			System.out.println("登録成功！");
 			}

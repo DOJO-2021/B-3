@@ -10,23 +10,23 @@ import java.io.Serializable;
 		private String q_choice_a;
 		private String q_choice_b;
 		private String q_date;
-		private String q_enddate;
+		//private String q_enddate;
 		private int q_pw;
 
 
-		//引数があるコンストラクタ #String adv_pw
-		public Question(int q_id, String user_id, String q_content, String q_choice_a, String q_choice_b,
-				String q_date, String q_enddate, int q_pw) {
+		//引数があるコンストラクタ #String q_enddate,
+		public Question(int q_id, String user_id, String q_user, String q_content, String q_choice_a, String q_choice_b,
+				String q_date, int q_pw) {
 			super();
 			this.q_id = q_id;
 			this.user_id = user_id;
+			this.q_user = q_user;
 			this.q_content = q_content;
 			this.q_choice_a = q_choice_a;
-			this.q_choice_a = q_choice_b;
+			this.q_choice_b = q_choice_b;
 			this.q_date = q_date;
-			this.q_enddate = q_enddate;
+			//this.q_enddate = q_enddate;
 			this.q_pw = q_pw;
-			//this.adv_pw= adv_pw;
 			}
 
 		//引数がないコンストラクタ(デフォルトコンストラクタ)
@@ -36,9 +36,9 @@ import java.io.Serializable;
 			this.user_id = "";
 			this.q_content = "";
 			this.q_choice_a = "";
-			this.q_choice_a = "";
+			this.q_choice_b = "";
 			this.q_date = "";
-			this.q_enddate = "";
+			//this.q_enddate = "";
 			this.q_pw = 0;
 			//this.adv_pw= "";
 			}
@@ -99,13 +99,13 @@ import java.io.Serializable;
 			this.q_date = q_date;
 		}
 
-		public String getQ_enddate() {
-			return q_enddate;
-		}
+		//public String getQ_enddate() {
+			//return q_enddate;
+		//}
 
-		public void setQ_enddate(String q_enddate) {
-			this.q_enddate = q_enddate;
-		}
+		//public void setQ_enddate(String q_enddate) {
+			//this.q_enddate = q_enddate;
+		//}
 
 		public int getQ_pw() {
 			return q_pw;
