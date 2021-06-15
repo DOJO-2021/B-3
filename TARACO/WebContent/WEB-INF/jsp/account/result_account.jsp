@@ -22,11 +22,11 @@
 	<p>
 		<c:out value="${result.message}" />
 	</p>
-	<a href="AccountRegistServlet"><button type="button">戻る</button></a>
+	<a href="${result.backTo}"><button type="button" class="backTo">戻る</button></a>
 
 	<!-- 独自フッター -->
 	<footer class="footer">
-		<p id="copyright">&copy;Copyright Beach Sandals. All right
+		<p class="copyright">&copy;Copyright Beach Sandals. All right
 			reserved.</p>
 	</footer>
 

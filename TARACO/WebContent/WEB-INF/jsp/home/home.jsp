@@ -11,7 +11,7 @@
 <body>
 	<!-- 独自のヘッダー -->
 	<header>
-		<img src="images/TARACO_icon.png" alt="TARACO" class="TARACO_icon">
+		<a href="HomeServlet"><img src="images/TARACO_icon.png" alt="TARACO" class="TARACO_icon"></a>
 		<h5 id="clock"></h5>
 		<div class="mypage"><a href="MyPageServlet">マイページ</a></div>
 	</header>
@@ -34,8 +34,6 @@
 				<td>昨年までの受講者からの<br>アドバイスを検索・閲覧できます。</td>
 			</tr>
 		</table>
-
-
 
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 

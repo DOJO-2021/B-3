@@ -25,13 +25,6 @@ public class AccountRegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				HttpSession session = request.getSession();
-				if (session.getAttribute("user_id") == null) {
-					response.sendRedirect("/TARACO/LoginServlet");
-					return;
-				}
-		*/
 		// 新規登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/account_regist.jsp");
 		dispatcher.forward(request, response);
@@ -42,23 +35,18 @@ public class AccountRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*	// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
-		response.sendRedirect("/TARACO/LoginServlet");
-		return;
-		}
-		*/
+
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("USER_ID");
-		String user_pw = request.getParameter("USER_PW");
 		String user_name = request.getParameter("USER_NAME");
 		String user_position = request.getParameter("USER_POSITION");
+		String user_id = request.getParameter("USER_ID");
+		String user_pw = request.getParameter("USER_PW");
+
 
 		// 新規登録処理を行う
 		ProfileDAO pDao = new ProfileDAO();
-		if (pDao.insert(new Profile(user_id, user_pw, user_name, user_position, "", "", "", "", "", 0, "", "", ""))) {
+		if (pDao.insert(new Profile(user_id, user_pw, user_name, user_position, "", "", "", "", "", 0, "", "", "CURRENT_TIMESTAMP"))) {//登録成功
 			request.setAttribute("result",
 					new Result("登録成功！", "アカウントを新規登録しました。", "/TARACO/LoginServlet"));
 		} else { // 登録失敗
@@ -67,7 +55,7 @@ public class AccountRegistServlet extends HttpServlet {
 		}
 
 		// 処理結果＿新規登録にフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login/result_account.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/result_account.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -5,7 +5,7 @@ html {
 }
 /*ログイン*/
 .login_body {
-	background-image: url("../images/login_background.jpg"); /*背景画像？*/
+	background-image: url("../images/login_background.jpg"); /*背景画像*/
 	background-size: cover;
 }
 
@@ -39,7 +39,10 @@ html {
 .login_table td{
 	padding:8px;
 }
-
+.login{
+	height: 25px;
+	border-radius: 1px;
+}
 .btn1 { /*新規登録へ*/
 	margin: 30px auto 30px auto;
 }

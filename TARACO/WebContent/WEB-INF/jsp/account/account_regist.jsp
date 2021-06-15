@@ -66,7 +66,7 @@
 	<p id="copyright">&copy;Copyright Beach Sandals. All right
 		reserved.</p>
 
-	<script src="/TARACO/js/regist_account.js"></script>
+	<script type="text/javascript" src="/TARACO/js/regist_account.js"></script>
 	<script src="/TARACO/js/clock.js"></script>
 </body>
 </html>

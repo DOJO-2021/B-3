@@ -26,18 +26,21 @@ header {
 	margin-top: 5px;
 }
 #clock{
+	float: left;
 	text-align: left;
 	margin: 0;
-	padding-top: 20px;
-	padding-left: 180px;
+	padding-top: 25px;
+	padding-left: 10px;
 }
 .nav{
 	text-align: right;
 }
 .nav ul {
 	margin: 0;
+	float:right;
+	padding-top: 20px;
 }
-.nav li { /*ナビゲーションを横並びに*/
+.nav li { /*ナビゲーションを横並びに&カーソルによって色変化*/
 	display: inline;
 	list-style-type: none;
 	padding-right: 30px;
@@ -62,6 +65,7 @@ header {
 	color: #5a9bc0;
 	text-decoration: none;
 }
+
 /*フッター*/
 footer {
 	background-color: #ffb6c1;
@@ -71,12 +75,14 @@ footer {
 .copyright {
 	float: left;
 	padding-top: 5px;
+	padding-left: 10px;
 	color: #3c454d;
 }
 
 .logout {
 	text-align: right;
 	margin-right: 30px;
+	padding-top: 5px;
 }
 
 .logout a:link {
@@ -102,6 +108,7 @@ footer {
 .mypage {
 	text-align: right;
 	margin-right: 30px;
+	padding-top: 20px;
 }
 
 .mypage a:link {
@@ -132,4 +139,11 @@ footer {
 
 #summary_table th, #summary_table td {
 	padding: auto 8px;
+}
+#summary_table td img:hover {
+	transform: scale(1.05, 1.05);
+}
+/*処理結果＿ログイン*/
+.backTo{
+	margin-bottom: 20px;
 }
