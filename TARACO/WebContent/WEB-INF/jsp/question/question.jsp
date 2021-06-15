@@ -15,7 +15,7 @@
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 	<h1>アンケート掲示板</h1>
 	<div class="gotoUpload">
-		<a>投稿フォームはこちら</a>
+		<a href="QPostServlet"><img src="/TARACO/images/test.png"></a>
 	</div>
 	<div class="caution">
 		<p>※アンケートは投稿されてから24時間後に回答を締め切ります。</p>

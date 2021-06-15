@@ -26,9 +26,11 @@ public class QAnswerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_answer.jsp");
+		request.setCharacterEncoding("UTF-8");
+		if(request.getParameter("POST_QUESTION").equals("アンケート投稿")) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/result_question.jsp");
 				dispatcher.forward(request, response);
+		}
 	}
 
 }
