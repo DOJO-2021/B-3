@@ -39,7 +39,7 @@
 <input type="submit" name="REGIST" value="検索"><br>
 </form>
 
-<br>
+<br><br>
 <footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

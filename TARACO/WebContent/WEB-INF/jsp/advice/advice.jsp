@@ -15,10 +15,13 @@
 
 <h1>アドバイス検索</h1>
 
+<div class="pw">
 <form method="POST" action="/TARACO/AdviceSearchServlet" >
 <button type="submit" name="REGIST" value="code"  class="login_button">登録編集はこちら<br>(運営専用)</button>
 </form>
+</div>
 
+<br>
 <form method="POST" action="/TARACO/AdviceSearchServlet">
 <table>
 <tr>
@@ -41,7 +44,7 @@
 </table>
 <input type="submit" name="REGIST" value="検索"><br>
 </form>
-<br>
+<br><br>
 <footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

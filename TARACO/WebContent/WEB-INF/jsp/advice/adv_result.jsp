@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>アドバイス検索結果</h1>
 
+<br>
 <form method="POST" action="/TARACO/AdviceSearchServlet">
 <table>
 <tr>
@@ -37,7 +39,7 @@
 <input type="submit" name="REGIST" value="検索"><br>
 </form>
 
-
+<br>
 <c:forEach var="e" items="${cardList}" >
 	<br>
 	<table class="result_table">
@@ -56,7 +58,7 @@
 	</table>
 </c:forEach>
 
-<br>
+<br><br>
 <footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

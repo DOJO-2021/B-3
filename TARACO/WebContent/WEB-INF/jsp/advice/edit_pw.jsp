@@ -29,7 +29,7 @@
 	</table>
 <input type="submit" name="REGIST" value="変更"><br>
 </form>
-<br>
+<br><br>
 <footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>
 </html>

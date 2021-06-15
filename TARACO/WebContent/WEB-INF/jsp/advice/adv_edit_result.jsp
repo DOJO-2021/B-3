@@ -61,11 +61,14 @@
 	</tr>
 	</table>
 <input type="submit" name="SUBMIT" value="更新">
-<input type="submit" name="SUBMIT" value="削除"><br>
+<input type="submit" name="SUBMIT" value="削除" onclick="check()"><br>
 	</form>
 </c:forEach>
 
 <br>
 <footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
+
+<script src="/TARACO/js/adv_delete.js"></script>
+
 </body>
 </html>
