@@ -53,33 +53,64 @@
 				<th>気にかけて欲しい度</th>
 				<td>
 					<div class="star">
-						<input type="radio" name="USER_STAR" value="5">
+						<input id="star5" type="radio" name="USER_STAR" value="5">
 						<label for="star5">★</label>
-						<input type="radio" name="USER_STAR" value="4">
+						<input id="star4" type="radio" name="USER_STAR" value="4">
 						<label for="star4">★</label>
-						<input type="radio" name="USER_STAR" value="3">
+						<input id="star3" type="radio" name="USER_STAR" value="3">
 						<label for="star3">★</label>
-						<input type="radio" name="USER_STAR" value="2">
+						<input id="star2" type="radio" name="USER_STAR" value="2">
 						<label for="star2">★</label>
-						<input type="radio" name="USER_STAR" value="1">
+						<input id="star1" type="radio" name="USER_STAR" value="1">
 						<label for="star1">★</label>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<th>備考※200字以内</th>
-				<td><input type="text" name="USER_REMARKS"
-					value="${e.user_remarks}"></td>
+				<td><textarea name="USER_REMARKS"></textarea></td>
 			</tr>
 			<tr>
 				<th>顔写真</th>
 				<td><input type="file" name="USER_PHOTO" accept="image/*"></td>
 			</tr>
+			<tr>
+				<td><input type="button" value="IDPW変更はこちら" onclick="clickBtn()"/></td>
+			</tr>
 		</table>
+
+
+		<table id="adit_idpw">
+				<tr>
+					<th>ID
+						<div class="msg" style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
+					</th>
+				</tr>
+				<tr>
+					<td><input type="text" name="USER_ID"></td>
+				</tr>
+				<tr>
+					<th>PW
+						<div class="msg" style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
+					</th>
+				</tr>
+				<tr>
+					<td><input type="password" name="USER_PW"></td>
+				</tr>
+				<tr>
+					<th>PW確認
+						<div class="msg" style="display: inline-block; _display: inline;">※上記と同じ内容を入力してください</div>
+					</th>
+				</tr>
+				<tr>
+					<td><input type="password" name="PW_CONFIRM"></td>
+				</tr>
+			</table>
 	</form>
-	<input type="submit" name="SUBMIT" value="更新">
-	<input type="submit" name="SUBMIT" value="アカウント削除">
+	<input type="submit" name="MYPAGE_UPLODE" value="更新">
+	<input type="submit" name="MYPAGE_DELETE" value="アカウント削除" onclick="Delete">
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
+	<script src="/TARACO/js/mypage.js"></script>
 </body>
 </html>

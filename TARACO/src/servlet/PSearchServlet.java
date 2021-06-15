@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.ProfileDAO;
+import model.Profile;
 
 /**
  * Servlet implementation class PSearchServlet
@@ -20,12 +24,6 @@ public class PSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/TARACO/LoginServlet");
-			return;
-		}*/
 
 		//プロフィール検索にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/p_search.jsp");
@@ -35,32 +33,22 @@ public class PSearchServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	/*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/TARACO/LoginServlet");
-			return;
-		}
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-	}*/
-	/*
-	//リクエストパラメータを取得する
-	request.setCharacterEncoding("UTF-8");
-	String class = request.getParamerer("CLASS");
-	String name = request.getParameter("NAME");
-	String position = request.getParameter("POSITION");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user_name = request.getParameter("NAME");
+		String user_position = request.getParameter("POSITION");
 
-	//検索処理を行う
-	ProfileDAO pDao = new ProfileDAO();
-	List<Profile> List = pDao.select(new Profile(class,name,position))
+		//検索処理を行う
+		ProfileDAO pDao = new ProfileDAO();
+		List<Profile> cardList = pDao.select(new Profile("","",user_name,user_position, "", "", "", "", "", 0, "", "", ""));
 
 
-	//検索結果をリクエストスコープに格納する
-	request.setAttribute("",)
+		//検索結果をリクエストスコープに格納する
+		request.setAttribute("cardList",cardList);
 
-	//プロフィール検索結果ページにフォワードする
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/p_search_result.jsp");
-	dispatcher.forward(request, response);*/
+		//プロフィール検索結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/p_search_result.jsp");
+		dispatcher.forward(request, response);
+	}
 }

@@ -12,7 +12,7 @@
 <!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>プロフィール検索結果</h1>
-<form method="POST" action="/TARACO/PSearchSerlet">
+<form method="POST" action="/TARACO/PSearchServlet">
 
 <button type="submit" name="POSITION" value="講師">講師</button>
 <button type="submit" name="POSITION" value="運営">運営</button>
@@ -34,7 +34,7 @@
 	</tr>
 </table>
 
-<input type="submit" name="P_REGIST" value="検索"><br>
+<input type="submit" name="P_SEARCH" value="検索"><br>
 
 	<table class="p_search">
 	<caption>検索結果○○件</caption>
