@@ -48,7 +48,7 @@
 			<th>会社名</th>
 		</tr>
 		<!-- 拡張for文EL式 -->
-		<c:forEach var="e" items="${cardList}" >
+		<c:forEach var="e" items="${cardList}">
 		<tr>
 			<td> ${e.user_class}</td>
 			<td><button type="submit" name="NAME" value="name">${e.user_name}</button></td>
