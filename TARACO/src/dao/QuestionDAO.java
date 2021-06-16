@@ -52,7 +52,7 @@ public class QuestionDAO {
 						rs.getString("q_choice_b"),
 						rs.getString("q_date"),
 						//rs.getString("q_enddate"),
-						rs.getInt("q_pw"));
+						rs.getString("q_pw"));
 				cardList.add(card);
 			}
 		} catch (SQLException e) {
@@ -127,8 +127,8 @@ public class QuestionDAO {
 				//} else {
 					//pStmt.setString(7, "%");
 				//}
-				if (card.getQ_pw() != 0) {
-					pStmt.setInt(7, card.getQ_pw());
+				if (card.getQ_pw() != null) {
+					pStmt.setString(7, card.getQ_pw());
 				} else {
 					pStmt.setString(7, "%");
 				}
@@ -202,8 +202,8 @@ public class QuestionDAO {
 				//} else {
 					//pStmt.setString(6, "%");
 				//}
-				if (card.getQ_pw() != 0) {
-					pStmt.setInt(6, card.getQ_pw());
+				if (card.getQ_pw() != null) {
+					pStmt.setString(6, card.getQ_pw());
 				} else {
 					pStmt.setString(6, "%");
 				}

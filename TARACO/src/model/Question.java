@@ -11,12 +11,12 @@ import java.io.Serializable;
 		private String q_choice_b;
 		private String q_date;
 		//private String q_enddate;
-		private int q_pw;
+		private String q_pw;
 
 
 		//引数があるコンストラクタ #String q_enddate,
 		public Question(int q_id, String user_id, String q_user, String q_content, String q_choice_a, String q_choice_b,
-				String q_date, int q_pw) {
+				String q_date, String q_pw) {
 			super();
 			this.q_id = q_id;
 			this.user_id = user_id;
@@ -39,7 +39,7 @@ import java.io.Serializable;
 			this.q_choice_b = "";
 			this.q_date = "";
 			//this.q_enddate = "";
-			this.q_pw = 0;
+			this.q_pw = "";
 			//this.adv_pw= "";
 			}
 
@@ -107,11 +107,11 @@ import java.io.Serializable;
 			//this.q_enddate = q_enddate;
 		//}
 
-		public int getQ_pw() {
+		public String getQ_pw() {
 			return q_pw;
 		}
 
-		public void setQ_pw(int q_pw) {
+		public void setQ_pw(String q_pw) {
 			this.q_pw = q_pw;
 		}
 

@@ -10,7 +10,7 @@ public class QuestionDAOTest {
 		QuestionDAO dao = new QuestionDAO();
 		//項目の作り替えをする！
 		System.out.println("---------- select()のテスト ----------");
-		List<Question> cardList = dao.select(new Question(-2, "", "", "", "", "", "", 0));
+		List<Question> cardList = dao.select(new Question(-2, "", "", "", "", "", "", "0000"));
 		//System.out.println(cardList.size());
 		for (Question card : cardList) {
 			System.out.println(card.getQ_id());
@@ -25,7 +25,7 @@ public class QuestionDAOTest {
 			}
 		// insert()のテスト登録のテスト
 		System.out.println("---------- insert()のテスト ----------");
-		Question insRec = new Question(-10, "test2021", "テストプログラム", "追加更新削除が出来るのかテストします", "Aに投票", "Bに投票", "CURRENT_TIMESTAMP", 1234);
+		Question insRec = new Question(-10, "test2021", "テストプログラム", "追加が出来るのかテストします", "Aに投票", "Bに投票", "CURRENT_TIMESTAMP", "0000");
 		if (dao.insert(insRec)) {
 			System.out.println("登録成功！");
 			}
@@ -37,7 +37,7 @@ public class QuestionDAOTest {
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		Question upRec = new Question(insQ_id, "test2021", "テストプログラム", "更新が出来るのかテストします", "Aに投票", "Bに投票", "CURRENT_TIMESTAMP", 1234);
+		Question upRec = new Question(insQ_id, "test2021", "テストプログラム", "更新が出来るのかテストします", "Aに投票", "Bに投票", "CURRENT_TIMESTAMP", "1234");
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
 		}
