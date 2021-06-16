@@ -25,12 +25,14 @@
 			<th>投稿日時:</th>
 			<th>投稿者:</th>
 			<th>質問内容:</th>
+			<th>回答人数:</th>
 		</tr>
-		<c:forEach var="question" items="${questionList}">
+		<c:forEach var="question" items="${billList}">
 		<tr>
 			<td>${question.q_date}</td>
 			<td>${question.q_user}</td>
 			<td><a href="QAnswerServlet?Q_ID=${question.q_id}">${question.q_content}</a></td>
+			<td>${question.a_responses}</td>
 		</tr>
 		</c:forEach>
 	</table>
