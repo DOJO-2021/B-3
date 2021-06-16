@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.EditPwDAO;
+import model.EditPw;
+import model.Result;
+
 /**
  * Servlet implementation class ADVPWServlet
  */
@@ -46,17 +50,26 @@ public class ADVPWServlet extends HttpServlet {
 					return;
 				}
 
+*/
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
-						String comp_name = request.getParameter("COMP_NAME");
-						String name = request.getParameter("NAME");
-						String address = request.getParameter("ADDRESS");
+						String adv_pw = request.getParameter("adv_pw");
 
 						// ｐｗ更新を行う
+						EditPwDAO eDao = new EditPwDAO();
+						if (request.getParameter("SUBMIT").equals("変更")) {
+							if (eDao.update(new EditPw(adv_pw))) {	// 更新成功
+								request.setAttribute("result",
+								new Result("変更完了", "パスワードを変更しました。", "/TARACO/HomeServlet"));
+							}
+							else {												// 更新失敗
+								request.setAttribute("result",
+								new Result("変更エラー", "パスワードを変更できませんでした。", "/TARACO/HomeServlet"));
+							}
+						}
 
-*/
 
-						// アドバイス結果ページにフォワードする
+						// 結果ページにフォワードする
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
 						dispatcher.forward(request, response);
 					}

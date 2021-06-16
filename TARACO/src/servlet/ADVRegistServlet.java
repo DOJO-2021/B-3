@@ -66,11 +66,11 @@ public class ADVRegistServlet extends HttpServlet {
 						AdviceDAO aDao = new AdviceDAO();
 						if (aDao.insert(new Advice(0,adv_course,adv_year, content))) {	// 登録成功
 							request.setAttribute("result",
-							new Result("登録完了", "アドバイスを登録しました。", "/TARACO/MyPageServlet"));
+							new Result("登録完了", "アドバイスを登録しました。", "/TARACO/HomeServlet"));
 						}
 						else {												// 登録失敗
 							request.setAttribute("result",
-							new Result("登録エラー", "アドバイスを登録できませんでした。", "/TARACO/MyPageServlet"));
+							new Result("登録エラー", "アドバイスを登録できませんでした。", "/TARACO/HomeServlet"));
 						}
 
 

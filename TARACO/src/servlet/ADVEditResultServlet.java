@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AdviceDAO;
 import model.Advice;
@@ -24,14 +25,14 @@ public class ADVEditResultServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
+
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
 			if (session.getAttribute("id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
-*/
+
 		// アドバイス編集検索結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_edit_result.jsp");
 			dispatcher.forward(request, response);
@@ -42,13 +43,13 @@ public class ADVEditResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
-*/
+
 
 						// リクエストパラメータを取得する
 							request.setCharacterEncoding("UTF-8");
@@ -62,21 +63,21 @@ public class ADVEditResultServlet extends HttpServlet {
 						if (request.getParameter("SUBMIT").equals("更新")) {
 							if (aDao.update(new Advice(adv_id,adv_course,adv_year,content))) {	// 更新成功
 								request.setAttribute("result",
-								new Result("更新完了", "レコードを更新しました。", "/TARACO/MyPageServlet"));
+								new Result("更新完了", "レコードを更新しました。", "/TARACO/HomeServlet"));
 							}
 							else {												// 更新失敗
 								request.setAttribute("result",
-								new Result("更新エラー", "レコードを更新できませんでした。", "/TARACO/MyPageServlet"));
+								new Result("更新エラー", "レコードを更新できませんでした。", "/TARACO/HomeServlet"));
 							}
 						}
 						else {
 							if (aDao.delete(adv_id)) {	// 削除成功
 								request.setAttribute("result",
-								new Result("削除完了", "レコードを削除しました。", "/TARACO/MyPageServlet"));
+								new Result("削除完了", "レコードを削除しました。", "/TARACO/HomeServlet"));
 							}
 							else {						// 削除失敗
 								request.setAttribute("result",
-								new Result("削除エラー", "レコードを削除できませんでした。", "/TARACO/MyPageServlet"));
+								new Result("削除エラー", "レコードを削除できませんでした。", "/TARACO/HomeServlet"));
 							}
 						}
 
