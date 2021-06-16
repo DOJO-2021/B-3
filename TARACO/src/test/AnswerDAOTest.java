@@ -10,19 +10,24 @@ public class AnswerDAOTest {
 		AnswerDAO dao = new AnswerDAO();
 		//項目の作り替えをする！
 		System.out.println("---------- select()のテスト ----------");
-		List<Answer> cardList = dao.select(new Answer(-1, 0, "", "A"));
+		List<Integer> cardList = dao.select(new Answer(0, 0, "", "")); //0, 0, "", ""
 		//System.out.println(cardList.size());
-		for (Answer card : cardList) {
-			System.out.println(card.getA_id());
-			System.out.println(card.getQ_id());
-			System.out.println(card.getUser_id());
-			System.out.println(card.getA_answer());
+		for (Integer card : cardList) {
+			System.out.println(card);
+			System.out.println();
+			System.out.println();
+			}
+		System.out.println("---------- select()のテスト2 ----------");
+		List<Integer> cardList2 = dao.select(new Answer(0, 0, "", "A")); //0, 0, "", ""
+		//System.out.println(cardList.size());
+		for (Integer card : cardList2) {
+			System.out.println(card);
 			System.out.println();
 			System.out.println();
 			}
 		// insert()のテスト登録のテスト
 		System.out.println("---------- insert()のテスト ----------");
-		Answer insRec = new Answer(-10, 0, "", "A");
+		Answer insRec = new Answer(-10, -1, "", "A");
 		if (dao.insert(insRec)) {
 			System.out.println("登録成功！");
 			}

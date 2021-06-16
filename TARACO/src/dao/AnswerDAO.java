@@ -14,9 +14,9 @@ import model.Answer;
 
 public class AnswerDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-	public List<Answer> select(Answer param) {
+	public List<Integer> select(Answer param) {
 		Connection conn = null;
-		List<Answer> cardList = new ArrayList<Answer>();
+		List<Integer> cardList = new ArrayList<Integer>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -25,26 +25,26 @@ public class AnswerDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 
-			// SQL文を準備する このあたりのどこかがおかしい？
-			String sql = "SELECT COUNT (*) FROM Answer WHERE a_id OR a_answer=? AND q_id=?";
+			// SQL文を準備する このあたりのどこかがおかしい？ a_id OR
+			String sql = "SELECT COUNT (*) FROM Answer WHERE q_id=? AND a_answer LIKE ?";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getA_id() != 0) {
-				pStmt.setString(1, "%" + param.getA_id() + "%");
+			//if (param.getA_id() != 0) {
+				//pStmt.setString(1, "%" + param.getA_id() + "%");
+			//} else {
+				//pStmt.setString(1, "%");
+			//}
+			if (param.getQ_id() > 0) {
+				pStmt.setNull(1, java.sql.Types.NULL);
 			} else {
-				pStmt.setString(1, "%");
+				pStmt.setInt(1, param.getQ_id());
 			}
-			if (param.getA_answer() != null) {
+			if (param.getA_answer() != "") {
 				pStmt.setString(2, "%" + param.getA_answer() + "%");
 			} else {
 				pStmt.setString(2, "%");
-			}
-			if (param.getQ_id() != 0) {
-				pStmt.setString(3, "%" + param.getQ_id() + "%");
-			} else {
-				pStmt.setString(3, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
@@ -52,11 +52,8 @@ public class AnswerDAO {
 			//↓ここも自分なりに変える
 			// 結果表をコレクションにコピーする #rs.getString("adv_pw"));
 			while (rs.next()) {
-				Answer card = new Answer(
-						rs.getInt("a_id"),
-						rs.getInt("q_id"),
-						rs.getString("user_id"),
-						rs.getString("a_answer"));
+				int card = rs.getInt("COUNT(*)");
+
 				cardList.add(card);
 			}
 		} catch (SQLException e) {
