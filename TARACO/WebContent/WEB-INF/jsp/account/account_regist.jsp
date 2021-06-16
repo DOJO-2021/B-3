@@ -63,8 +63,8 @@
 	</form>
 
 	<!-- 独自のフッター -->
-	<p id="copyright">&copy;Copyright Beach Sandals. All right
-		reserved.</p>
+	<footer><p id="copyright">&copy;Copyright Beach Sandals. All right
+		reserved.</p></footer>
 
 	<script type="text/javascript" src="/TARACO/js/regist_account.js"></script>
 	<script src="/TARACO/js/clock.js"></script>

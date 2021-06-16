@@ -54,8 +54,8 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("result",
 					new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/TARACO/LoginServlet"));
 
-			// 処理結果ログインページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login/result_login.jsp");
+			// 独自処理結果にフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

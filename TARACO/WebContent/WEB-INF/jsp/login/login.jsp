@@ -13,7 +13,7 @@
 		<h2>TARACOへようこそ！</h2>
 		<p id="sub">
 			 &emsp;TARACOは受講者・講師・運営のコミュニケーションをサポートするWebアプリケーションです。<br>
-			 &emsp;卵の集合体であるタラコのように、受講生の皆さんはエンジニアの卵の集合体です。
+			 &emsp;卵の集合体であるタラコのように、受講生の皆さんはエンジニアの卵の集まりです。
 			DOJOを通して卵から稚魚へと成長し、IT業界という大海原へバラバラに巣立っていくその日まで、このTARACOをご利用ください。
 		</p>
 	</div>
@@ -34,9 +34,9 @@
 			<!-- エラーメッセージ -->
 			<p id="errormsg"></p>
 			<!-- ボタン -->
-			<input type="submit" name="LOGIN" value="ログイン" class="login_botton">
+			<input type="submit" name="LOGIN" value="Log in" class="login_botton">
 		</form>
-		<br> <a href="AccountRegistServlet" class="btn1"> <button type="button">新規登録 </button></a>
+		 <a href="AccountRegistServlet" class="btn1"> 新規登録はこちら→ </a>
 	</div>
 	<script src="/TARACO/js/login.js"></script>
 </body>

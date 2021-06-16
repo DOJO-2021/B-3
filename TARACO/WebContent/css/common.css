@@ -16,6 +16,11 @@ h1 {
 header {
 	background-color: #ffb6c1;
 	height: 50px;
+	background-image: linear-gradient(to right, #ff4500, #ff4500 2px, transparent 2px,
+		transparent 8px); /* 幅2の線を作る */
+	background-size: 15px 3px; /* グラデーションの幅・高さを指定 */
+	background-position: left bottom; /* 背景の開始位置を指定 */
+	background-repeat: repeat-x;
 }
 
 .TARACO_icon {
@@ -25,21 +30,25 @@ header {
 	margin-left: 30px;
 	margin-top: 5px;
 }
-#clock{
+
+#clock {
 	float: left;
 	text-align: left;
 	margin: 0;
 	padding-top: 25px;
 	padding-left: 10px;
 }
-.nav{
+
+.nav {
 	text-align: right;
 }
+
 .nav ul {
 	margin: 0;
-	float:right;
+	float: right;
 	padding-top: 20px;
 }
+
 .nav li { /*ナビゲーションを横並びに&カーソルによって色変化*/
 	display: inline;
 	list-style-type: none;
@@ -68,13 +77,19 @@ header {
 
 /*フッター*/
 footer {
+	background-image: linear-gradient(to right, #ff4500, #ff4500 2px, transparent 2px,
+		transparent 8px); /* 幅2の線を作る */
+	background-size: 15px 3px; /* グラデーションの幅・高さを指定 */
+	background-position: left top; /* 背景の開始位置を指定 */
+	background-repeat: repeat-x;
 	background-color: #ffb6c1;
-	height: 50px;
+	height: 45px;
+	margin-top: 10px;
 }
 
 .copyright {
 	float: left;
-	padding-top: 5px;
+	padding-top: 3px;
 	padding-left: 10px;
 	color: #3c454d;
 }
@@ -82,7 +97,7 @@ footer {
 .logout {
 	text-align: right;
 	margin-right: 30px;
-	padding-top: 5px;
+	padding-top: 16px;
 }
 
 .logout a:link {
@@ -132,7 +147,7 @@ footer {
 }
 
 #summary_table {
-	margin: 100px auto;
+	margin: 70px auto;
 	text-align: center;
 	width: 800px;
 }
@@ -140,10 +155,11 @@ footer {
 #summary_table th, #summary_table td {
 	padding: auto 8px;
 }
+
 #summary_table td img:hover {
 	transform: scale(1.05, 1.05);
 }
 /*処理結果＿ログイン*/
-.backTo{
+.backTo {
 	margin-bottom: 20px;
 }

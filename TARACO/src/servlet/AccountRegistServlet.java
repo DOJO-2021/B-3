@@ -54,8 +54,8 @@ public class AccountRegistServlet extends HttpServlet {
 					new Result("登録失敗！", "アカウントを新規登録できませんでした。", "/TARACO/AccountRegistServlet"));
 		}
 
-		// 処理結果＿新規登録にフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/result_account.jsp");
+		// 独自処理結果にフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 		dispatcher.forward(request, response);
 	}
 
