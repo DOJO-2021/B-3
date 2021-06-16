@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.QuestionDAO;
+import model.LoginUser;
+import model.Question;
 
 /**
  * Servlet implementation class QPostServlet
@@ -21,8 +26,7 @@ public class QPostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_post.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -32,9 +36,27 @@ public class QPostServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if(true) {
-
-		}
+		HttpSession session = request.getSession();
+		LoginUser user = (LoginUser) session.getAttribute("user_id");
+		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("Q_USER");
+		String question = request.getParameter("QUESTION");
+		String aAnswer = request.getParameter("A_ANSWER");
+		String bAnswer = request.getParameter("A_ANSWER");
+		String pass = request.getParameter("QUESTION_PASS");
+		pass = "1234";
+		Question postQuestion = new Question();
+		postQuestion.setQ_user(name);
+		postQuestion.setQ_content(question);
+		postQuestion.setQ_choice_a(aAnswer);
+		postQuestion.setQ_choice_b(bAnswer);
+		//postQuestion.setQ_pw(pass);
+		postQuestion.setQ_pw(pass);
+		postQuestion.setUser_id(user.getUser_id());
+		QuestionDAO qDAO = new QuestionDAO();
+		qDAO.insert(postQuestion);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_post.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

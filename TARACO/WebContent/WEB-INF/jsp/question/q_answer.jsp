@@ -16,7 +16,7 @@
 	<a class="deleteQuestion">削除</a>
 	<p class="deadlineTimer" id="timer"></p>
 
-	<table>
+	<table class="answer_table">
 		<tr>
 			<th>投稿者:</th>
 			<td>${question.q_user}</td>
