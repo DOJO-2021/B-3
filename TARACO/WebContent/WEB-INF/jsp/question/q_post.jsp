@@ -11,7 +11,7 @@
 <!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>アンケート投稿フォーム</h1>
-<form id="post">
+<form id="post" method="post" action="/TARACO/QPostServlet" >
 <table class="post_table">
 	<tr><th>投稿者:</th>
 	<td class ="post_table_td"><input class="post_text" type="text" name="Q_USER"placeholder="匿名希望の方は「匿名希望」と入力してください。" required></td></tr>

@@ -19,12 +19,11 @@
 	<table>
 		<tr>
 			<th>投稿者:</th>
-			<td>事務局<input type="hidden" name="Q_USER" value=""></td>
+			<td>${question.q_user}</td>
 		</tr>
 		<tr>
 			<th>質問内容:</th>
-			<td class="questionSentences">この質問について回答お願いします。<input
-				type="hidden" name=QUESTION value=""></td>
+			<td class="questionSentences">${question.q_content}</td>
 		</tr>
 	</table>
 	<table>

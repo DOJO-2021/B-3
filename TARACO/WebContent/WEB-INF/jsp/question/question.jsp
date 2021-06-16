@@ -20,23 +20,19 @@
 	<div class="caution">
 		<p>※アンケートは投稿されてから24時間後に回答を締め切ります。</p>
 	</div>
-
 	<table class="questionFerris">
 		<tr>
 			<th>投稿日時:</th>
 			<th>投稿者:</th>
 			<th>質問内容:</th>
 		</tr>
+		<c:forEach var="question" items="${questionList}">
 		<tr>
-			<td>2021/06/04/17時00分</td>
-			<td>事務局</td>
-			<td>本日の講義の○○章について理解できましたか。……</td>
+			<td>${question.q_date}</td>
+			<td>${question.q_user}</td>
+			<td><a href="QAnswerServlet?Q_ID=${question.q_id}">${question.q_content}</a></td>
 		</tr>
-		<tr>
-			<td>2021/06/**/99時99分</td>
-			<td>匿名希望</td>
-			<td>皆さんは……</td>
-		</tr>
+		</c:forEach>
 	</table>
 	<p></p>
 	<!-- フッター -->

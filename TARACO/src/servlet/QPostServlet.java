@@ -21,6 +21,8 @@ public class QPostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_post.jsp");
 		dispatcher.forward(request, response);
 	}
