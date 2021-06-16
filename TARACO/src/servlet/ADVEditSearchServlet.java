@@ -49,6 +49,7 @@ public class ADVEditSearchServlet extends HttpServlet {
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
+				}
 
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
@@ -69,4 +70,5 @@ public class ADVEditSearchServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_edit_result.jsp");
 				dispatcher.forward(request, response);
 			}
-	}
+}
+
