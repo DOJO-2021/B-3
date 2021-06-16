@@ -22,6 +22,7 @@
 <button type="submit" name="CLASS" value="Dクラス">Dクラス</button>
 <button type="submit" name="CLASS" value="Eクラス">Eクラス</button>
 
+
 <table>
 
 	<tr>
@@ -34,7 +35,10 @@
 	</tr>
 </table>
 
+
 <input type="submit" name="P_SEARCH" value="検索"><br>
+</form>
+<form method="POST" action="/TARACO/PSearchResultServlet">
 
 	<table class="p_search">
 	<caption>検索結果○○件</caption>
@@ -46,9 +50,9 @@
 		<!-- 拡張for文EL式 -->
 		<c:forEach var="e" items="${cardList}" >
 		<tr>
-			<td> value="${e.user_class}"</td>
-			<td><button type="submit" name="NAME" value="${e.user_name}"></button></td>
-			<td> value="${e.user_position}"</td>
+			<td> ${e.user_class}</td>
+			<td><button type="submit" name="NAME" value="name">${e.user_name}</button></td>
+			<td> ${e.user_position}</td>
 		</tr>
 		</c:forEach>
 

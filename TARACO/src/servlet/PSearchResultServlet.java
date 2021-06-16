@@ -53,7 +53,7 @@ public class PSearchResultServlet extends HttpServlet {
 				//検索結果をリクエストスコープに格納する
 				request.setAttribute("cardList",cardList);
 
-				//プロフィール検索結果ページにフォワードする
+				//個人プロフィールページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/profile.jsp");
 				dispatcher.forward(request, response);
 	}

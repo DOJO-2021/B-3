@@ -11,7 +11,7 @@
 <!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 <h1>プロフィール検索</h1>
-<form method="POST" action="/TARACO/PSearchServlet">
+<form method="GET" action="/TARACO/PSearchServlet">
 
 
 <button type="submit" name="POSITION" value="講師">講師</button>

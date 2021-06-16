@@ -106,9 +106,10 @@
 					<td><input type="password" name="PW_CONFIRM"></td>
 				</tr>
 			</table>
+		<input type="submit" name="MYPAGE_UPLODE" value="更新">
+		<input type="submit" name="MYPAGE_DELETE" value="アカウント削除" onclick="Delete">
 	</form>
-	<input type="submit" name="MYPAGE_UPLODE" value="更新">
-	<input type="submit" name="MYPAGE_DELETE" value="アカウント削除" onclick="Delete">
+
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 	<script src="/TARACO/js/mypage.js"></script>
