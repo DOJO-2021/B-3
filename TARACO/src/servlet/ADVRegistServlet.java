@@ -56,9 +56,9 @@ public class ADVRegistServlet extends HttpServlet {
 
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
-						String adv_course = request.getParameter("ADV_COURSE");
-						int adv_year =Integer.parseInt(request.getParameter("ADV_YEAR"));
-						String content = request.getParameter("CONTENT");
+						String adv_course = request.getParameter("adv_course");
+						int adv_year =Integer.parseInt(request.getParameter("adv_year"));
+						String content = request.getParameter("content");
 
 
 
@@ -75,7 +75,7 @@ public class ADVRegistServlet extends HttpServlet {
 
 
 						// 結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/result_advice.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
 						dispatcher.forward(request, response);
 					}
 

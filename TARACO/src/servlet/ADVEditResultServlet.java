@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.AdviceDAO;
+import model.Advice;
+import model.Result;
+
 /**
  * Servlet implementation class AdviceSearchServlet
  */
@@ -44,18 +48,19 @@ public class ADVEditResultServlet extends HttpServlet {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
-
+*/
 
 						// リクエストパラメータを取得する
-						request.setCharacterEncoding("UTF-8");
-						String comp_name = request.getParameter("COMP_NAME");
-						String name = request.getParameter("NAME");
-						String address = request.getParameter("ADDRESS");
+							request.setCharacterEncoding("UTF-8");
+							int adv_id =Integer.parseInt(request.getParameter("adv_id"));
+							String adv_course = request.getParameter("adv_course");
+							int adv_year =Integer.parseInt(request.getParameter("adv_year"));
+							String content = request.getParameter("content");
 
 						// 更新または削除を行う
 						AdviceDAO aDao = new AdviceDAO();
 						if (request.getParameter("SUBMIT").equals("更新")) {
-							if (aDao.update(new Advice(bc_id,comp_name,dept_name, name, furigana, zip_code, address, phone, fax, email, date, remarks))) {	// 更新成功
+							if (aDao.update(new Advice(adv_id,adv_course,adv_year,content))) {	// 更新成功
 								request.setAttribute("result",
 								new Result("更新完了", "レコードを更新しました。", "/TARACO/MyPageServlet"));
 							}
@@ -65,7 +70,7 @@ public class ADVEditResultServlet extends HttpServlet {
 							}
 						}
 						else {
-							if (aDao.delete(bc_id)) {	// 削除成功
+							if (aDao.delete(adv_id)) {	// 削除成功
 								request.setAttribute("result",
 								new Result("削除完了", "レコードを削除しました。", "/TARACO/MyPageServlet"));
 							}
@@ -76,9 +81,8 @@ public class ADVEditResultServlet extends HttpServlet {
 						}
 
 						// アドバイス結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/result_advice.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
 						dispatcher.forward(request, response);
-*/
 					}
 				}
 

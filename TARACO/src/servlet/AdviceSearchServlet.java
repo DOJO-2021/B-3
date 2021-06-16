@@ -55,8 +55,8 @@ public class AdviceSearchServlet extends HttpServlet {
 
 				// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
-						String adv_course = request.getParameter("ADV_COURSE");
-						String content = request.getParameter("CONTENT");
+						String adv_course = request.getParameter("adv_course");
+						String content = request.getParameter("content");
 
 				// 検索処理を行う
 				AdviceDAO aDao = new AdviceDAO();
