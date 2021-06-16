@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ADPWServlet
+ * Servlet implementation class ADVPWServlet
  */
-@WebServlet("/ADPWServlet")
+@WebServlet("/ADVPWServlet")
 public class ADVPWServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,7 @@ public class ADVPWServlet extends HttpServlet {
 */
 
 						// アドバイス結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/result_pw.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
 						dispatcher.forward(request, response);
 					}
 				}

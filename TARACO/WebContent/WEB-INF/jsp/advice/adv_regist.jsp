@@ -18,7 +18,9 @@
 <a href="/TARACO/ADVEditSearchServlet">既存データの編集</a>
 
 <div class="pw">
-<input type="button" class="edit_login_button" value="PW変更はこちらから"   ><br><br>
+<form method="GET" action="/TARACO/ADVPWServlet">
+<input type="submit" name="REGIST" class="edit_login_button" value="PW変更はこちらから" ><br><br>
+</form>
 </div>
 
 <form method="POST" action="/TARACO/ADVRegistServlet">
