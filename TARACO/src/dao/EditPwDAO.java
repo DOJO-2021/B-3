@@ -24,16 +24,16 @@ import model.EditPw;
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 			// SQL文を準備する
-			String sql = "SELECT * FROM edit_pw";
+			String sql = "SELECT * FROM edit_pw WHERE adv_pw=?";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			/*if (param.getAdv_pw() != null) {
-				pStmt.setString(1, "%" + param.getAdv_pw() + "%");
+			if (param.getAdv_pw() != null) {
+				pStmt.setString(1,  param.getAdv_pw());//完全に一致しないといけないから%なし
 			} else {
 				pStmt.setString(1, "%");
-			}*/
+			}
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
