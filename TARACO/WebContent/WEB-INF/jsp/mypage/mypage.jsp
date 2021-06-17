@@ -75,7 +75,7 @@
 				<td><input type="file" name="USER_PHOTO" accept="image/*"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="IDPW変更はこちら" onclick="clickBtn()"/></td>
+				<td><input type="button" value="IDPW変更はこちら" onclick="clickBtn();"/></td>
 			</tr>
 		</table>
 
