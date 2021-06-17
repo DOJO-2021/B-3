@@ -28,7 +28,7 @@ public class ADVRegistServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
-			if (session.getAttribute("id") == null) {
+			if (session.getAttribute("user_id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
@@ -47,7 +47,7 @@ public class ADVRegistServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
+				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
@@ -56,12 +56,12 @@ public class ADVRegistServlet extends HttpServlet {
 						request.setCharacterEncoding("UTF-8");
 						String adv_course = request.getParameter("adv_course");
 						int adv_year =Integer.parseInt(request.getParameter("adv_year"));
-						String content = request.getParameter("content");
+						String adv_content = request.getParameter("adv_content");
 
 
 						// 登録処理を行う
 						AdviceDAO aDao = new AdviceDAO();
-						if (aDao.insert(new Advice(0,adv_course,adv_year, content))) {	// 登録成功
+						if (aDao.insert(new Advice(0,adv_course,adv_year,adv_content))) {	// 登録成功
 							request.setAttribute("result",
 							new Result("登録完了", "アドバイスを登録しました。", "/TARACO/HomeServlet"));
 						}

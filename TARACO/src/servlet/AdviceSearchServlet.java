@@ -66,11 +66,11 @@ public class AdviceSearchServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String adv_course = request.getParameter("adv_course");
-		String content = request.getParameter("content");
+		String adv_content = request.getParameter("adv_content");
 
 		// 検索処理を行う
 		AdviceDAO aDao = new AdviceDAO();
-		List<Advice> cardList = aDao.select(new Advice(0, adv_course, 0, content));
+		List<Advice> cardList = aDao.select(new Advice(0, adv_course, 0, adv_content));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);

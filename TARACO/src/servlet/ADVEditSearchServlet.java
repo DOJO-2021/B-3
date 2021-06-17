@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AdviceDAO;
 import model.Advice;
@@ -25,13 +26,13 @@ public class ADVEditSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
-			if (session.getAttribute("id") == null) {
+			if (session.getAttribute("user_id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
-*/
+
 		// アドバイス編集検索ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_edit_search.jsp");
 			dispatcher.forward(request, response);
@@ -43,22 +44,22 @@ public class ADVEditSearchServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
+				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
-*/
+
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
-						String adv_course = request.getParameter("ADV_COURSE");
-						String content = request.getParameter("CONTENT");
+						String adv_course = request.getParameter("adv_course");
+						String adv_content = request.getParameter("adv_content");
 
 
 				// 検索処理を行う
 				AdviceDAO aDao = new AdviceDAO();
-				List<Advice> cardList = aDao.select(new Advice(0,adv_course,0,content));
+				List<Advice> cardList = aDao.select(new Advice(0,adv_course,0,adv_content));
 
 				// 検索結果をリクエストスコープに格納する
 				request.setAttribute("cardList", cardList);

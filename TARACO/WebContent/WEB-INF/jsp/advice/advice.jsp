@@ -39,11 +39,10 @@
 				<th>項目</th>
 				<td><select name="adv_course">
 						<option value="" hidden>コースを選択してください</option>
-						<option value="all">all</option>
-						<option value="personal">パーソナルスキルコース</option>
-						<option value="IT">IT基礎</option>
-						<option value="Java">Java基礎</option>
-						<option value="development">開発演習</option>
+						<option value="パーソナルスキルコース">パーソナルスキルコース</option>
+						<option value="IT基礎">IT基礎</option>
+						<option value="Java基礎">Java基礎</option>
+						<option value="開発演習">開発演習</option>
 				</select></td>
 
 

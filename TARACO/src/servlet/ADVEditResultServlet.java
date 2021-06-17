@@ -28,7 +28,7 @@ public class ADVEditResultServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
-			if (session.getAttribute("id") == null) {
+			if (session.getAttribute("user_id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
@@ -45,7 +45,7 @@ public class ADVEditResultServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
+				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
@@ -56,12 +56,12 @@ public class ADVEditResultServlet extends HttpServlet {
 							int adv_id =Integer.parseInt(request.getParameter("adv_id"));
 							String adv_course = request.getParameter("adv_course");
 							int adv_year =Integer.parseInt(request.getParameter("adv_year"));
-							String content = request.getParameter("content");
+							String adv_content = request.getParameter("adv_content");
 
 						// 更新または削除を行う
 						AdviceDAO aDao = new AdviceDAO();
 						if (request.getParameter("SUBMIT").equals("更新")) {
-							if (aDao.update(new Advice(adv_id,adv_course,adv_year,content))) {	// 更新成功
+							if (aDao.update(new Advice(adv_id,adv_course,adv_year,adv_content))) {	// 更新成功
 								request.setAttribute("result",
 								new Result("更新完了", "レコードを更新しました。", "/TARACO/HomeServlet"));
 							}
