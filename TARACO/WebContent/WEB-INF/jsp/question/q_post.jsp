@@ -21,7 +21,7 @@
 <table class="post_table">
 	<tr><th>Aボタンの回答</th><td><input class="post_text" type="text" name="A_ANSWER" required></td></tr>
 	<tr><th>Bボタンの回答</th><td><input class="post_text" type="text" name="B_ANSWER" required></td></tr>
-	<tr><th>削除用パスワード</th><td><input class="post_text"  id="q_delete"type="text" name="QUESTION_PASS" placeholder="英数半角数字で4桁"  required></td></tr>
+	<tr><th>削除用パスワード</th><td><input class="post_text"  id="q_delete"type="password" name="QUESTION_PASS" placeholder="英数半角数字で4桁"  required></td></tr>
 	<tr class="smallerror"><th></th><td><p id="errormsg"></p></td></tr>
 </table>
 <input type="submit" id="post_question"name="QUESTION_POST"value="アンケート投稿">

@@ -5,8 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<!-- グラフ描画用jsと追加機能js 外部参照 -->
+<script>
+const date = "${question.q_date}"";
+const count = Number(${question.a_responses});
+const countA = Number(${question.a_responses_a});
+const answer_a = "${question.q_choice_a}";
+const answer_b = "${question.q_choice_b}";
+const pass = "${question.q_pw}";
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js">
+</script>
+<script src="/TARACO/js/chartjs-plugin-datalabels.min.js"></script>
 <link rel="stylesheet" href="/TARACO/css/question.css">
 </head>
 <body>
@@ -26,23 +36,24 @@
 			<td class="questionSentences">${question.q_content}</td>
 		</tr>
 	</table>
-	<table>
+	<table class="answer_table2">
 		<tr>
-			<th>合計79人</th>
-			<th>Aの回答30人</th>
-			<th>Bの回答39人</th>
+			<th>合計${question.a_responses}人</th>
+			<th>Aの回答${question.a_responses_a}人</th>
+			<th>Bの回答${question.a_responses_b}人</th>
 		</tr>
 	</table>
-	<div class="Graph">
-		<canvas id="resultGraph"></canvas>
+	<p></p>
+	<div class="Graph" id="Graph">
+		<canvas id="resultGraph"Width = "600" height = "300"></canvas>
 	</div>
 	<form method="POST" action="/TARACO/QAnswerServlet" method="post">
 		<label> <input id="select_answer" type="radio" name="ANSWER"
-			value="A" required>Aの回答
+			value="A" required>${question.q_choice_a}
 		</label><label> <input id="select_answer" type="radio" name="ANSWER"
-			value="B">Bの回答
-		</label> <input id="send_answer" type="submit" name="POST_QUESTION" value="アンケート投稿"
-			disabled>
+			value="B">${question.q_choice_b}
+		</label> <input id="send_answer" type="submit" name="POST_QUESTION"
+			value="アンケート投稿" disabled>
 	</form>
 	<input id="test_disabled" type="button" value="切り替え">
 	<script src="/TARACO/js/q_answer.js"></script>

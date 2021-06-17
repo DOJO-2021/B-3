@@ -71,4 +71,27 @@
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
+	border-collapse: collapse;
+	border: 3px solid #000000;
+}
+
+.answer_table2 {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+.answer_table th, .answer_table tr {
+	vertical-align: top;
+	border: 1px solid #999999;
+}
+
+.answer_table th {
+	width: 10%;
+}
+
+.Graph {
+	display: flex;
+	justify-content: center;
 }

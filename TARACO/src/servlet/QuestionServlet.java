@@ -40,7 +40,9 @@ public class QuestionServlet extends HttpServlet {
 			q.setQ_date(q_date.substring(0, 19));
 			List<Integer> count_responses = aDAO.select(new Answer(0, q.getQ_id(), "",""));
 			int count = count_responses.get(0);
-			billList.add(new Billboard(q.getQ_id(), q.getQ_date(), q.getQ_user(), q.getQ_content(), count));
+			count_responses = aDAO.select(new Answer(0, q.getQ_id(), "","A"));
+			int countA = count_responses.get(0);
+			billList.add(new Billboard(q.getQ_id(), q.getQ_date(), q.getQ_user(), q.getQ_content(),  q.getQ_choice_a(), q.getQ_choice_b(), count, countA, count - countA));
 		}
 		request.setAttribute("billList", billList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/question.jsp");
