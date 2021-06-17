@@ -8,12 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AdviceDAO;
 import model.Advice;
 import model.Result;
-
-
 
 /**
  * Servlet implementation class AdviceSearchServlet
@@ -26,14 +25,14 @@ public class ADVRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
+
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
 			if (session.getAttribute("id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
-*/
+
 		// アドバイス登録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_regist.jsp");
 			dispatcher.forward(request, response);
@@ -46,20 +45,18 @@ public class ADVRegistServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	/*	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
-*/
 
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
 						String adv_course = request.getParameter("adv_course");
 						int adv_year =Integer.parseInt(request.getParameter("adv_year"));
 						String content = request.getParameter("content");
-
 
 
 						// 登録処理を行う

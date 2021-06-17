@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EditPwDAO;
 import model.EditPw;
@@ -24,14 +25,14 @@ public class ADVPWServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
+
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
 			if (session.getAttribute("id") == null) {
 				response.sendRedirect("/TARACO/LoginServlet");
 				return;
 			}
-*/
+
 		// 運営PW変更ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/edit_pw.jsp");
 			dispatcher.forward(request, response);
@@ -43,14 +44,13 @@ public class ADVPWServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/TARACO/LoginServlet");
 					return;
 				}
 
-*/
 						// リクエストパラメータを取得する
 						request.setCharacterEncoding("UTF-8");
 						String adv_pw = request.getParameter("adv_pw");
@@ -67,7 +67,6 @@ public class ADVPWServlet extends HttpServlet {
 								new Result("変更エラー", "パスワードを変更できませんでした。", "/TARACO/HomeServlet"));
 							}
 						}
-
 
 						// 結果ページにフォワードする
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
