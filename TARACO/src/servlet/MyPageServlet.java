@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ProfileDAO;
+import model.LoginUser;
 import model.Profile;
 import model.Result;
 
@@ -26,7 +29,27 @@ public class MyPageServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}
+
+		//session.getAttribute("user_id")←セッションスコープから取得したuser_id。これをLoginUser型→String型に
+		LoginUser user_id = (LoginUser)session.getAttribute("user_id");
+		String myid = user_id.getUser_id();
+
+		//そのidを基に検索し、その人の全プロフィール情報を得る
+		ProfileDAO pDAO = new ProfileDAO();
+		List<Profile> myList = pDAO.select(new Profile(myid, "", "", "", "", "", "", "", "", 0, "", "", ""));
+		myList.get(0);
+
+		//リクエストスコープに格納する
+		request.setAttribute("myscope", myList); //mypage.jspでvalue="${myscope.○○}"を使う
+
 		//マイページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage/mypage.jsp");
 		dispatcher.forward(request, response);
@@ -36,55 +59,53 @@ public class MyPageServlet extends HttpServlet {
 	 * @param user_date
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response, String user_date) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response, String user_date)
+			throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TARACO/LoginServlet");
 			return;
-		}*/
+		}
 
-				//リクエストパラメータを取得する
-				request.setCharacterEncoding("UTF-8");
-				String user_id = request.getParameter("ID");
-				String user_pw = request.getParameter("PW");
-				String user_name = request.getParameter("NAME");
-				String user_position = request.getParameter("POSITION");
-				String user_class = request.getParameter("CLASS");
-				String user_gender = request.getParameter("GENDER");
-				String user_major = request.getParameter("MAJOR");
-				String user_hobby = request.getParameter("HOBBY");
-				String user_personarity = request.getParameter("PERSONARITY");
-				int user_star = Integer.parseInt(request.getParameter("STAR"));
-				String user_remarks = request.getParameter("REMARKS");
-				String user_photo = request.getParameter("PHOTO");
+		//リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user_id = request.getParameter("ID");
+		String user_pw = request.getParameter("PW");
+		String user_name = request.getParameter("NAME");
+		String user_position = request.getParameter("POSITION");
+		String user_class = request.getParameter("CLASS");
+		String user_gender = request.getParameter("GENDER");
+		String user_major = request.getParameter("MAJOR");
+		String user_hobby = request.getParameter("HOBBY");
+		String user_personarity = request.getParameter("PERSONARITY");
+		int user_star = Integer.parseInt(request.getParameter("STAR"));
+		String user_remarks = request.getParameter("REMARKS");
+		String user_photo = request.getParameter("PHOTO");
 
-
-				// 更新または削除を行う
-				ProfileDAO pDao = new ProfileDAO();
-				if (request.getParameter("SUBMIT").equals("更新")) {
-					if (pDao.update(new Profile(user_id,user_pw,user_name, user_position, user_class,user_gender,user_major,user_hobby,user_personarity,user_star,user_remarks,user_photo,user_date))) {	// 更新成功
-						request.setAttribute("result",
+		// 更新または削除を行う
+		ProfileDAO pDao = new ProfileDAO();
+		if (request.getParameter("SUBMIT").equals("更新")) {
+			if (pDao.update(new Profile(user_id, user_pw, user_name, user_position, user_class, user_gender, user_major,
+					user_hobby, user_personarity, user_star, user_remarks, user_photo, user_date))) { // 更新成功
+				request.setAttribute("result",
 						new Result("更新成功！", "レコードを更新しました。", "/TARACO/HomeServlet"));
-					}
-					else {												// 更新失敗
-						request.setAttribute("result",
+			} else { // 更新失敗
+				request.setAttribute("result",
 						new Result("更新失敗！", "レコードを更新できませんでした。", "/TARACO/HomeServlet"));
-					}
-				}
-				else {
-					if (pDao.delete(user_id)) {	// 削除成功
-						request.setAttribute("result",
+			}
+		} else {
+			if (pDao.delete(user_id)) { // 削除成功
+				request.setAttribute("result",
 						new Result("削除成功！", "レコードを削除しました。", "/TARACO/HomeServlet"));
-					}
-					else {						// 削除失敗
-						request.setAttribute("result",
+			} else { // 削除失敗
+				request.setAttribute("result",
 						new Result("削除失敗！", "レコードを削除できませんでした。", "/TARACO/HomeServlet"));
-					}
-				}
+			}
+		}
 
-				//処理結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
-				dispatcher.forward(request, response);
+		//処理結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
+		dispatcher.forward(request, response);
 	}
 }

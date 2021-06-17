@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href = "/TARACO/css/profile.css">
@@ -18,35 +19,35 @@
 		<table>
 			<tr>
 				<th>氏名*</th>
-				<td><input type="text" name="USER_NAME"></td>
+				<td><input type="text" name="USER_NAME" value="${myscope.user_name}"></td>
 			</tr>
 			<tr>
 				<th>会社名or講師/事務局*</th>
-				<td><input type="text" name="USER_POSITION"></td>
+				<td><input type="text" name="USER_POSITION" value="${myscope.user_position}"></td>
 			</tr>
 
 			<tr>
 				<th>所属クラス</th>
-				<td><input type="text" name="USER_CLASS"></td>
+				<td><input type="text" name="USER_CLASS" value="${myscope.user_class}"></td>
 			</tr>
 
 			<tr>
 				<th>性別</th>
-				<td><input type="text" name="USER_GENDER"></td>
+				<td><input type="text" name="USER_GENDER" value="${myscope.user_gender}"></td>
 			</tr>
 
 			<tr>
 				<th>出身の専攻</th>
-				<td><input type="text" name="USER_MAJOR"></td>
+				<td><input type="text" name="USER_MAJOR" value="${myscope.user_major}"></td>
 
 			</tr>
 			<tr>
 				<th>趣味</th>
-				<td><input type="text" name="USER_HOBBY"></td>
+				<td><input type="text" name="USER_HOBBY" value="${myscope.user_hobby}"></td>
 			</tr>
 			<tr>
 				<th>性格</th>
-				<td><input type="text" name="USER_PERSONARITY"></td>
+				<td><input type="text" name="USER_PERSONARITY" value="${myscope.user_perdonaryty}"></td>
 			</tr>
 			<tr>
 				<!--  星評価ってどうやるの？ -->
@@ -68,7 +69,7 @@
 			</tr>
 			<tr>
 				<th>備考※200字以内</th>
-				<td><textarea name="USER_REMARKS"></textarea></td>
+				<td><textarea name="USER_REMARKS" value="${myscope.user_remarks}"></textarea></td>
 			</tr>
 			<tr>
 				<th>顔写真</th>
@@ -87,7 +88,7 @@
 					</th>
 				</tr>
 				<tr>
-					<td><input type="text" name="USER_ID"></td>
+					<td><input type="text" name="USER_ID" value="${myscope.user_id}"></td>
 				</tr>
 				<tr>
 					<th>PW
@@ -95,7 +96,7 @@
 					</th>
 				</tr>
 				<tr>
-					<td><input type="password" name="USER_PW"></td>
+					<td><input type="password" name="USER_PW" value="${myscope.user_pw}"></td>
 				</tr>
 				<tr>
 					<th>PW確認
@@ -103,7 +104,7 @@
 					</th>
 				</tr>
 				<tr>
-					<td><input type="password" name="PW_CONFIRM"></td>
+					<td><input type="password" name="PW_CONFIRM" value="${myscope.user_pw}"></td>
 				</tr>
 			</table>
 		<input type="submit" name="MYPAGE_UPLODE" value="更新">
