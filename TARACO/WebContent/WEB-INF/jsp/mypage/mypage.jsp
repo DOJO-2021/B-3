@@ -81,7 +81,7 @@
 		</table>
 
 
-		<table id="adit_idpw">
+		<table id="adit_idpw" style=""display: none;">
 				<tr>
 					<th>ID
 						<div class="msg" style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>

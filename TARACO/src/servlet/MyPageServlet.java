@@ -69,18 +69,18 @@ public class MyPageServlet extends HttpServlet {
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("ID");
-		String user_pw = request.getParameter("PW");
-		String user_name = request.getParameter("NAME");
-		String user_position = request.getParameter("POSITION");
-		String user_class = request.getParameter("CLASS");
-		String user_gender = request.getParameter("GENDER");
-		String user_major = request.getParameter("MAJOR");
-		String user_hobby = request.getParameter("HOBBY");
-		String user_personarity = request.getParameter("PERSONARITY");
-		int user_star = Integer.parseInt(request.getParameter("STAR"));
-		String user_remarks = request.getParameter("REMARKS");
-		String user_photo = request.getParameter("PHOTO");
+		String user_id = request.getParameter("USER_ID");
+		String user_pw = request.getParameter("USER_PW");
+		String user_name = request.getParameter("USER_NAME");
+		String user_position = request.getParameter("USER_POSITION");
+		String user_class = request.getParameter("USER_CLASS");
+		String user_gender = request.getParameter("USER_GENDER");
+		String user_major = request.getParameter("USER_MAJOR");
+		String user_hobby = request.getParameter("USER_HOBBY");
+		String user_personarity = request.getParameter("USER_PERSONARITY");
+		int user_star = Integer.parseInt(request.getParameter("USER_STAR"));
+		String user_remarks = request.getParameter("USER_REMARKS");
+		String user_photo = request.getParameter("USER_PHOTO");
 
 		// 更新または削除を行う
 		ProfileDAO pDao = new ProfileDAO();
