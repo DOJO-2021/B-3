@@ -50,7 +50,7 @@
 		<c:forEach var="e" items="${cardList}">
 		<tr>
 			<td> ${e.user_class}</td>
-			<td><button type="submit" name="NAME">${e.user_name}</button></td>
+			<td><button type="submit" name="ID">${e.user_name}</button></td>
 			<td> ${e.user_position}</td>
 		</tr>
 		</c:forEach>
