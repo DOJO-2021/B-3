@@ -9,8 +9,8 @@ public class AdviceDAOTest {
 	public static void main(String[] args) {
 		AdviceDAO dao = new AdviceDAO();
 		//項目の作り替えをする！
-		System.out.println("---------- select()のテスト ----------"); //サンプル　サンプルコース
-		List<Advice> cardList = dao.select(new Advice(0, "java基礎", 0, "1")); //内容→あいまい検索
+		System.out.println("---------- select()のテスト ----------"); //アドバイスID 項目 受講年度 アドバイス内容
+		List<Advice> cardList = dao.select(new Advice(0, "java基礎", 0, "サンプルデータ1")); //内容→あいまい検索
 		//System.out.println(cardList.size());
 		for (Advice card : cardList) {
 			System.out.println(card.getAdv_id());
