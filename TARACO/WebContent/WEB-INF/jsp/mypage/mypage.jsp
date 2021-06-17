@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<th>性格</th>
-				<td><input type="text" name="USER_PERSONARITY" value="${myscope.user_perdonaryty}"></td>
+				<td><input type="text" name="USER_PERSONARITY" value="${myscope.user_personarity}"></td>
 			</tr>
 			<tr>
 				<!--  星評価ってどうやるの？ -->

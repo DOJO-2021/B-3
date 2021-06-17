@@ -45,10 +45,9 @@ public class MyPageServlet extends HttpServlet {
 		//そのidを基に検索し、その人の全プロフィール情報を得る
 		ProfileDAO pDAO = new ProfileDAO();
 		List<Profile> myList = pDAO.select(new Profile(myid, "", "", "", "", "", "", "", "", 0, "", "", ""));
-		myList.get(0);
 
 		//リクエストスコープに格納する
-		request.setAttribute("myscope", myList); //mypage.jspでvalue="${myscope.○○}"を使う
+		request.setAttribute("myscope", myList.get(0)); //mypage.jspでvalue="${myscope.○○}"を使う
 
 		//マイページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage/mypage.jsp");
