@@ -44,10 +44,18 @@ public class PSearchResultServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 				String user_name = request.getParameter("NAME");
 				String user_position = request.getParameter("POSITION");
+				String user_class = request.getParameter("CLASS");
+				String user_gender = request.getParameter("GENDER");
+				String user_major = request.getParameter("MAJOR");
+				String user_hobby = request.getParameter("HOBBY");
+				String user_personarity = request.getParameter("PERSONARITY");
+				int user_star = Integer.parseInt(request.getParameter("STAR"));
+				String user_remarks = request.getParameter("REMARKS");
+
 
 				//検索処理を行う
 				ProfileDAO pDao = new ProfileDAO();
-				List<Profile> cardList = pDao.select(new Profile("","",user_name,user_position, "", "", "", "", "", 0, "", "", ""));
+				List<Profile> cardList = pDao.select(new Profile("","",user_name,user_position, user_class, user, "", "", "", 6, "", "", ""));
 
 
 				//検索結果をリクエストスコープに格納する

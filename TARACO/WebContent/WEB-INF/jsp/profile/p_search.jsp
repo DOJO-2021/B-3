@@ -15,12 +15,12 @@
 
 
 <button type="submit" name="POSITION" value="講師">講師</button>
-<button type="submit" name="POSITION" value="運営">運営</button>
-<button type="submit" name="CLASS" value="Aクラス">Aクラス</button>
-<button type="submit" name="CLASS" value="Bクラス">Bクラス</button>
-<button type="submit" name="CLASS" value="Cクラス">Cクラス</button>
-<button type="submit" name="CLASS" value="Dクラス">Dクラス</button>
-<button type="submit" name="CLASS" value="Eクラス">Eクラス</button>
+<button type="submit" name="POSITION" value="事務局">事務局</button>
+<button type="submit" name="CLASS" value="A">Aクラス</button>
+<button type="submit" name="CLASS" value="B">Bクラス</button>
+<button type="submit" name="CLASS" value="C">Cクラス</button>
+<button type="submit" name="CLASS" value="D">Dクラス</button>
+<button type="submit" name="CLASS" value="E">Eクラス</button>
 
 </form>
 

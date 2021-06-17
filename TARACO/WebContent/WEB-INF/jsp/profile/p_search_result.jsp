@@ -15,16 +15,15 @@
 <form method="POST" action="/TARACO/PSearchServlet">
 
 <button type="submit" name="POSITION" value="講師">講師</button>
-<button type="submit" name="POSITION" value="運営">運営</button>
-<button type="submit" name="CLASS" value="Aクラス">Aクラス</button>
-<button type="submit" name="CLASS" value="Bクラス">Bクラス</button>
-<button type="submit" name="CLASS" value="Cクラス">Cクラス</button>
-<button type="submit" name="CLASS" value="Dクラス">Dクラス</button>
-<button type="submit" name="CLASS" value="Eクラス">Eクラス</button>
+<button type="submit" name="POSITION" value="事務局">事務局</button>
+<button type="submit" name="CLASS" value="A">Aクラス</button>
+<button type="submit" name="CLASS" value="B">Bクラス</button>
+<button type="submit" name="CLASS" value="C">Cクラス</button>
+<button type="submit" name="CLASS" value="D">Dクラス</button>
+<button type="submit" name="CLASS" value="E">Eクラス</button>
 
 
 <table>
-
 	<tr>
 		<th>名前</th>
 		<td><input type="text" name="NAME"></td>
@@ -51,7 +50,7 @@
 		<c:forEach var="e" items="${cardList}">
 		<tr>
 			<td> ${e.user_class}</td>
-			<td><button type="submit" name="NAME" value="name">${e.user_name}</button></td>
+			<td><button type="submit" name="NAME">${e.user_name}</button></td>
 			<td> ${e.user_position}</td>
 		</tr>
 		</c:forEach>
