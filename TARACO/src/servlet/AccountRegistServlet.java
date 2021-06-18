@@ -46,7 +46,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 		// 新規登録処理を行う
 		ProfileDAO pDao = new ProfileDAO();
-		if (pDao.insert(new Profile(user_id, user_pw, user_name, user_position, "", "", "", "", "", 0, "", "", "CURRENT_TIMESTAMP"))) {//登録成功
+		if (pDao.insert(new Profile(1, user_id, user_pw, user_name, user_position, "", "", "", "", "", 0, "", "", "CURRENT_TIMESTAMP"))) {//登録成功
 			request.setAttribute("result",
 					new Result("登録成功！", "アカウントを新規登録しました。", "/TARACO/LoginServlet"));
 		} else { // 登録失敗
