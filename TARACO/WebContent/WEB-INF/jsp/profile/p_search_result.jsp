@@ -51,7 +51,7 @@
 		<tr>
 			<td> ${e.user_class}</td>
 			<td><button type="submit" name="NAME">${e.user_name}</button>
-				<input type="hidden" name="ID" value="${e.user_id}">
+				<input type="hidden" name="USER_ID" value="${e.user_id}">
 			</td>
 
 			<td> ${e.user_position}</td>

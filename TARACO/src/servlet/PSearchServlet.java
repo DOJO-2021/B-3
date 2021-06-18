@@ -53,10 +53,15 @@ public class PSearchServlet extends HttpServlet {
 		String user_position = request.getParameter("POSITION");
 		String user_class = request.getParameter("CLASS");
 
+		System.out.println(user_name);
+		System.out.println(user_position);
+		System.out.println(user_class);
+
+
 		//検索処理を行う
 		ProfileDAO pDao = new ProfileDAO();
-		List<Profile> cardList = pDao.select(new Profile("","",user_name,user_position, user_class, "", "", "", "", 6, "", "", ""));
-
+		List<Profile> cardList = pDao.select(new Profile(0,"","",user_name,user_position, user_class, "", "", "", "", 6, "", "", ""));
+		System.out.println(cardList.size());
 
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList",cardList);

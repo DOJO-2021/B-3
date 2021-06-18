@@ -25,7 +25,7 @@ public class ProfileDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 			// SQL文を準備する
-			String sql = "SELECT * FROM Profile WHERE user_id LIKE ? AND user_pw LIKE ? AND user_name LIKE ? AND user_position LIKE ? AND user_class LIKE ? AND user_gender LIKE ? AND user_major LIKE ? AND user_hobby LIKE ? AND user_personarity LIKE ? AND user_star LIKE ?";
+			String sql = "SELECT * FROM Profile WHERE user_id LIKE ? AND user_pw LIKE ? AND user_name LIKE ? AND user_position LIKE ? AND user_class LIKE ?  AND profile_id =  ?";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -40,12 +40,12 @@ public class ProfileDAO {
 			} else {
 				pStmt.setString(2, "%");
 			}
-			if (param.getUser_name() != null) {
+			if (param.getUser_name() != "") {
 				pStmt.setString(3, "%" + param.getUser_name() + "%");
 			} else {
 				pStmt.setString(3, "%");
 			}
-			if (param.getUser_position() != null) {
+			if (param.getUser_position() != "") {
 				pStmt.setString(4, "%" + param.getUser_position() + "%");
 			} else {
 				pStmt.setString(4, "%");
@@ -55,31 +55,12 @@ public class ProfileDAO {
 			} else {
 				pStmt.setString(5, "%");
 			}
-			if (param.getUser_gender() != null) {
-				pStmt.setString(6, "%" + param.getUser_gender() + "%");
+			if (param.getProfile_id() != 0) {
+				pStmt.setInt(6, param.getProfile_id());
 			} else {
-				pStmt.setString(6, "%");
+				pStmt.setInt(6, 0);
 			}
-			if (param.getUser_major() != null) {
-				pStmt.setString(7, "%" + param.getUser_major() + "%");
-			} else {
-				pStmt.setString(7, "%");
-			}
-			if (param.getUser_hobby() != null) {
-				pStmt.setString(8, "%" + param.getUser_hobby() + "%");
-			} else {
-				pStmt.setString(8, "%");
-			}
-			if (param.getUser_personarity() != null) {
-				pStmt.setString(9, "%" + param.getUser_personarity() + "%");
-			} else {
-				pStmt.setString(9, "%");
-			}
-			if (param.getUser_star() >= 0 && param.getUser_star() <= 5) {
-				pStmt.setString(10, "%" + param.getUser_star() + "%");
-			} else {
-				pStmt.setString(10, "%");
-			}
+
 
 			//pStmt.setInt(9, param.getId());
 

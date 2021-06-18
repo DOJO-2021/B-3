@@ -48,8 +48,21 @@
 			<tr>
 				<!-- 星評価ってどうやるの？ -->
 				<th>気にかけて欲しい度</th>
+
 				<td>
-					${e.user_star}
+						<div class="star">
+						<input id="star5" type="radio" name="USER_STAR" value= "5">
+						<label for="star5">★</label>
+						<input id="star4" type="radio" name="USER_STAR" value= "${e.user_remarks}">
+						<label for="star4">★</label>
+						<input id="star3" type="radio" name="USER_STAR" value= "3">
+						<label for="star3">★</label>
+						<input id="star2" type="radio" name="USER_STAR" value= "2">
+						<label for="star2">★</label>
+						<input id="star1" type="radio" name="USER_STAR" value= "1">
+						<label for="star1">★</label>
+						</div>
+						${e.user_remarks}
 				</td>
 			</tr>
 			<tr>

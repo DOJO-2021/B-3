@@ -53,7 +53,7 @@ public class PSearchResultServlet extends HttpServlet {
 
 				//検索処理を行う
 				ProfileDAO pDao = new ProfileDAO();
-				List<Profile> cardList = pDao.select(new Profile(user_id,"","","", "", "", "", "", "", 6, "", "", ""));
+				List<Profile> cardList = pDao.select(new Profile(0,user_id,"","","", "", "", "", "", "", 6, "", "", ""));
 
 
 				//検索結果をリクエストスコープに格納する

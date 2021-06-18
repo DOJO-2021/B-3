@@ -22,9 +22,7 @@
 <button type="submit" name="CLASS" value="D">Dクラス</button>
 <button type="submit" name="CLASS" value="E">Eクラス</button>
 
-</form>
 
-<form method="POST" action="/TARACO/PSearchServlet">
 <table>
 	<tr>
 		<th>名前</th>
