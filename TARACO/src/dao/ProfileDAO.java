@@ -89,6 +89,7 @@ public class ProfileDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Profile card = new Profile(
+						rs.getInt("profile_id"),
 						rs.getString("user_id"),
 						rs.getString("user_pw"),
 						rs.getString("user_name"),
@@ -128,281 +129,263 @@ public class ProfileDAO {
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Profile card) {
-			Connection conn = null;
-			boolean result = false;
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
+		Connection conn = null;
+		boolean result = false;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 
-				// SQL文を準備する
-				String sql = "INSERT INTO Profile VALUES (?, ?, ?, ?, '', '', '', '', '', 0, '', '', CURRENT_TIMESTAMP)";
+			// SQL文を準備する
+			String sql = "INSERT INTO Profile VALUES (?, ?, ?, ?, ?, '', '', '', '', '', 0, '', '', CURRENT_TIMESTAMP)";
 
-						PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-				// SQL文を完成させる
-				if (card.getUser_id() != null) {
-					pStmt.setString(1,card.getUser_id());
-				}
-				else {
-					pStmt.setString(1, "%");
-				}
-				if (card.getUser_pw() != null) {
-					pStmt.setString(2,card.getUser_pw());
-				}
-				else {
-					pStmt.setString(2, "%");
-				}
-				if (card.getUser_name() != null) {
-					pStmt.setString(3,card.getUser_name());
-				}
-				else {
-					pStmt.setString(3, "%");
-				}
-				if (card.getUser_position() != null) {
-					pStmt.setString(4,card.getUser_position());
-				}
-				else {
-					pStmt.setString(4, "%");
-				}
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
+			// SQL文を完成させる
+			if (card.getProfile_id() > 0) {
+				pStmt.setNull(1, java.sql.Types.NULL);
+			} else {
+				pStmt.setInt(1, card.getProfile_id());
 			}
 
-			// 結果を返す
-			return result;
+			if (card.getUser_id() != null) {
+				pStmt.setString(2, card.getUser_id());
+			} else {
+				pStmt.setString(2, "%");
+			}
+			if (card.getUser_pw() != null) {
+				pStmt.setString(3, card.getUser_pw());
+			} else {
+				pStmt.setString(3, "%");
+			}
+			if (card.getUser_name() != null) {
+				pStmt.setString(4, card.getUser_name());
+			} else {
+				pStmt.setString(4, "%");
+			}
+			if (card.getUser_position() != null) {
+				pStmt.setString(5, card.getUser_position());
+			} else {
+				pStmt.setString(5, "%");
+			}
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+
+		// 結果を返す
+		return result;
+	}
 
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-		public boolean update(Profile card) {
-			Connection conn = null;
-			boolean result = false;
+	public boolean update(Profile card) {
+		Connection conn = null;
+		boolean result = false;
 
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 
-				// SQL文を準備する９個登録する
-				String sql = "UPDATE Profile SET user_id=?, user_pw=?, user_name=?, user_position=?, user_class=?, user_gender=?, user_major=?, user_hobby=?, user_personarity=?, user_star=?, user_remarks=?, user_photo=?, user_date=CURRENT_TIMESTAMP WHERE user_id=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
+			// SQL文を準備する９個登録する
+			String sql = "UPDATE Profile SET user_id=?, user_pw=?, user_name=?, user_position=?, user_class=?, user_gender=?, user_major=?, user_hobby=?, user_personarity=?, user_star=?, user_remarks=?, user_photo=?, user_date=CURRENT_TIMESTAMP WHERE profile_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-				// SQL文を完成させる
-				if (card.getUser_id() != null) {
-					pStmt.setString(1,card.getUser_id());
-				} else {
-					pStmt.setString(1, "%");
-				}
-				if (card.getUser_pw() != null) {
-					pStmt.setString(2, card.getUser_pw());
-				} else {
-					pStmt.setString(2, "%");
-				}
-				if (card.getUser_name() != null) {
-					pStmt.setString(3, card.getUser_name());
-				} else {
-					pStmt.setString(3, "%");
-				}
-				if (card.getUser_position() != null) {
-					pStmt.setString(4, card.getUser_position());
-				} else {
-					pStmt.setString(4, "%");
-				}
-				if (card.getUser_class() != null) {
-					pStmt.setString(5, card.getUser_class());
-				} else {
-					pStmt.setString(5, "%");
-				}
-				if (card.getUser_gender() != null) {
-					pStmt.setString(6, card.getUser_gender());
-				} else {
-					pStmt.setString(6, "%");
-				}
-				if (card.getUser_major() != null) {
-					pStmt.setString(7, card.getUser_major());
-				} else {
-					pStmt.setString(7, "%");
-				}
-				if (card.getUser_hobby() != null) {
-					pStmt.setString(8, card.getUser_hobby());
-				} else {
-					pStmt.setString(8, "%");
-				}
-				if (card.getUser_personarity() != null) {
-					pStmt.setString(9, card.getUser_personarity());
-				} else {
-					pStmt.setString(9, "%");
-				}
-				if (card.getUser_star() >= 0 && card.getUser_star() <= 5) {
-					pStmt.setInt(10, card.getUser_star());
-				} else {
-					pStmt.setString(10, "%");
-				}
-				if (card.getUser_remarks() != null) {
-					pStmt.setString(11, card.getUser_remarks());
-				} else {
-					pStmt.setString(11, "%");
-				}
-				if (card.getUser_photo() != null) {
-					pStmt.setString(12, card.getUser_photo());
-				} else {
-					pStmt.setString(12, "%");
-				}
-				if (card.getUser_date() != null) {
-					pStmt.setString(13,card.getUser_date());
-				} else {
-					pStmt.setString(13, "%");
-				}
-				//pStmt.setString(9, card.getBc_id());
+			// SQL文を完成させる
+			if (card.getUser_id() != null) {
+				pStmt.setString(1, card.getUser_id());
+			} else {
+				pStmt.setString(1, "%");
+			}
+			if (card.getUser_pw() != null) {
+				pStmt.setString(2, card.getUser_pw());
+			} else {
+				pStmt.setString(2, "%");
+			}
+			if (card.getUser_name() != null) {
+				pStmt.setString(3, card.getUser_name());
+			} else {
+				pStmt.setString(3, "%");
+			}
+			if (card.getUser_position() != null) {
+				pStmt.setString(4, card.getUser_position());
+			} else {
+				pStmt.setString(4, "%");
+			}
+			if (card.getUser_class() != null) {
+				pStmt.setString(5, card.getUser_class());
+			} else {
+				pStmt.setString(5, "%");
+			}
+			if (card.getUser_gender() != null) {
+				pStmt.setString(6, card.getUser_gender());
+			} else {
+				pStmt.setString(6, "%");
+			}
+			if (card.getUser_major() != null) {
+				pStmt.setString(7, card.getUser_major());
+			} else {
+				pStmt.setString(7, "%");
+			}
+			if (card.getUser_hobby() != null) {
+				pStmt.setString(8, card.getUser_hobby());
+			} else {
+				pStmt.setString(8, "%");
+			}
+			if (card.getUser_personarity() != null) {
+				pStmt.setString(9, card.getUser_personarity());
+			} else {
+				pStmt.setString(9, "%");
+			}
+			if (card.getUser_star() >= 0 && card.getUser_star() <= 5) {
+				pStmt.setInt(10, card.getUser_star());
+			} else {
+				pStmt.setString(10, "%");
+			}
+			if (card.getUser_remarks() != null) {
+				pStmt.setString(11, card.getUser_remarks());
+			} else {
+				pStmt.setString(11, "%");
+			}
+			if (card.getUser_photo() != null) {
+				pStmt.setString(12, card.getUser_photo());
+			} else {
+				pStmt.setString(12, "%");
+			}
+			pStmt.setInt(13, card.getProfile_id());
 
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
+			//pStmt.setString(9, card.getBc_id());
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			// 結果を返す
-			return result;
 		}
 
-		// 引数user_idで指定されたレコードを削除し、成功したらtrueを返す
-		public boolean delete(String user_id)
-			{
-			Connection conn = null;
-			boolean result = false;
+		// 結果を返す
+		return result;
+	}
 
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
+	// 引数user_idで指定されたレコードを削除し、成功したらtrueを返す
+	public boolean delete(int profile_id) {
+		Connection conn = null;
+		boolean result = false;
 
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-				// SQL文を準備する
-				String sql = "DELETE FROM Profile WHERE user_id=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 
-				// SQL文を完成させる
-				pStmt.setString(1, user_id);
+			// SQL文を準備する
+			String sql = "DELETE FROM Profile WHERE profile_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
+			// SQL文を完成させる
+			pStmt.setInt(1, profile_id);
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			// 結果を返す
-			return result;
 		}
 
-		//ログイン処理用のメソッド
-		// ログインできるならtrueを返す
-		public boolean isLoginOK(String user_id, String user_pw) {
-			Connection conn = null;
-			boolean loginResult = false;
+		// 結果を返す
+		return result;
+	}
 
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
+	//ログイン処理用のメソッド
+	// ログインできるならtrueを返す
+	public boolean isLoginOK(String user_id, String user_pw) {
+		Connection conn = null;
+		boolean loginResult = false;
 
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-				// SELECT文を準備する count?profile?
-				String sql = "SELECT count(*) FROM Profile WHERE user_id = ? AND user_pw = ?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, user_id);
-				pStmt.setString(2, user_pw);
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 
-				// SELECT文を実行し、結果表を取得する
-				ResultSet rs = pStmt.executeQuery();
+			// SELECT文を準備する count?profile?
+			String sql = "SELECT count(*) FROM Profile WHERE user_id = ? AND user_pw = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user_id);
+			pStmt.setString(2, user_pw);
 
-				// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
-				rs.next();
-				if (rs.getInt("count(*)") == 1) {
-					loginResult = true;
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+			rs.next();
+			if (rs.getInt("count(*)") == 1) {
+				loginResult = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			loginResult = false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			loginResult = false;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					loginResult = false;
 				}
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-				loginResult = false;
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				loginResult = false;
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-						loginResult = false;
-					}
-				}
-			}
-
-			// 結果を返す
-			return loginResult;
 		}
+
+		// 結果を返す
+		return loginResult;
+	}
 }
 //ここまで完成

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class Profile implements Serializable {
+	private int profile_id;
 	private String user_id;
 	private String user_pw;
 	private String user_name;
@@ -18,11 +19,12 @@ public class Profile implements Serializable {
 	private String user_date;
 
 	//引数があるコンストラクタ
-		public Profile(String user_id, String user_pw, String user_name,
+		public Profile(int profile_id,String user_id, String user_pw, String user_name,
 				String user_position, String user_class, String user_gender,
 				String user_major, String user_hobby, String user_personarity,
 				int user_star, String user_remarks, String user_photo, String user_date) {
 			super();
+			this.profile_id = profile_id;
 			this.user_id = user_id;
 			this.user_pw = user_pw;
 			this.user_name = user_name;
@@ -41,6 +43,7 @@ public class Profile implements Serializable {
 //引数がないコンストラクタ(デフォルトコンストラクタ)
 		public Profile() {
 			super();
+			this.profile_id = 0;
 			this.user_id = "";
 			this.user_pw = "";
 			this.user_name = "";
@@ -55,6 +58,13 @@ public class Profile implements Serializable {
 			this.user_photo = "";
 			this.user_date = "";
 			}
+		public int getProfile_id() {
+			return profile_id;
+		}
+
+		public void setProfile_id(int profile_id) {
+			this.profile_id = profile_id;
+		}
 
 		public String getUser_id() {
 			return user_id;

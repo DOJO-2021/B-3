@@ -24,9 +24,16 @@ public class PSearchResultServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}*/
+
 		//プロフィール検索結果にフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/profile.jsp");
-				dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/profile.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -43,11 +50,10 @@ public class PSearchResultServlet extends HttpServlet {
 		//リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String user_id = request.getParameter("ID");
-				String user_name = request.getParameter("NAME");
 
 				//検索処理を行う
 				ProfileDAO pDao = new ProfileDAO();
-				List<Profile> cardList = pDao.select(new Profile(user_id,"",user_name,"", "", "", "", "", "", 6, "", "", ""));
+				List<Profile> cardList = pDao.select(new Profile(user_id,"","","", "", "", "", "", "", 6, "", "", ""));
 
 
 				//検索結果をリクエストスコープに格納する

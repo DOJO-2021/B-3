@@ -10,9 +10,10 @@ public class ProfileDAOTest {
 		ProfileDAO dao = new ProfileDAO();
 		//項目の作り替えをする！
 		System.out.println("---------- select()のテスト ----------");
-		List<Profile> cardList = dao.select(new Profile("ozeki", "", "", "", "", "", "", "", "", 0, "", "", ""));
+		List<Profile> cardList = dao.select(new Profile(0,"ozeki", "", "", "", "", "", "", "", "", 0, "", "", ""));
 		//System.out.println(cardList.size());
 		for (Profile card : cardList) {
+			System.out.println(card.getProfile_id());
 			System.out.println(card.getUser_id());
 			System.out.println(card.getUser_pw());
 			System.out.println(card.getUser_name());
@@ -31,7 +32,7 @@ public class ProfileDAOTest {
 			}
 		// insert()のテスト登録のテスト 前から4項目追加される。
 		System.out.println("---------- insert()のテスト ----------");
-		Profile insRec = new Profile("TEST3", "TEST", "TEST", "TEST", "TEST", "男", "TEST", "TEST", "TEST", '3', "TEST", "TEST",  "CURRENT_TIMESTAMP");
+		Profile insRec = new Profile(0,"TEST3", "TEST", "TEST", "TEST", "TEST", "男", "TEST", "TEST", "TEST", '3', "TEST", "TEST",  "CURRENT_TIMESTAMP");
 		//Profile insRec = new Profile("TEST3", "TEST", "TEST", "TEST", "", "", "", "", "", 0, "", "",  "CURRENT_TIMESTAMP");
 
 		if (dao.insert(insRec)) {
@@ -41,11 +42,11 @@ public class ProfileDAOTest {
 			System.out.println("登録失敗！");
 			}
 		//挿入したレコードのIDを取得する
-		String insUser_id = insRec.getUser_id();
+		int insProfile_id = insRec.getProfile_id();
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		Profile upRec = new Profile(insUser_id, "TEST", "TEST", "TEST", "TEST", "男", "TEST", "TEST", "TEST", 3, "TEST", "TEST",  "CURRENT_TIMESTAMP");
+		Profile upRec = new Profile(insProfile_id, "TEST", "TEST", "TEST", "TEST", "TEST", "男", "TEST", "TEST", "TEST", 3, "TEST", "TEST",  "CURRENT_TIMESTAMP");
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
 		}
@@ -55,7 +56,7 @@ public class ProfileDAOTest {
 
 		// delete()のテスト
 		System.out.println("---------- delete()のテスト ----------");
-		if (dao.delete(insUser_id)) {
+		if (dao.delete(insProfile_id)) {
 			System.out.println("削除成功！");
 		}
 		else {

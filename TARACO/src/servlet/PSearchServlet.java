@@ -24,6 +24,12 @@ public class PSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}*/
 
 		//プロフィール検索にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/p_search.jsp");
@@ -34,6 +40,13 @@ public class PSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}*/
+
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user_name = request.getParameter("NAME");

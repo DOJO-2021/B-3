@@ -12,8 +12,9 @@
 	<!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 
-	<h1>○○さんのプロフィール</h1>
-		<c:forEach var="e" items="${cardList}">
+	<c:forEach var="e" items="${cardList}">
+	<h1>${e.user_name}さんのプロフィール</h1>
+
 
 		<table>
 			<tr>

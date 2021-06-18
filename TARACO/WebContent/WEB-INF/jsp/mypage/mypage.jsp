@@ -16,6 +16,7 @@
 	<p>*は必須項目</p>
 
 	<form method="POST" enctype="multipart/form-data" action="/TARACO/MyPageServlet">
+		<input type="hidden" name="PROFILE_ID" value="${myscope.profile_id}">
 		<table>
 			<tr>
 				<th>氏名*</th>
@@ -54,22 +55,22 @@
 				<th>気にかけて欲しい度</th>
 				<td>
 					<div class="star">
-						<input id="star5" type="radio" name="USER_STAR" value="5">
+						<input id="star5" type="radio" name="USER_STAR" value= "5">
 						<label for="star5">★</label>
-						<input id="star4" type="radio" name="USER_STAR" value="4">
+						<input id="star4" type="radio" name="USER_STAR" value= "4">
 						<label for="star4">★</label>
-						<input id="star3" type="radio" name="USER_STAR" value="3">
+						<input id="star3" type="radio" name="USER_STAR" value= "3">
 						<label for="star3">★</label>
-						<input id="star2" type="radio" name="USER_STAR" value="2">
+						<input id="star2" type="radio" name="USER_STAR" value= "2">
 						<label for="star2">★</label>
-						<input id="star1" type="radio" name="USER_STAR" value="1">
+						<input id="star1" type="radio" name="USER_STAR" value= "1">
 						<label for="star1">★</label>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<th>備考※200字以内</th>
-				<td><textarea name="USER_REMARKS" value="${myscope.user_remarks}"></textarea></td>
+				<td><textarea name="USER_REMARKS">${myscope.user_remarks}</textarea></td>
 			</tr>
 			<tr>
 				<th>顔写真</th>
@@ -81,7 +82,7 @@
 		</table>
 
 
-		<table id="adit_idpw" style=""display: none;">
+		<table id="adit_idpw" style="display: none;">
 				<tr>
 					<th>ID
 						<div class="msg" style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
@@ -107,8 +108,8 @@
 					<td><input type="password" name="PW_CONFIRM" value="${myscope.user_pw}"></td>
 				</tr>
 			</table>
-		<input type="submit" name="MYPAGE_UPLODE" value="更新">
-		<input type="submit" name="MYPAGE_DELETE" value="アカウント削除" onclick="Delete">
+		<input type="submit" name="SUBMIT" value="更新">
+		<input type="submit" name="SUBMIT" value="アカウント削除" onclick="Delete">
 	</form>
 
 	<!-- フッター -->
