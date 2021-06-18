@@ -177,4 +177,49 @@ public class AnswerDAO {
 				// 結果を返す
 				return result;
 			}
+				// 引数
+			public boolean already (Answer answer) {
+				Connection conn = null;
+				boolean result = false;
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+
+				// SQL文を準備する
+				String sql = "SELECT COUNT (*) FROM Answer WHERE q_id=? AND user_id=?";
+
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				// SQL文を完成させる
+				pStmt.setInt(1,answer.getQ_id());
+				if (answer.getUser_id() != null) {
+					pStmt.setString(2, answer.getUser_id());
+				} else {
+					pStmt.setString(2, "%");
+				}
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+				if( rs.getInt ("Count(*)") == 1) {
+					result = true;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			// 結果を返す
+			return result;
+		}
 } //終わりのカッコ
