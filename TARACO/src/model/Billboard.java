@@ -14,6 +14,7 @@ public class Billboard implements Serializable {
 	private int a_responses_a;//Aの回答人数
 	private int a_responses_b;//Bの回答人数
 	private String q_pw;//削除用PWセットメソッドでのみ初期化可能
+	private String a_already;//グレーアウト判定格納用変数セットメソッドでのみ初期化可能
 
 	//引数があるコンストラクタ
 	public Billboard(int q_id,
@@ -123,5 +124,11 @@ public class Billboard implements Serializable {
 	}
 	public void setQ_pw(String q_pw) {
 		this.q_pw = q_pw;
+	}
+	public String getA_already() {
+		return a_already;
+	}
+	public void setA_already(String a_already) {
+		this.a_already = a_already;
 	}
 }

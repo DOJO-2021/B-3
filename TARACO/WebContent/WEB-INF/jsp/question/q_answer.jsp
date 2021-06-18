@@ -7,14 +7,16 @@
 <title>TARACO</title>
 <!-- グラフ描画用jsと追加機能js 外部参照 -->
 <script>
-const date = "${question.q_date}"";
+const judge = "${question.a_already}";
+const date = "${question.q_date}";
 const count = Number(${question.a_responses});
 const countA = Number(${question.a_responses_a});
 const answer_a = "${question.q_choice_a}";
 const answer_b = "${question.q_choice_b}";
 const pass = "${question.q_pw}";
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js">
 </script>
 <script src="/TARACO/js/chartjs-plugin-datalabels.min.js"></script>
 <link rel="stylesheet" href="/TARACO/css/question.css">
@@ -23,7 +25,13 @@ const pass = "${question.q_pw}";
 	<!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 	<h1>回答/集計</h1>
-	<a class="deleteQuestion">削除</a>
+	<form method="POST" action="/TARACO/QAnswerServlet">
+		<div class="deleteButton">
+			<input type="hidden" name="Q_ID" value="${question.q_id}"> <input
+				type="submit" onclick="deleteQuestion()" name="ANSWER_QUESTION" value="削除">
+		</div>
+	</form>
+
 	<p class="deadlineTimer" id="timer"></p>
 
 	<table class="answer_table">
@@ -36,26 +44,29 @@ const pass = "${question.q_pw}";
 			<td class="questionSentences">${question.q_content}</td>
 		</tr>
 	</table>
-	<table class="answer_table2">
-		<tr>
-			<th>合計${question.a_responses}人</th>
-			<th>Aの回答${question.a_responses_a}人</th>
-			<th>Bの回答${question.a_responses_b}人</th>
-		</tr>
-	</table>
-	<p></p>
-	<div class="Graph" id="Graph">
-		<canvas id="resultGraph"Width = "600" height = "300"></canvas>
+	<div class="answer_result2" id="answer_result2">
+		<table class="answer_table2">
+			<tr>
+				<th>合計${question.a_responses}人</th>
+				<th>Aの回答${question.a_responses_a}人</th>
+				<th>Bの回答${question.a_responses_b}人</th>
+			</tr>
+		</table>
 	</div>
-	<form method="POST" action="/TARACO/QAnswerServlet" method="post">
+	<p class="answer_result1" id="answer_result1">現在${question.a_responses}人が回答</p>
+	<div class="Graph" id="Graph">
+		<canvas id="resultGraph" Width="600" height="300"></canvas>
+	</div>
+
+	<form method="POST" action="/TARACO/QAnswerServlet" id="answerPost"
+		class="answerPost">
 		<label> <input id="select_answer" type="radio" name="ANSWER"
 			value="A" required>${question.q_choice_a}
 		</label><label> <input id="select_answer" type="radio" name="ANSWER"
 			value="B">${question.q_choice_b}
-		</label> <input id="send_answer" type="submit" name="POST_QUESTION"
-			value="アンケート投稿" disabled>
+		</label> <input type="hidden" name="Q_ID" value="${question.q_id}"> <input
+			id="send_answer" type="submit" name="ANSWER_QUESTION" value="回答">
 	</form>
-	<input id="test_disabled" type="button" value="切り替え">
 	<script src="/TARACO/js/q_answer.js"></script>
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>

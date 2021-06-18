@@ -43,17 +43,23 @@ window.addEventListener('load', function() {
 	const resultGraph = new Chart(ctx, config);
 }, false);
 
-//グレーアウトテスト用プログラム
-function click() {
-	if (document.getElementById('send_answer').disabled === true) {
-		document.getElementById('send_answer').removeAttribute('disabled');
-	} else {
-		document.getElementById('send_answer').setAttribute('disabled', true);
+//グレーアウトプログラム
+let elF = document.getElementById('answerPost');
+let elG = document.getElementById('Graph');
+let elR = dosument.getElementById('answer_result');
+if (judge === 'true') {
+	elF.style.display = 'none';
+	elF.style.display = 'flex';
+	elR.style.display = 'block';
+}
+//アンケート削除プログラム
+function deleteQuestion() {
+	let pw = window.prompt('削除用パスワードを入れて下さい。');
+	if (pw !== pass) {
+		event.preventDefault();
+		alert("パスワードが違います！");
 	}
 }
-let action = document.getElementById('test_disabled');
-action.addEventListener('click', click);
-
 
 function getPostTime() {
 	const displayTimer = [
@@ -69,4 +75,4 @@ function getPostTime() {
 function display() {
 	const now = newDate();
 	const post = getPostTime();
-	}
+}

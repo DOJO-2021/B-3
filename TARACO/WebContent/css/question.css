@@ -66,6 +66,10 @@
 	font-size: 8px;
 }
 /* q_answer.jsp */
+.deleteButton{
+	text-align:right;
+}
+
 .answer_table {
 	text-align: left;
 	margin-left: auto;
@@ -92,6 +96,16 @@
 }
 
 .Graph {
-	display: flex;
 	justify-content: center;
+	display: none;
+}
+.answer_result1{
+	font-weight:bold;
+	display: block;
+}
+.answer_result2{
+	display: none;
+}
+.answerPost{
+	display: block;
 }

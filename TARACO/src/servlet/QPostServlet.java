@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import dao.QuestionDAO;
 import model.LoginUser;
 import model.Question;
+import model.Result;
 
 /**
  * Servlet implementation class QPostServlet
@@ -44,18 +45,18 @@ public class QPostServlet extends HttpServlet {
 		String aAnswer = request.getParameter("A_ANSWER");
 		String bAnswer = request.getParameter("A_ANSWER");
 		String pass = request.getParameter("QUESTION_PASS");
-		pass = "1234";
 		Question postQuestion = new Question();
 		postQuestion.setQ_user(name);
 		postQuestion.setQ_content(question);
 		postQuestion.setQ_choice_a(aAnswer);
 		postQuestion.setQ_choice_b(bAnswer);
-		//postQuestion.setQ_pw(pass);
 		postQuestion.setQ_pw(pass);
 		postQuestion.setUser_id(user.getUser_id());
 		QuestionDAO qDAO = new QuestionDAO();
 		qDAO.insert(postQuestion);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_post.jsp");
+		Result result = new Result("アンケート投稿フォーム", "投稿が完了しました。", "");
+		request.setAttribute("result", result);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
 		dispatcher.forward(request, response);
 	}
 
