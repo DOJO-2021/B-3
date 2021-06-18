@@ -57,7 +57,7 @@ public class ADVPWServlet extends HttpServlet {
 
 						// ｐｗ更新を行う
 						EditPwDAO eDao = new EditPwDAO();
-						if (request.getParameter("SUBMIT").equals("変更")) {
+						if (request.getParameter("REGIST").equals("変更")) {
 							if (eDao.update(new EditPw(adv_pw))) {	// 更新成功
 								request.setAttribute("result",
 								new Result("変更完了", "パスワードを変更しました。", "/TARACO/HomeServlet"));
