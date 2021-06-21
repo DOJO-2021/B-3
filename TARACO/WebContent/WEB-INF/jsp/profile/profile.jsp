@@ -48,21 +48,21 @@
 			<tr>
 				<!-- 星評価ってどうやるの？ -->
 				<th>気にかけて欲しい度</th>
-
+				<td><input type="hidden" id="stars" value = "${e.user_star}" ></td>
 				<td>
-						<div class="star">
-						<input id="star5" type="radio" name="USER_STAR" value= "5">
-						<label for="star5">★</label>
-						<input id="star4" type="radio" name="USER_STAR" value= "4">
-						<label for="star4">★</label>
-						<input id="star3" type="radio" name="USER_STAR" value= "3">
-						<label for="star3">★</label>
-						<input id="star2" type="radio" name="USER_STAR" value= "2">
-						<label for="star2">★</label>
-						<input id="star1" type="radio" name="USER_STAR" value= "1">
-						<label for="star1">★</label>
+						<div >
+
+						<label id="star1">★</label>
+
+						<label id="star2">★</label>
+
+						<label id="star3">★</label>
+
+						<label id="star4">★</label>
+
+						<label id="star5">★</label>
 						</div>
-						${e.user_star}
+
 				</td>
 			</tr>
 			<tr>
@@ -77,5 +77,6 @@
 		<!--</c:forEach>-->
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
+	<script src="/TARACO/js/mypage.js"></script>
 </body>
 </html>

@@ -46,6 +46,7 @@ justify-content: -webkit-right;
 justify-content: -moz-right;
 justify-content: -o-right;
 justify-content: right;
+color: #faee2e;
 }
 .star input[type='radio']{
   display: none;
@@ -69,3 +70,5 @@ justify-content: right;
 	margin-left: auto;
 	margin-right: auto;
 }
+
+

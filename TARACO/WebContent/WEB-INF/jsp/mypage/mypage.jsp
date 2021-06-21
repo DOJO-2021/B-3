@@ -53,6 +53,7 @@
 			<tr>
 				<!--  星評価ってどうやるの？ -->
 				<th>気にかけて欲しい度</th>
+				<!--  <td><input type="hidden" id="stars" value = "${e.user_star}" ></td>-->
 				<td>
 					<div class="star">
 						<input id="star5" type="radio" name="USER_STAR" value= "5">
