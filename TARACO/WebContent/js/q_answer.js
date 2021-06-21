@@ -43,21 +43,19 @@ window.addEventListener('load', function() {
 	const resultGraph = new Chart(ctx, config);
 }, false);
 
-//グレーアウトプログラム
-let elF = document.getElementById('answerPost');
-let elG = document.getElementById('Graph');
-let elR = dosument.getElementById('answer_result');
-if (judge === 'true') {
-	elF.style.display = 'none';
-	elF.style.display = 'flex';
-	elR.style.display = 'block';
-}
+
 //アンケート削除プログラム
 function deleteQuestion() {
-	let pw = window.prompt('削除用パスワードを入れて下さい。');
-	if (pw !== pass) {
+	if (user !== post_user) {
 		event.preventDefault();
-		alert("パスワードが違います！");
+		alert("アンケート削除ができるのは投稿者のみです。");
+	} else {
+
+		let pw = window.prompt('削除用パスワードを入れて下さい。');
+		if (pw !== pass) {
+			event.preventDefault();
+			alert("パスワードが違います！");
+		}
 	}
 }
 
@@ -70,9 +68,50 @@ function getPostTime() {
 		Number(date.replace(/[^0-9]/g, '').substring(10, 12)),
 		Number(date.replace(/[^0-9]/g, '').substring(12, 14))
 	];
-	return displayTimer;
+	let displayTimerDate = new Date();
+	displayTimerDate.setFullYear(displayTimer[0]);
+	displayTimerDate.setMonth(displayTimer[1] - 1);
+	displayTimerDate.setDate(displayTimer[2] + 1);
+	displayTimerDate.setHours(displayTimer[3]);
+	displayTimerDate.setMinutes(displayTimer[4]);
+	displayTimerDate.setSeconds(displayTimer[5]);
+	return displayTimerDate;
 }
+let postJudge = true;
 function display() {
-	const now = newDate();
+	const now = new Date();
 	const post = getPostTime();
+	let deadline = [
+		Math.floor((post - now) / 1000 / 60 / 60) % 24,
+		Math.floor((post - now) / 1000 / 60) % 60,
+		Math.floor((post - now) / 1000) % 60
+	];
+	deadline[0] = String(deadline[0]).padStart(2, '0');
+	deadline[1] = String(deadline[1]).padStart(2, '0');
+	deadline[2] = String(deadline[2]).padStart(2, '0');
+	const timedis = `残り${deadline[0]}時間${deadline[1]}分${deadline[2]}秒`;
+	if(post - now >= 0){
+	timer.innerHTML = timedis;
+	}else{
+	timer.innerHTML = '回答受付を終了しています。';
+	postJudge = false;
+	}
+	refresh();
+}
+function refresh() {
+	setTimeout(display, 100);
+}
+display();
+//非表示/表示プログラム
+let elF = document.getElementById('answerPost');
+let elG = document.getElementById('Graph');
+let elR1 = document.getElementById('answer_result1');
+let elR2 = document.getElementById('answer_result2');
+if (judge === 'true') {
+	elF.style.display = 'none';
+	elR1.style.display = 'none';
+	elR2.style.display = 'block';
+	if(count > 0){
+	elG.style.display = 'flex';
+	}
 }

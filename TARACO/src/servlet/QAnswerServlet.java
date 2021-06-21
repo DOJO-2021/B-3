@@ -31,7 +31,12 @@ public class QAnswerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}
 		LoginUser user = (LoginUser) session.getAttribute("user_id");
 
 		QuestionDAO qDAO = new QuestionDAO();
@@ -44,18 +49,20 @@ public class QAnswerServlet extends HttpServlet {
 		a.setQ_id(Integer.parseInt(request.getParameter("Q_ID")));
 		List<Question> questionList = qDAO.select(q);
 		q = questionList.get(0);
+
 		List<Integer> count_responses = aDAO.select(new Answer(0, q.getQ_id(), "", ""));
 		int count = count_responses.get(0);
 		count_responses = aDAO.select(new Answer(0, q.getQ_id(), "", "A"));
 		int countA = count_responses.get(0);
-		if (aDAO.select(new Answer(0, q.getQ_id(), user.getUser_id(), "")).get(0) == 1
-				|| q.getUser_id() == user.getUser_id()) {
+		if (aDAO.already(new Answer(0, q.getQ_id(), user.getUser_id(), ""))
+				|| q.getUser_id().equals(user.getUser_id())) {
 			judge = "true";
 		}
 		Billboard b = new Billboard(q.getQ_id(), q.getQ_date(), q.getQ_user(), q.getQ_content(), q.getQ_choice_a(),
 				q.getQ_choice_b(), count, countA, count - countA);
 		b.setQ_pw(q.getQ_pw());
 		b.setA_already(judge);
+		b.setUser_id(user.getUser_id());
 		request.setAttribute("question", b);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_answer.jsp");
 		dispatcher.forward(request, response);
@@ -63,7 +70,12 @@ public class QAnswerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}
 		LoginUser user = (LoginUser) session.getAttribute("user_id");
 		Result result = new Result();
 		request.setCharacterEncoding("UTF-8");

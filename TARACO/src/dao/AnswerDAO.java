@@ -201,6 +201,7 @@ public class AnswerDAO {
 				}
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
+				rs.next();
 				if( rs.getInt ("Count(*)") == 1) {
 					result = true;
 				}

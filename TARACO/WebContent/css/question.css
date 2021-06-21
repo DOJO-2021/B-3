@@ -68,6 +68,7 @@
 /* q_answer.jsp */
 .deleteButton{
 	text-align:right;
+	width:90%;
 }
 
 .answer_table {
@@ -108,4 +109,13 @@
 }
 .answerPost{
 	display: block;
+}
+.deadlineTimer{
+		font-size: 24px;
+	color: #ffffff;
+	display: inline-block;
+	letter-spacing: 2px;
+	text-shadow: 1px 1px 2px #FF0000, -1px 1px 2px #FF0000, 1px -1px 2px
+		#FF0000, -1px -1px 2px #FF0000, 1px 0px 2px #FF0000, 0px 1px 2px
+		#FF0000, -1px 0px 2px #FF0000, 0px -1px 2px #FF0000;
 }

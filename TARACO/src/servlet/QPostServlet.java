@@ -27,6 +27,12 @@ public class QPostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_post.jsp");
 		dispatcher.forward(request, response);
@@ -37,7 +43,12 @@ public class QPostServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/TARACO/LoginServlet");
+			return;
+		}
 		LoginUser user = (LoginUser) session.getAttribute("user_id");
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("Q_USER");
