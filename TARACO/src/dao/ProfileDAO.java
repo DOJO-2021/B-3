@@ -108,6 +108,72 @@ public class ProfileDAO {
 		return cardList;
 	}
 
+	// 引数paramで検索項目を指定し、検索結果のリストを返す 0 1 2 3の順だからselect1 param1と記した。
+	public List<Profile> select1(Profile param1) {
+		Connection conn = null;
+		List<Profile> cardList = new ArrayList<Profile>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+			// SQL文を準備する
+			String sql = "SELECT * FROM Profile WHERE Profile_id=?";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (param1.getUser_id() != null) {
+				pStmt.setInt(1,param1.getProfile_id());
+			}
+			//pStmt.setInt(9, param.getId());
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			//↓ここも自分なりに変える
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Profile card = new Profile(
+						rs.getInt("profile_id"),
+						rs.getString("user_id"),
+						rs.getString("user_pw"),
+						rs.getString("user_name"),
+						rs.getString("user_position"),
+						rs.getString("user_class"),
+						rs.getString("user_gender"),
+						rs.getString("user_major"),
+						rs.getString("user_hobby"),
+						rs.getString("user_personarity"),
+						rs.getInt("user_star"),
+						rs.getString("user_remarks"),
+						rs.getString("user_photo"),
+						rs.getString("user_date"));
+				cardList.add(card);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
+
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Profile card) {
 		Connection conn = null;
