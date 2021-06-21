@@ -25,42 +25,26 @@ public class ProfileDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 			// SQL文を準備する
-			String sql = "SELECT * FROM Profile WHERE user_id LIKE ? AND user_pw LIKE ? AND user_name LIKE ? AND user_position LIKE ? AND user_class LIKE ?  AND profile_id =  ?";
+			String sql = "SELECT * FROM Profile WHERE user_name LIKE ? AND user_position LIKE ? AND user_class LIKE ?";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getUser_id() != null) {
-				pStmt.setString(1, "%" + param.getUser_id() + "%");
+			if (param.getUser_name() != "") {
+				pStmt.setString(1, "%" + param.getUser_name() + "%");
 			} else {
 				pStmt.setString(1, "%");
 			}
-			if (param.getUser_pw() != null) {
-				pStmt.setString(2, "%" + param.getUser_pw() + "%");
+			if (param.getUser_position() != "") {
+				pStmt.setString(2, "%" + param.getUser_position() + "%");
 			} else {
 				pStmt.setString(2, "%");
 			}
-			if (param.getUser_name() != "") {
-				pStmt.setString(3, "%" + param.getUser_name() + "%");
+			if (param.getUser_class() != null) {
+				pStmt.setString(3, "%" + param.getUser_class() + "%");
 			} else {
 				pStmt.setString(3, "%");
 			}
-			if (param.getUser_position() != "") {
-				pStmt.setString(4, "%" + param.getUser_position() + "%");
-			} else {
-				pStmt.setString(4, "%");
-			}
-			if (param.getUser_class() != null) {
-				pStmt.setString(5, "%" + param.getUser_class() + "%");
-			} else {
-				pStmt.setString(5, "%");
-			}
-			if (param.getProfile_id() != 0) {
-				pStmt.setInt(6, param.getProfile_id());
-			} else {
-				pStmt.setInt(6, 0);
-			}
-
 
 			//pStmt.setInt(9, param.getId());
 
