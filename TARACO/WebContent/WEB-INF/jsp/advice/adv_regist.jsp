@@ -39,7 +39,7 @@
 		<th>受講年度:</th>
 		<td>
 		<select name="adv_year">
-		<option value="" hidden>-</option>
+		<option value="" hidden disabled>-</option>
 		<option value="1990">1990</option>
 		<option value="1991">1991</option>
 		<option value="1992">1992</option>

@@ -96,20 +96,20 @@ public class AdviceDAO {
 				pStmt.setInt(1, card.getAdv_id());
 			}
 
-			if (card.getAdv_course() != null) {
+			if (card.getAdv_course() != "") {
 				pStmt.setString(2, card.getAdv_course());
 			} else {
-				pStmt.setString(2, "%");
+				pStmt.setString(2, null);
 			}
 			if (card.getAdv_year() != 0) {
 				pStmt.setInt(3, card.getAdv_year());
 			} else {
 				pStmt.setString(3, "%");
 			}
-			if (card.getAdv_content() != null) {
+			if (card.getAdv_content() != "") {
 				pStmt.setString(4, card.getAdv_content());
 			} else {
-				pStmt.setString(4, "%");
+				pStmt.setString(4, null);
 			}
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -151,20 +151,20 @@ public class AdviceDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getAdv_course() != null) {
+			if (card.getAdv_course() != "") {
 				pStmt.setString(1, card.getAdv_course());
 			} else {
-				pStmt.setString(1, "%");
+				pStmt.setString(1, null);
 			}
 			if (card.getAdv_year() != 0) {
 				pStmt.setInt(2, card.getAdv_year());
 			} else {
 				pStmt.setString(2, "%");
 			}
-			if (card.getAdv_content() != null) {
+			if (card.getAdv_content() != "") {
 				pStmt.setString(3, card.getAdv_content());
 			} else {
-				pStmt.setString(3, "%");
+				pStmt.setString(3, null);
 			}
 			//if (card.getAdv_id() != 0) {
 			//pStmt.setInt(4, card.getAdv_id());
@@ -238,4 +238,6 @@ public class AdviceDAO {
 		// 結果を返す
 		return result;
 	}
+
+
 } //終わりのカッコ
