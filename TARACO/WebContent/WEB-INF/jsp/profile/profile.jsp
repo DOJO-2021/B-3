@@ -12,7 +12,7 @@
 	<!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 
-	<c:forEach var="e" items="${cardList}">
+	<!--<c:forEach var="e" items="${cardList}">-->
 	<h1>${e.user_name}さんのプロフィール</h1>
 
 
@@ -53,7 +53,7 @@
 						<div class="star">
 						<input id="star5" type="radio" name="USER_STAR" value= "5">
 						<label for="star5">★</label>
-						<input id="star4" type="radio" name="USER_STAR" value= "${e.user_remarks}">
+						<input id="star4" type="radio" name="USER_STAR" value= "4">
 						<label for="star4">★</label>
 						<input id="star3" type="radio" name="USER_STAR" value= "3">
 						<label for="star3">★</label>
@@ -62,15 +62,19 @@
 						<input id="star1" type="radio" name="USER_STAR" value= "1">
 						<label for="star1">★</label>
 						</div>
-						${e.user_remarks}
+						${e.user_star}
 				</td>
 			</tr>
 			<tr>
 				<th>備考※200字以内</th>
 				<td><input type="text" name="USER_REMARKS" value="${e.user_remarks}"></td>
 			</tr>
+			<!-- <tr>
+				<th>画像</th>
+				<td><img src="" name="USER_PHOTO" value="${e.user_photo}"></td>
+			</tr> -->
 		</table>
-		</c:forEach>
+		<!--</c:forEach>-->
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 </body>

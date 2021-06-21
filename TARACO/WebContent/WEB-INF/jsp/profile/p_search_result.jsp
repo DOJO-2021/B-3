@@ -37,7 +37,7 @@
 
 <input type="submit" name="P_SEARCH" value="検索"><br>
 </form>
-<form method="POST" action="/TARACO/PSearchResultServlet">
+
 
 	<table class="p_search">
 	<caption>検索結果○○件</caption>
@@ -50,8 +50,9 @@
 		<c:forEach var="e" items="${cardList}">
 		<tr>
 			<td> ${e.user_class}</td>
-			<td><button type="submit" name="NAME">${e.user_name}</button>
-				<input type="hidden" name="USER_ID" value="${e.user_id}">
+			<td><a href="PSearchResultServlet?PROFILE_ID=${e.profile_id}">${e.user_name}</a>
+				<!-- <button type="submit" name="NAME">${e.user_name}</button>
+				<input type="hidden" name="USER_ID" value="${e.user_id}"> -->
 			</td>
 
 			<td> ${e.user_position}</td>
@@ -59,7 +60,7 @@
 		</c:forEach>
 
 	</table>
-</form>
+
 
 <!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>

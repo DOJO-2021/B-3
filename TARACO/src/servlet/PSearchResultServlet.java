@@ -31,9 +31,24 @@ public class PSearchResultServlet extends HttpServlet {
 			return;
 		}*/
 
-		//プロフィール検索結果にフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/profile.jsp");
-		dispatcher.forward(request, response);
+		//リクエストパラメータを取得する
+				//profile_idに変更 select1
+						request.setCharacterEncoding("UTF-8");
+						int profile_id = Integer.parseInt(request.getParameter("PROFILE_ID"));
+
+						//検索処理を行う
+						ProfileDAO pDao = new ProfileDAO();
+						List<Profile> cardList = pDao.select1(new Profile(profile_id,"","","","", "", "", "", "", "", 0, "", "", ""));
+
+
+						//検索結果をリクエストスコープに格納する
+						request.setAttribute("cardList",cardList);
+
+						//個人プロフィールページにフォワードする
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/profile.jsp");
+						dispatcher.forward(request, response);
+
+
 	}
 
 	/**
@@ -48,12 +63,13 @@ public class PSearchResultServlet extends HttpServlet {
 		}*/
 
 		//リクエストパラメータを取得する
+		//profile_idに変更 select1
 				request.setCharacterEncoding("UTF-8");
-				String user_id = request.getParameter("ID");
+				int profile_id = Integer.parseInt(request.getParameter("ID"));
 
 				//検索処理を行う
 				ProfileDAO pDao = new ProfileDAO();
-				List<Profile> cardList = pDao.select(new Profile(0,user_id,"","","", "", "", "", "", "", 6, "", "", ""));
+				List<Profile> cardList = pDao.select1(new Profile(profile_id,"","","","", "", "", "", "", "", 0, "", "", ""));
 
 
 				//検索結果をリクエストスコープに格納する
