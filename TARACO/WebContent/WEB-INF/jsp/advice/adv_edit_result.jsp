@@ -18,21 +18,22 @@
 <a href="/TARACO/ADVRegistServlet">新規登録</a>
 <a href="/TARACO/ADVEditSearchServlet">既存データの編集</a><br><br>
 
+<% String course=(String)(request.getAttribute("adv_course")); %>
 
 <form method="POST" action="/TARACO/ADVEditSearchServlet">
 <table>
 <tr>
-	<th>フリーワード</th><td><input type="text" name="adv_content"></td>
+	<th>フリーワード</th><td><input type="text" name="adv_content" value="${adv_content}"></td>
 </tr>
 <tr>
 	<th>項目</th>
 	<td>
 	<select name="adv_course">
 	<option value=""hidden>コースを選択してください</option>
-	<option value="パーソナルスキルコース">パーソナルスキルコース</option>
-	<option value="IT基礎">IT基礎</option>
-	<option value="Java基礎">Java基礎</option>
-	<option value="開発演習">開発演習</option>
+	<option value="パーソナルスキルコース" <%= "パーソナルスキルコース".equals(course)?" selected=\"selected\"":""%>>パーソナルスキルコース</option>
+	<option value="IT基礎" <%= "IT基礎".equals(course)?" selected=\"selected\"":""%>>IT基礎</option>
+	<option value="Java基礎" <%= "Java基礎".equals(course)?" selected=\"selected\"":""%>>Java基礎</option>
+	<option value="開発演習" <%= "開発演習".equals(course)?" selected=\"selected\"":""%>>開発演習</option>
 	</select>
 	</td>
 </tr>
@@ -41,10 +42,17 @@
 </form>
 <br>
 
-検索結果:○○件
+ <% int count = 0; %>
+<c:forEach var="e" items="${cardList}" >
+<% count++; %>
+</c:forEach>
+検索結果:<%=count %>件
+
 
 <c:forEach var="e" items="${cardList}" >
+
 	<form method="POST" action="/TARACO/ADVEditResultServlet">
+	<input type="hidden" name="adv_id" value="${e.adv_id}">
 	<br>
 	<table class="result_table">
 	<tr>
@@ -61,7 +69,7 @@
 	</tr>
 	</table>
 <input type="submit" name="SUBMIT" value="更新">
-<input type="submit" name="SUBMIT" value="削除" onclick="check()"><br>
+<input type="submit" name="SUBMIT" value="削除" onclick="return check()"><br>
 	</form>
 </c:forEach>
 

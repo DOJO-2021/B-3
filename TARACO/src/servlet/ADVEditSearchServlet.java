@@ -63,6 +63,8 @@ public class ADVEditSearchServlet extends HttpServlet {
 
 				// 検索結果をリクエストスコープに格納する
 				request.setAttribute("cardList", cardList);
+				request.setAttribute("adv_course", new String(adv_course));
+				request.setAttribute("adv_content", new String(adv_content));
 
 
 				// AdvEditResultServletにリダイレクト？　アドバイス編集検索結果ページにフォワードする？

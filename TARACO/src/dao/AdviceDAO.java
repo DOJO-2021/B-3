@@ -25,7 +25,7 @@ public class AdviceDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
 			// SQL文を準備する
-			String sql = "SELECT * FROM Advice WHERE adv_course LIKE ? AND adv_content LIKE ? ORDER BY adv_id DESC";
+			String sql = "SELECT * FROM Advice WHERE adv_course LIKE ? AND adv_content LIKE ? ORDER BY adv_year DESC";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -238,6 +238,8 @@ public class AdviceDAO {
 		// 結果を返す
 		return result;
 	}
+
+
 
 
 } //終わりのカッコ

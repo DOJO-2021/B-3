@@ -33,6 +33,7 @@ public class ADVEditResultServlet extends HttpServlet {
 				return;
 			}
 
+
 		// アドバイス編集検索結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_edit_result.jsp");
 			dispatcher.forward(request, response);

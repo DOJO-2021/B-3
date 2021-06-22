@@ -74,6 +74,8 @@ public class AdviceSearchServlet extends HttpServlet {
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
+		request.setAttribute("adv_course", new String(adv_course));
+		request.setAttribute("adv_content", new String(adv_content));
 
 		// アドバイス検索結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_result.jsp");

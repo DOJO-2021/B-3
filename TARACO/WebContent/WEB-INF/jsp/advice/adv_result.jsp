@@ -16,20 +16,21 @@
 <h1>アドバイス検索結果</h1>
 
 <br>
+<% String course=(String)(request.getAttribute("adv_course")); %>
 <form method="POST" action="/TARACO/AdviceSearchServlet">
 <table>
 <tr>
-	<th>フリーワード</th><td><input type="text" name="adv_content"></td>
+	<th>フリーワード</th><td><input type="text" name="adv_content"  value="${adv_content}"></td>
 </tr>
 <tr>
 	<th>項目</th>
 	<td>
 	<select name="adv_course">
 	<option value=""hidden>コースを選択してください</option>
-	<option value="パーソナルスキルコース">パーソナルスキルコース</option>
-	<option value="IT基礎">IT基礎</option>
-	<option value="Java基礎">Java基礎</option>
-	<option value="開発演習">開発演習</option>
+	<option value="パーソナルスキルコース"  <%= "パーソナルスキルコース".equals(course)?" selected=\"selected\"":""%>>パーソナルスキルコース</option>
+	<option value="IT基礎"  <%= "IT基礎".equals(course)?" selected=\"selected\"":""%>>IT基礎</option>
+	<option value="Java基礎"  <%= "Java基礎".equals(course)?" selected=\"selected\"":""%>>Java基礎</option>
+	<option value="開発演習"  <%= "開発演習".equals(course)?" selected=\"selected\"":""%>>開発演習</option>
 	</select>
 	</td>
 </tr>
@@ -39,6 +40,13 @@
 </form>
 
 <br>
+
+ <% int count = 0; %>
+<c:forEach var="e" items="${cardList}" >
+<% count++; %>
+</c:forEach>
+検索結果:<%=count %>件
+
 <c:forEach var="e" items="${cardList}" >
 	<br>
 	<table class="result_table">
