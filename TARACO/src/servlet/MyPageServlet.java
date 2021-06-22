@@ -72,7 +72,14 @@ public class MyPageServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
+		if (request.getPart("USER_PHOTO") != null) {
+			Part part = request.getPart("USER_PHOTO");
+		}
+		else {
+
+		}
 		Part part = request.getPart("USER_PHOTO");
+
 		String photo_name = part.getSubmittedFileName();
 		if (photo_name.indexOf(".png") != -1) {
 			photo_name = request.getParameter("USER_ID") + ".png";

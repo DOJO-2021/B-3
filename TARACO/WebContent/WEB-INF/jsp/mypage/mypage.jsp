@@ -56,19 +56,19 @@
 			<tr>
 				<!--  星評価ってどうやるの？ -->
 				<th>気にかけて欲しい度</th>
-				 <td><input type="hidden" id="stars" value = "${e.user_star}" ></td>
+
 				<td>
 						<div class="star">
-						<input id="star5" type="radio" name="USER_STAR" value= "5" <%=star == 5 ? "checked=\" checked\"": "" %>>
-						<label for="star5">★</label>
-						<input id="star4" type="radio" name="USER_STAR" value= "4" <%=star == 4 ? "checked=\" checked\"": "" %>>
-						<label for="star4">★</label>
+						<input id="star1" type="radio" name="USER_STAR" value= "5" <%=star == 5 ? "checked=\" checked\"": "" %>>
+						<label for="star1">★</label>
+						<input id="star2" type="radio" name="USER_STAR" value= "4" <%=star == 4 ? "checked=\" checked\"": "" %>>
+						<label for="star2">★</label>
 						<input id="star3" type="radio" name="USER_STAR" value= "3" <%=star == 3 ? "checked=\" checked\"": "" %>>
 						<label for="star3">★</label>
-						<input id="star2" type="radio" name="USER_STAR" value= "2" <%=star == 2 ? "checked=\" checked\"": "" %>>
-						<label for="star2">★</label>
-						<input id="star1" type="radio" name="USER_STAR" value= "1" <%=star == 1 ? "checked=\" checked\"": "" %>>
-						<label for="star1">★</label>
+						<input id="star4" type="radio" name="USER_STAR" value= "2" <%=star == 2 ? "checked=\" checked\"": "" %>>
+						<label for="star4">★</label>
+						<input id="star5" type="radio" name="USER_STAR" value= "1" <%=star == 1 ? "checked=\" checked\"": "" %>>
+						<label for="star5">★</label>
 					</div>
 				</td>
 			</tr>
@@ -78,7 +78,9 @@
 			</tr>
 			<tr>
 				<th>顔写真</th>
-				<td><input type="file" name="USER_PHOTO" accept=".png, .jpg, .jpeg" ></td>
+				<td><input type="file" name="USER_PHOTO" accept=".png, .jpg, .jpeg" >
+				<img src="/TARACO/images/user_photo/${myscope.user_photo}" style="width: 200px;">
+				</td>
 			</tr>
 			<tr>
 				<td><input type="button" value="IDPW変更はこちら" onclick="clickBtn();"/></td>

@@ -67,7 +67,7 @@
 			</tr>
 			<tr>
 				<th>備考※200字以内</th>
-				<td><input type="text" name="USER_REMARKS" value="${e.user_remarks}"></td>
+				<td><input type="text" name="USER_REMARKS" value="${e.user_remarks}" style="width: 200px;"></td>
 			</tr>
 			 <tr>
 				<th>画像</th>
