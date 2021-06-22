@@ -38,9 +38,13 @@
 <input type="submit" name="P_SEARCH" value="検索"><br>
 </form>
 
+	<% int count = 0; %>
 
+	<c:forEach var="e" items="${cardList}">
+	<% count++; %>
+	</c:forEach>
 	<table class="p_search">
-	<caption>検索結果○○件</caption>
+	<caption>検索結果<%=count %>件</caption>
 		<tr>
 			<th>クラス</th>
 			<th>名前</th>

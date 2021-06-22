@@ -69,10 +69,10 @@
 				<th>備考※200字以内</th>
 				<td><input type="text" name="USER_REMARKS" value="${e.user_remarks}"></td>
 			</tr>
-			<!-- <tr>
+			 <tr>
 				<th>画像</th>
-				<td><img src="" name="USER_PHOTO" value="${e.user_photo}"></td>
-			</tr> -->
+				<td><img src="/TARACO/images/user_photo/${e.user_photo}"></td>
+			</tr>
 		</table>
 		<!--</c:forEach>-->
 	<!-- フッター -->

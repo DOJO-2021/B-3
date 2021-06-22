@@ -66,6 +66,7 @@ public class PSearchServlet extends HttpServlet {
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList",cardList);
 
+
 		//プロフィール検索結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/p_search_result.jsp");
 		dispatcher.forward(request, response);

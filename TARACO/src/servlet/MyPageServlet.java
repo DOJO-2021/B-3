@@ -1,7 +1,7 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import dao.ProfileDAO;
 import model.LoginUser;
@@ -42,12 +43,14 @@ public class MyPageServlet extends HttpServlet {
 		LoginUser user_id = (LoginUser)session.getAttribute("user_id");
 		String myid = user_id.getUser_id();
 
+
 		//そのidを基に検索し、その人の全プロフィール情報を得る
 		ProfileDAO pDAO = new ProfileDAO();
-		List<Profile> myList = pDAO.select(new Profile(0, myid, "", "", "", "", "", "", "", "", 0, "", "", ""));
+		Profile myList = pDAO.select2(myid);
+
 
 		//リクエストスコープに格納する
-		request.setAttribute("myscope", myList.get(0)); //mypage.jspでvalue="${myscope.○○}"を使う
+		request.setAttribute("myscope", myList); //mypage.jspでvalue="${myscope.○○}"を使う
 
 		//マイページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage/mypage.jsp");
@@ -67,8 +70,25 @@ public class MyPageServlet extends HttpServlet {
 			return;
 		}
 
-		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+
+		Part part = request.getPart("USER_PHOTO");
+		String photo_name = part.getSubmittedFileName();
+		if (photo_name.indexOf(".png") != -1) {
+			photo_name = request.getParameter("USER_ID") + ".png";
+		}
+		else if (photo_name.indexOf(".jpg") != -1) {
+			photo_name = request.getParameter("USER_ID") + ".jpg";
+		}
+		else if (photo_name.indexOf(".jpeg") != -1) {
+			photo_name = request.getParameter("USER_ID") + ".jpeg";
+		}
+		String path = getServletContext().getRealPath("/images/user_photo");
+		System.out.println(path);
+		part.write(path + File.separator + photo_name);
+
+		//リクエストパラメータを取得する
+
 		int profile_id = Integer.parseInt(request.getParameter("PROFILE_ID"));
 		String user_id = request.getParameter("USER_ID");
 		String user_pw = request.getParameter("USER_PW");
@@ -79,10 +99,21 @@ public class MyPageServlet extends HttpServlet {
 		String user_major = request.getParameter("USER_MAJOR");
 		String user_hobby = request.getParameter("USER_HOBBY");
 		String user_personarity = request.getParameter("USER_PERSONARITY");
-		int user_star = Integer.parseInt(request.getParameter("USER_STAR"));
+		int user_star;
+		if (request.getParameter("USER_STAR") == null) {
+			user_star = 0;
+		}
+		else {
+			user_star = Integer.parseInt(request.getParameter("USER_STAR"));
+		}
 		String user_remarks = request.getParameter("USER_REMARKS");
-		String user_photo = request.getParameter("USER_PHOTO");
+		String user_photo = photo_name;
 		//String user_date = request.getParameter("USER_DATE");
+
+		System.out.println(request.getParameter("SUBMIT"));
+		System.out.println(request.getParameter("USER_ID"));
+
+
 
 		// 更新または削除を行う
 		ProfileDAO pDao = new ProfileDAO();
@@ -95,7 +126,7 @@ public class MyPageServlet extends HttpServlet {
 				request.setAttribute("result",
 						new Result("更新失敗！", "レコードを更新できませんでした。", "/TARACO/HomeServlet"));
 			}
-		} else {
+		} else if(request.getParameter("SUBMIT").equals("アカウント削除")) {
 			if (pDao.delete(profile_id)) { // 削除成功
 				request.setAttribute("result",
 						new Result("削除成功！", "レコードを削除しました。", "/TARACO/HomeServlet"));

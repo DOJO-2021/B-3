@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="model.Profile" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -11,6 +11,9 @@
 <body>
 	<!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
+	<% Profile profile = (Profile)request.getAttribute("myscope");
+		int star = profile.getUser_star();
+	%>
 
 	<h1>マイページ</h1>
 	<p>*は必須項目</p>
@@ -53,18 +56,18 @@
 			<tr>
 				<!--  星評価ってどうやるの？ -->
 				<th>気にかけて欲しい度</th>
-				<!--  <td><input type="hidden" id="stars" value = "${e.user_star}" ></td>-->
+				 <td><input type="hidden" id="stars" value = "${e.user_star}" ></td>
 				<td>
-					<div class="star">
-						<input id="star5" type="radio" name="USER_STAR" value= "5">
+						<div class="star">
+						<input id="star5" type="radio" name="USER_STAR" value= "5" <%=star == 5 ? "checked=\" checked\"": "" %>>
 						<label for="star5">★</label>
-						<input id="star4" type="radio" name="USER_STAR" value= "4">
+						<input id="star4" type="radio" name="USER_STAR" value= "4" <%=star == 4 ? "checked=\" checked\"": "" %>>
 						<label for="star4">★</label>
-						<input id="star3" type="radio" name="USER_STAR" value= "3">
+						<input id="star3" type="radio" name="USER_STAR" value= "3" <%=star == 3 ? "checked=\" checked\"": "" %>>
 						<label for="star3">★</label>
-						<input id="star2" type="radio" name="USER_STAR" value= "2">
+						<input id="star2" type="radio" name="USER_STAR" value= "2" <%=star == 2 ? "checked=\" checked\"": "" %>>
 						<label for="star2">★</label>
-						<input id="star1" type="radio" name="USER_STAR" value= "1">
+						<input id="star1" type="radio" name="USER_STAR" value= "1" <%=star == 1 ? "checked=\" checked\"": "" %>>
 						<label for="star1">★</label>
 					</div>
 				</td>
@@ -75,7 +78,7 @@
 			</tr>
 			<tr>
 				<th>顔写真</th>
-				<td><input type="file" name="USER_PHOTO" accept="image/*"></td>
+				<td><input type="file" name="USER_PHOTO" accept=".png, .jpg, .jpeg" ></td>
 			</tr>
 			<tr>
 				<td><input type="button" value="IDPW変更はこちら" onclick="clickBtn();"/></td>

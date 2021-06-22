@@ -158,6 +158,147 @@ public class ProfileDAO {
 		return cardList;
 	}
 
+	public Profile select2(String user_id) {
+		Connection conn = null;
+		Profile result;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+			// SQL文を準備する
+			String sql = "SELECT * FROM Profile WHERE User_id=?";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (user_id != null) {
+				pStmt.setString(1,user_id);
+			}
+			//pStmt.setInt(9, param.getId());
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			//↓ここも自分なりに変える
+			// 結果表をコレクションにコピーする
+			rs.next();
+			result = new Profile(
+					rs.getInt("profile_id"),
+					rs.getString("user_id"),
+					rs.getString("user_pw"),
+					rs.getString("user_name"),
+					rs.getString("user_position"),
+					rs.getString("user_class"),
+					rs.getString("user_gender"),
+					rs.getString("user_major"),
+					rs.getString("user_hobby"),
+					rs.getString("user_personarity"),
+					rs.getInt("user_star"),
+					rs.getString("user_remarks"),
+					rs.getString("user_photo"),
+					rs.getString("user_date"));
+
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = null;
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = null;
+
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					result = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+	public List<Integer> count(Profile param) {
+		Connection conn = null;
+		List<Integer> countList = new ArrayList<Integer>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/B-3/B-3", "sa", "sa");
+
+			// SQL文を準備する このあたりのどこかがおかしい？ a_id OR
+			String sql = "SELECT COUNT (*) FROM Profile WHERE profile_id=? AND user_name LIKE ? AND user_position LIKE ? AND user_class LIKE ? ";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			//if (param.getA_id() != 0) {
+				//pStmt.setString(1, "%" + param.getA_id() + "%");
+			//} else {
+				//pStmt.setString(1, "%");
+			//}
+			if (param.getProfile_id() > 0) {
+				pStmt.setNull(1, java.sql.Types.NULL);
+			} else {
+				pStmt.setInt(1, param.getProfile_id());
+			}
+			if (param.getUser_name() != "") {
+				pStmt.setString(2, "%" + param.getUser_name() + "%");
+			} else {
+				pStmt.setString(2, "%");
+			}
+			if (param.getUser_position() != "") {
+				pStmt.setString(3, "%" + param.getUser_position() + "%");
+			} else {
+				pStmt.setString(3, "%");
+			}
+			if (param.getUser_class() != null) {
+				pStmt.setString(4, "%" + param.getUser_class() + "%");
+			} else {
+				pStmt.setString(4, "%");
+			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			//↓ここも自分なりに変える
+			// 結果表をコレクションにコピーする #rs.getString("adv_pw"));
+			while (rs.next()) {
+				int card = rs.getInt("COUNT(*)");
+
+				countList.add(card);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			countList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			countList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					countList = null;
+				}
+			}
+		}
+		// 結果を返す
+		return countList;
+	}
+
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Profile card) {
 		Connection conn = null;
