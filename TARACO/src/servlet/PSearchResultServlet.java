@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ProfileDAO;
 import model.Profile;
@@ -25,11 +26,11 @@ public class PSearchResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TARACO/LoginServlet");
 			return;
-		}*/
+		}
 
 		//リクエストパラメータを取得する
 				//profile_idに変更 select1
@@ -40,6 +41,9 @@ public class PSearchResultServlet extends HttpServlet {
 						ProfileDAO pDao = new ProfileDAO();
 						List<Profile> cardList = pDao.select1(new Profile(profile_id,"","","","", "", "", "", "", "", 0, "", "", ""));
 
+						if(cardList.get(0).getUser_photo() == "") {
+							cardList.get(0).setUser_photo("profile_default_photo.png");
+						}
 
 						//検索結果をリクエストスコープに格納する
 						request.setAttribute("cardList",cardList);
@@ -56,11 +60,11 @@ public class PSearchResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TARACO/LoginServlet");
 			return;
-		}*/
+		}
 
 		//リクエストパラメータを取得する
 		//profile_idに変更 select1

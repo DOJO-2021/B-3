@@ -28,7 +28,7 @@ button {
 
 /*気にかけて欲しい度*/
 
-/*.star{
+.star{
  display: -ms-flex;
  display: -webkit-flex;
  display: -moz-flex;
@@ -46,7 +46,8 @@ justify-content: -webkit-right;
 justify-content: -moz-right;
 justify-content: -o-right;
 justify-content: right;
-}*/
+color: #faee2e;
+}
 .star input[type='radio']{
   display: none;
 }

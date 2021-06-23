@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ProfileDAO;
 import model.Profile;
@@ -25,11 +26,11 @@ public class PSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TARACO/LoginServlet");
 			return;
-		}*/
+		}
 
 		//プロフィール検索にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profile/p_search.jsp");
@@ -41,11 +42,11 @@ public class PSearchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/TARACO/LoginServlet");
 			return;
-		}*/
+		}
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

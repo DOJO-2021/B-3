@@ -47,6 +47,11 @@ public class MyPageServlet extends HttpServlet {
 		//そのidを基に検索し、その人の全プロフィール情報を得る
 		ProfileDAO pDAO = new ProfileDAO();
 		Profile myList = pDAO.select2(myid);
+		System.out.println(myList.getUser_photo());
+		if(myList.getUser_photo() == "") {
+			myList.setUser_photo("profile_default_photo.png");
+		}
+
 
 
 		//リクエストスコープに格納する
@@ -71,28 +76,32 @@ public class MyPageServlet extends HttpServlet {
 		}
 
 		request.setCharacterEncoding("UTF-8");
+		String user_photo;
 
-		if (request.getPart("USER_PHOTO") != null) {
+		System.out.println(request.getParameter("USER_PHOTO"));
+		if (request.getParameter("USER_PHOTO") != null) {
 			Part part = request.getPart("USER_PHOTO");
+
+			String photo_name = part.getSubmittedFileName();
+			if (photo_name.indexOf(".png") != -1) {
+				photo_name = request.getParameter("USER_ID") + ".png";
+			}
+			else if (photo_name.indexOf(".jpg") != -1) {
+				photo_name = request.getParameter("USER_ID") + ".jpg";
+			}
+			else if (photo_name.indexOf(".jpeg") != -1) {
+				photo_name = request.getParameter("USER_ID") + ".jpeg";
+			}
+			String path = getServletContext().getRealPath("/images/user_photo");
+			System.out.println(path);
+			part.write(path + File.separator + photo_name);
+			user_photo = photo_name;
 		}
+
 		else {
+			user_photo = request.getParameter("BEFORE_USER_PHOTO");
+		}
 
-		}
-		Part part = request.getPart("USER_PHOTO");
-
-		String photo_name = part.getSubmittedFileName();
-		if (photo_name.indexOf(".png") != -1) {
-			photo_name = request.getParameter("USER_ID") + ".png";
-		}
-		else if (photo_name.indexOf(".jpg") != -1) {
-			photo_name = request.getParameter("USER_ID") + ".jpg";
-		}
-		else if (photo_name.indexOf(".jpeg") != -1) {
-			photo_name = request.getParameter("USER_ID") + ".jpeg";
-		}
-		String path = getServletContext().getRealPath("/images/user_photo");
-		System.out.println(path);
-		part.write(path + File.separator + photo_name);
 
 		//リクエストパラメータを取得する
 
@@ -114,7 +123,7 @@ public class MyPageServlet extends HttpServlet {
 			user_star = Integer.parseInt(request.getParameter("USER_STAR"));
 		}
 		String user_remarks = request.getParameter("USER_REMARKS");
-		String user_photo = photo_name;
+
 		//String user_date = request.getParameter("USER_DATE");
 
 		System.out.println(request.getParameter("SUBMIT"));
@@ -124,27 +133,36 @@ public class MyPageServlet extends HttpServlet {
 
 		// 更新または削除を行う
 		ProfileDAO pDao = new ProfileDAO();
-		if (request.getParameter("SUBMIT").equals("更新")) {
+		if (request.getParameter("SUBMIT").equals("更新") && !user_id.equals("")  && !user_pw.equals("") && !user_name.equals("")  && !user_position.equals("")) {
 			if (pDao.update(new Profile(profile_id,user_id, user_pw, user_name, user_position, user_class, user_gender, user_major,
 					user_hobby, user_personarity, user_star, user_remarks, user_photo, ""))) { // 更新成功
 				request.setAttribute("result",
-						new Result("更新成功！", "レコードを更新しました。", "/TARACO/HomeServlet"));
+						new Result("更新成功！", "レコードを更新しました。", "/TARACO/MyPageServlet"));
+						session.invalidate();
+						session = request.getSession();
+						session.setAttribute("user_id", new LoginUser(user_id));
 			} else { // 更新失敗
 				request.setAttribute("result",
-						new Result("更新失敗！", "レコードを更新できませんでした。", "/TARACO/HomeServlet"));
+						new Result("更新失敗！", "レコードを更新できませんでした。", "/TARACO/MyPageServlet"));
 			}
 		} else if(request.getParameter("SUBMIT").equals("アカウント削除")) {
 			if (pDao.delete(profile_id)) { // 削除成功
 				request.setAttribute("result",
-						new Result("削除成功！", "レコードを削除しました。", "/TARACO/HomeServlet"));
+						new Result("削除成功！", "レコードを削除しました。", "/TARACO/LoginServlet"));
+						session.invalidate();
 			} else { // 削除失敗
 				request.setAttribute("result",
 						new Result("削除失敗！", "レコードを削除できませんでした。", "/TARACO/HomeServlet"));
 			}
 		}
+		else {
+			request.setAttribute("result",
+					new Result("更新失敗！", "レコードを更新できませんでした。", "/TARACO/MyPageServlet"));
+
+		}
 
 		//処理結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 		dispatcher.forward(request, response);
 	}
 }
