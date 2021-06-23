@@ -11,15 +11,16 @@ html {
 
 .introduction {
 	background-color: rgba(255, 255, 255, 0.6);
-	width: 500px;
+	width: 490px;
 	height: 300px;
 	float: left;
-	margin: 0px 30px auto 180px; /*上右下左*/
+	margin: 0px 0px auto 200px; /*上右下左*/
 	padding: 10px;
 }
 
 #sub {
 	text-align: left;
+	line-height: 35px;
 }
 
 .login_box {
@@ -27,7 +28,7 @@ html {
 	height: 300px;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.6);
-	margin: 200px 150px auto auto;
+	margin: 200px 200px auto auto;
 	border: 1px solid #3f5170;
 	border-radius: 40px;
 }
@@ -58,10 +59,10 @@ html {
 	cursor: hand;
 }
 
-.btn1 {
+.btn1 {/*新規登録へ*/
 	color: ＃b0c4dc;
 	text-decoration: none;
-	font-size: 13px;
+	font-size: 15px;
 	margin: 8px;
 }
 
@@ -117,6 +118,7 @@ footer {
 	padding-top: 16px;
 	padding-left: 10px;
 	color: #3c454d;
+	font-size: 13px;
 }
 
 .regist_table {

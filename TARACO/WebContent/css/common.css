@@ -84,7 +84,7 @@ footer {
 	background-repeat: repeat-x;
 	background-color: #ffb6c1;
 	height: 45px;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .copyright {
@@ -92,6 +92,7 @@ footer {
 	padding-top: 3px;
 	padding-left: 10px;
 	color: #3c454d;
+	font-size: 13px;
 }
 
 .logout {
@@ -162,4 +163,6 @@ footer {
 /*処理結果＿ログイン*/
 .backTo {
 	margin-bottom: 20px;
+	cursor: pointer;
+	cursor: hand;
 }
