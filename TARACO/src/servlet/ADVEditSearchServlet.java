@@ -56,7 +56,6 @@ public class ADVEditSearchServlet extends HttpServlet {
 						String adv_course = request.getParameter("adv_course");
 						String adv_content = request.getParameter("adv_content");
 
-
 				// 検索処理を行う
 				AdviceDAO aDao = new AdviceDAO();
 				List<Advice> cardList = aDao.select(new Advice(0,adv_course,0,adv_content));
@@ -66,11 +65,9 @@ public class ADVEditSearchServlet extends HttpServlet {
 				request.setAttribute("adv_course", new String(adv_course));
 				request.setAttribute("adv_content", new String(adv_content));
 
-
-				// AdvEditResultServletにリダイレクト？　アドバイス編集検索結果ページにフォワードする？
+				//アドバイス編集検索結果ページにフォワードする
 //				response.sendRedirect("/TARACO/ADVEditResultServlet");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/advice/adv_edit_result.jsp");
 				dispatcher.forward(request, response);
 			}
 }
-

@@ -42,7 +42,6 @@ public class ADVRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
@@ -58,21 +57,19 @@ public class ADVRegistServlet extends HttpServlet {
 						int adv_year =Integer.parseInt(request.getParameter("adv_year"));
 						String adv_content = request.getParameter("adv_content");
 
-
 						// 登録処理を行う
 						AdviceDAO aDao = new AdviceDAO();
 						if (aDao.insert(new Advice(1,adv_course,adv_year,adv_content))) {	// 登録成功
 							request.setAttribute("result",
-							new Result("登録完了", "アドバイスを登録しました。", "/TARACO/HomeServlet"));
+							new Result("登録完了", "アドバイスを登録しました。", "/TARACO/ADVRegistServlet"));
 						}
 						else {												// 登録失敗
 							request.setAttribute("result",
-							new Result("登録エラー", "アドバイスを登録できませんでした。", "/TARACO/HomeServlet"));
+							new Result("登録エラー", "アドバイスを登録できませんでした。", "/TARACO/ADVRegistServlet"));
 						}
 
-
 						// 結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 						dispatcher.forward(request, response);
 					}
 

@@ -42,7 +42,6 @@ public class ADVPWServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
@@ -60,16 +59,16 @@ public class ADVPWServlet extends HttpServlet {
 						if (request.getParameter("REGIST").equals("変更")) {
 							if (eDao.update(new EditPw(adv_pw))) {	// 更新成功
 								request.setAttribute("result",
-								new Result("変更完了", "パスワードを変更しました。", "/TARACO/HomeServlet"));
+								new Result("変更完了", "パスワードを変更しました。", "/TARACO/AdviceSearchServlet"));
 							}
 							else {												// 更新失敗
 								request.setAttribute("result",
-								new Result("変更エラー", "パスワードを変更できませんでした。", "/TARACO/HomeServlet"));
+								new Result("変更エラー", "パスワードを変更できませんでした。", "/TARACO/ADVPWServlet"));
 							}
 						}
 
 						// 結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 						dispatcher.forward(request, response);
 					}
 				}

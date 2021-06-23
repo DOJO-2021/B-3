@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>
-
 <link rel="stylesheet" href="/TARACO/css/advice.css">
 <link rel="stylesheet" href="/TARACO/css/common.css">
-
 </head>
+
 <script>
 	var pass = "${pwscope.adv_pw}";
 </script>
+
 <body>
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 

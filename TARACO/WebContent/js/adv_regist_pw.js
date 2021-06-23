@@ -3,7 +3,6 @@ document.getElementById('form').onsubmit = function(event) {
 	let adv_pw = document.getElementById('form').adv_pw.value;
 	let pw_confirm = document.getElementById('form').pw_confirm.value;
 
-
 	//空欄チェック
 	if (adv_pw === "" || pw_confirm === "") {
 		event.preventDefault();

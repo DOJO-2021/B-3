@@ -43,7 +43,6 @@ public class AccountRegistServlet extends HttpServlet {
 		String user_id = request.getParameter("USER_ID");
 		String user_pw = request.getParameter("USER_PW");
 
-
 		// 新規登録処理を行う
 		ProfileDAO pDao = new ProfileDAO();
 		if (pDao.insert(new Profile(1, user_id, user_pw, user_name, user_position, "", "", "", "", "", 0, "", "", "CURRENT_TIMESTAMP"))) {//登録成功
@@ -58,5 +57,4 @@ public class AccountRegistServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

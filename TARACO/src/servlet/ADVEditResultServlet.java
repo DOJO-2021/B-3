@@ -51,7 +51,6 @@ public class ADVEditResultServlet extends HttpServlet {
 					return;
 				}
 
-
 						// リクエストパラメータを取得する
 							request.setCharacterEncoding("UTF-8");
 							int adv_id =Integer.parseInt(request.getParameter("adv_id"));
@@ -64,28 +63,26 @@ public class ADVEditResultServlet extends HttpServlet {
 						if (request.getParameter("SUBMIT").equals("更新")) {
 							if (aDao.update(new Advice(adv_id,adv_course,adv_year,adv_content))) {	// 更新成功
 								request.setAttribute("result",
-								new Result("更新完了", "レコードを更新しました。", "/TARACO/HomeServlet"));
+								new Result("更新完了", "レコードを更新しました。", "/TARACO/ADVRegistServlet"));
 							}
 							else {												// 更新失敗
 								request.setAttribute("result",
-								new Result("更新エラー", "レコードを更新できませんでした。", "/TARACO/HomeServlet"));
+								new Result("更新エラー", "レコードを更新できませんでした。", "/TARACO/ADVRegistServlet"));
 							}
 						}
 						else {
 							if (aDao.delete(adv_id)) {	// 削除成功
 								request.setAttribute("result",
-								new Result("削除完了", "レコードを削除しました。", "/TARACO/HomeServlet"));
+								new Result("削除完了", "レコードを削除しました。", "/TARACO/ADVRegistServlet"));
 							}
 							else {						// 削除失敗
 								request.setAttribute("result",
-								new Result("削除エラー", "レコードを削除できませんでした。", "/TARACO/HomeServlet"));
+								new Result("削除エラー", "レコードを削除できませんでした。", "/TARACO/ADVRegistServlet"));
 							}
 						}
 
 						// アドバイス結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
 						dispatcher.forward(request, response);
 					}
 				}
-
-

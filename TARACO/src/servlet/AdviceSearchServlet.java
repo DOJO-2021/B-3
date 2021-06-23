@@ -36,7 +36,6 @@ public class AdviceSearchServlet extends HttpServlet {
 			return;
 		}
 
-
 		//EditPwからadv_pwを取得
 		EditPwDAO eDAO = new EditPwDAO();
 		EditPw pw = new EditPw();
