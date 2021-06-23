@@ -66,9 +66,9 @@ function Update() {
 		document.getElementById('errormsg').textContent = `※IDとPWを半角英数字8～16文字で入力してください`;
 	}
 
-	if (user_pw != pw_confirm) {
+	else if (user_pw != pw_confirm) {
 		event.preventDefault();
-		document.getElementById('errormsg').textContent = '※PWとPW確認が不一致です。';
+		document.getElementById('errormsg1').textContent = '※PWとPW確認が不一致です。';
 	}
 }
 

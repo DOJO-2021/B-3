@@ -48,7 +48,7 @@ public class MyPageServlet extends HttpServlet {
 		ProfileDAO pDAO = new ProfileDAO();
 		Profile myList = pDAO.select2(myid);
 		System.out.println(myList.getUser_photo());
-		if(myList.getUser_photo() == "") {
+		if(myList.getUser_photo() == "" ) {
 			myList.setUser_photo("profile_default_photo.png");
 		}
 
@@ -79,7 +79,7 @@ public class MyPageServlet extends HttpServlet {
 		String user_photo;
 
 		System.out.println(request.getParameter("USER_PHOTO"));
-		if (request.getParameter("USER_PHOTO") != null) {
+		if (request.getPart("USER_PHOTO").getSubmittedFileName() != null) {
 			Part part = request.getPart("USER_PHOTO");
 
 			String photo_name = part.getSubmittedFileName();
