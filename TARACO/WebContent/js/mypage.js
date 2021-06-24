@@ -56,6 +56,7 @@ function Update() {
 
 	const user_id = document.getElementById('form').USER_ID.value;
 	const user_pw = document.getElementById('form').USER_PW.value;
+	const pw_confirm = document.getElementById('form').PW_CONFIRM.value;
 
 		console.log(user_id);
 		console.log(user_pw);

@@ -114,23 +114,19 @@
 						</tr>
 						<tr>
 							<th>PW
-								<div class="msg"
-									style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
+								<div class="msg" style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
 							</th>
 						</tr>
 						<tr>
-							<td><input type="password" name="USER_PW"
-								value="${myscope.user_pw}"></td>
+							<td><input type="password" name="USER_PW" value="${myscope.user_pw}"></td>
 						</tr>
 						<tr>
 							<th>PW確認
-								<div class="msg"
-									style="display: inline-block; _display: inline;">※上記と同じ内容を入力してください</div>
+								<div class="msg" style="display: inline-block; _display: inline;">※上記と同じ内容を入力してください</div>
 							</th>
 						</tr>
 						<tr>
-							<td><input type="password" name="PW_CONFIRM"
-								value="${myscope.user_pw}"></td>
+							<td><input type="password" name="PW_CONFIRM" value="${myscope.user_pw}"></td>
 						</tr>
 					</table>
 					<p id="errormsg"></p>

@@ -15,12 +15,12 @@
 	<!--<c:forEach var="e" items="${cardList}">-->
 	<h1>${e.user_name}さんのプロフィール</h1>
 
-
+<input type="hidden" id="stars" value="${e.user_star}">
 	<table>
 		<tr>
 			<td>
 
-				<table>
+				<table class="profile">
 
 					<tr>
 						<th>会社名or講師/事務局</th>
@@ -53,21 +53,20 @@
 					<tr>
 						<!-- 星評価ってどうやるの？ -->
 						<th>気にかけて欲しい度</th>
-						<td><input type="hidden" id="stars" value="${e.user_star}"></td>
+
 						<td>
 							<div>
-
-								<label id="star1">★</label> <label id="star2">★</label> <label
-									id="star3">★</label> <label id="star4">★</label> <label
-									id="star5">★</label>
+								<label id="star1">★</label>
+								<label id="star2">★</label>
+								<label id="star3">★</label>
+								<label id="star4">★</label>
+								<label id="star5">★</label>
 							</div>
-
 						</td>
 					</tr>
 					<tr>
 						<th>備考※200字以内</th>
-						<td><input type="text" name="USER_REMARKS"
-							value="${e.user_remarks}" style="width: 200px;"></td>
+						<td>${e.user_remarks}</td>
 					</tr>
 
 				</table>

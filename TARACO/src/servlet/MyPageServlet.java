@@ -79,7 +79,7 @@ public class MyPageServlet extends HttpServlet {
 		String user_photo;
 
 		System.out.println(request.getParameter("USER_PHOTO"));
-		if (request.getPart("USER_PHOTO").getSubmittedFileName() != null) {
+		if (request.getPart("USER_PHOTO").getSubmittedFileName() != "") {
 			Part part = request.getPart("USER_PHOTO");
 
 			String photo_name = part.getSubmittedFileName();
