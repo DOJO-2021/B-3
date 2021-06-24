@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -54,6 +55,28 @@ public class QAnswerServlet extends HttpServlet {
 		int count = count_responses.get(0);
 		count_responses = aDAO.select(new Answer(0, q.getQ_id(), "", "A"));
 		int countA = count_responses.get(0);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		String time = q.getQ_date();
+		int[] deadTime = {
+				Integer.parseInt(time.substring(0, 4)),
+				Integer.parseInt(time.substring(5, 7)),
+				Integer.parseInt(time.substring(8, 10)),
+				Integer.parseInt(time.substring(11, 13)),
+				Integer.parseInt(time.substring(14, 16)),
+				Integer.parseInt(time.substring(17, 19)),
+				0
+		};
+		long timemills =
+				deadTime[5] * 1000 +
+				deadTime[4] * 1000 * 60+
+		Timestamp deadline = new Timestamp(
+				deadTime[0],
+				deadTime[1],
+				deadTime[2],
+				deadTime[3],
+				deadTime[4],
+				deadTime[5],
+				deadTime[6]);
 		if (aDAO.already(new Answer(0, q.getQ_id(), user.getUser_id(), ""))
 				|| q.getUser_id().equals(user.getUser_id())) {
 			judge = "true";

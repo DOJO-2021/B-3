@@ -14,13 +14,13 @@
 <form id="post" method="post" action="/TARACO/QPostServlet" >
 <table class="post_table">
 	<tr><th>投稿者:</th>
-	<td class ="post_table_td"><input class="post_text" type="text" name="Q_USER"placeholder="匿名希望の方は「匿名希望」と入力してください。" required></td></tr>
+	<td class ="post_table_td"><input class="post_text" type="text" name="Q_USER" value="${postQuestion.q_user}"placeholder="匿名希望の方は「匿名希望」と入力してください。" required></td></tr>
 	<tr><th>質問内容:</th><td class="small">※400字以内</td></tr>
 </table>
-	<textarea class="questionSentences" name="QUESTION" required></textarea>
+	<textarea class="questionSentences" name="QUESTION" required>${postQuestion.q_content}</textarea>
 <table class="post_table">
-	<tr><th>Aボタンの回答</th><td><input class="post_text" type="text" name="A_ANSWER" required></td></tr>
-	<tr><th>Bボタンの回答</th><td><input class="post_text" type="text" name="B_ANSWER" required></td></tr>
+	<tr><th>Aボタンの回答</th><td><input class="post_text" type="text" name="A_ANSWER" required value="${postQuestion.q_choice_a}"></td></tr>
+	<tr><th>Bボタンの回答</th><td><input class="post_text" type="text" name="B_ANSWER" required value="${postQuestion.q_choice_b}"></td></tr>
 	<tr><th>削除用パスワード</th><td><input class="post_text"  id="q_delete"type="password" name="QUESTION_PASS" placeholder="英数半角数字で4桁"  required></td></tr>
 	<tr class="smallerror"><th></th><td><p id="errormsg"></p></td></tr>
 </table>

@@ -33,18 +33,23 @@ public class QuestionServlet extends HttpServlet {
 			response.sendRedirect("/TARACO/LoginServlet");
 			return;
 		}
+		//現在投稿されているアンケートと対応する回答数のすべてをリスト形式で受け取る
 		QuestionDAO qDAO = new QuestionDAO();
 		AnswerDAO aDAO = new AnswerDAO();
+		//アンケートリストを受け取る
 		List<Question> questionList = qDAO.select(new Question());
 		List<Billboard> billList = new ArrayList<Billboard>();
 		for (Question q : questionList) {
+			//アンケート文の先頭30文字分を表示
 			int length = 30;
 			String question = q.getQ_content();
 			String q_date = q.getQ_date();
 			if (question.length() > length) {
 				q.setQ_content(question.substring(0, length) + "…");
 			}
-			q.setQ_date(q_date.substring(0, 19));
+
+			q.setQ_date(q_date.substring(0, 19));//投稿日時のコンマ以下の部分を削除
+			//回答数リストを受け取る
 			List<Integer> count_responses = aDAO.select(new Answer(0, q.getQ_id(), "", ""));
 			int count = count_responses.get(0);
 			count_responses = aDAO.select(new Answer(0, q.getQ_id(), "", "A"));

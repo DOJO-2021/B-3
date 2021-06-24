@@ -90,19 +90,20 @@ function display() {
 	deadline[1] = String(deadline[1]).padStart(2, '0');
 	deadline[2] = String(deadline[2]).padStart(2, '0');
 	const timedis = `残り${deadline[0]}時間${deadline[1]}分${deadline[2]}秒`;
-	if(post - now >= 0){
-	timer.innerHTML = timedis;
-	}else{
-	timer.innerHTML = '回答受付を終了しています。';
-	postJudge = false;
+	if (post - now >= 0) {
+		timer.innerHTML = timedis;
+	} else {
+		timer.innerHTML = '回答受付を終了しています。';
+		judge = 'false';
 	}
+	//非表示/表示プログラム
+
 	refresh();
 }
 function refresh() {
 	setTimeout(display, 100);
 }
 display();
-//非表示/表示プログラム
 let elF = document.getElementById('answerPost');
 let elG = document.getElementById('Graph');
 let elR1 = document.getElementById('answer_result1');
@@ -111,7 +112,7 @@ if (judge === 'true') {
 	elF.style.display = 'none';
 	elR1.style.display = 'none';
 	elR2.style.display = 'block';
-	if(count > 0){
-	elG.style.display = 'flex';
+	if (count > 0) {
+		elG.style.display = 'flex';
 	}
 }
