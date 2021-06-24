@@ -7,7 +7,7 @@
 <title>TARACO</title>
 <!-- グラフ描画用jsと追加機能js 外部参照 -->
 <script>
-const judge = "${question.a_already}";
+let judge = "${question.a_already}";
 const date = "${question.q_date}";
 const count = Number(${question.a_responses});
 const countA = Number(${question.a_responses_a});

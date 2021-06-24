@@ -31,7 +31,7 @@ let config = {
 					size: 20,
 				},
 				formatter: (value, ctx) => {
-					value = value / count * 100;//数値をパーセント表示に変更
+					value = Math.round(value / count * 100 * 10) / 10;//数値をパーセント表示に変更
 					return value + '%';
 				},
 			}
@@ -94,25 +94,38 @@ function display() {
 		timer.innerHTML = timedis;
 	} else {
 		timer.innerHTML = '回答受付を終了しています。';
-		judge = 'false';
+		judge = 'true';
 	}
 	//非表示/表示プログラム
-
+	judgeAnswer();
 	refresh();
 }
+
 function refresh() {
-	setTimeout(display, 100);
+	setTimeout(display, 500);
+}
+function judgeAnswer() {
+	let elF = document.getElementById('answerPost');
+	let elG = document.getElementById('Graph');
+	let elR1 = document.getElementById('answer_result1');
+	let elR2 = document.getElementById('answer_result2');
+	console.log(judge);
+	if (judge === 'true') {
+		elF.style.display = 'none';
+		elR1.style.display = 'none';
+		elR2.style.display = 'block';
+		if (count > 0) {
+			elG.style.display = 'flex';
+		}
+		else {
+			elF.style.display = 'block';
+			elR1.style.display = 'block';
+			elR2.style.display = 'none';
+			elG.style.display = 'none';
+		}
+	}
+
 }
 display();
-let elF = document.getElementById('answerPost');
-let elG = document.getElementById('Graph');
-let elR1 = document.getElementById('answer_result1');
-let elR2 = document.getElementById('answer_result2');
-if (judge === 'true') {
-	elF.style.display = 'none';
-	elR1.style.display = 'none';
-	elR2.style.display = 'block';
-	if (count > 0) {
-		elG.style.display = 'flex';
-	}
-}
+
+
