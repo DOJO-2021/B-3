@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="/TARACO/css/profile.css">
+<link rel="shortcut icon" href="/TARACO/images/favicon.ico">
 <head>
 <meta charset="UTF-8">
 <title>TARACO</title>

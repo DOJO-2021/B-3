@@ -22,6 +22,7 @@ const user = "${question.user_id}";
 </script>
 <script src="/TARACO/js/chartjs-plugin-datalabels.min.js"></script>
 <link rel="stylesheet" href="/TARACO/css/question.css">
+<link rel="shortcut icon" href="/TARACO/images/favicon.ico">
 </head>
 <body>
 	<!-- ヘッダー -->

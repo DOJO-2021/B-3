@@ -8,6 +8,7 @@
 <title>TARACO</title>
 <link rel="stylesheet" href="/TARACO/css/advice.css">
 <link rel="stylesheet" href="/TARACO/css/common.css">
+<link rel="shortcut icon" href="/TARACO/images/favicon.ico">
 </head>
 
 <script>

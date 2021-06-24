@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>TARACO</title>
 <link rel="stylesheet" href="/TARACO/css/login_account.css">
+<link rel="shortcut icon" href="/TARACO/images/favicon.ico">
 </head>
 <body class="login_body">
 

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>TARACO</title>
 <link rel="stylesheet" href="/TARACO/css/common.css">
+<link rel="shortcut icon" href="/TARACO/images/favicon.ico">
 </head>
 <body>
 	<!-- 独自のヘッダー -->
