@@ -14,8 +14,8 @@ const countA = Number(${question.a_responses_a});
 const answer_a = "${question.q_choice_a}";
 const answer_b = "${question.q_choice_b}";
 const pass = "${question.q_pw}";
-const post_user = "${question.q_user}";
-const user = "${question.user_id}";
+const post_user = "${question.user_id}";
+const user = "${user.user_id}";
 </script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js">
@@ -27,7 +27,9 @@ const user = "${question.user_id}";
 <body>
 	<!-- ヘッダー -->
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
+
 	<h1>回答/集計</h1>
+
 	<form method="POST" action="/TARACO/QAnswerServlet">
 		<div class="deleteButton">
 			<input type="hidden" name="Q_ID" value="${question.q_id}"> <input

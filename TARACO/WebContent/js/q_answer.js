@@ -50,9 +50,7 @@ function deleteQuestion() {
 		event.preventDefault();
 		alert("アンケート削除ができるのは投稿者のみです。");
 	} else {
-
-		let pw = window.prompt('削除用パスワードを入れて下さい。');
-		if (pw !== pass) {
+		if (window.prompt('削除用パスワードを入れて下さい。') !== pass) {
 			event.preventDefault();
 			alert("パスワードが違います！");
 		}
@@ -127,5 +125,6 @@ function judgeAnswer() {
 
 }
 display();
-
-
+if (user === post_user) {
+	document.getElementById('answerPost').style.display = 'none';
+}

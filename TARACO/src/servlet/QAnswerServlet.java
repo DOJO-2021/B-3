@@ -60,12 +60,12 @@ public class QAnswerServlet extends HttpServlet {
 				|| q.getUser_id().equals(user.getUser_id())) {
 			judge = "true";
 		}
-		System.out.println(judge);
 		Billboard b = new Billboard(q.getQ_id(), q.getQ_date(), q.getQ_user(), q.getQ_content(), q.getQ_choice_a(),
 				q.getQ_choice_b(), count, countA, count - countA);
 		b.setQ_pw(q.getQ_pw());
 		b.setA_already(judge);
-		b.setUser_id(user.getUser_id());
+		b.setUser_id(q.getUser_id());
+		request.setAttribute("user",user);
 		request.setAttribute("question", b);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/question/q_answer.jsp");
 		dispatcher.forward(request, response);
