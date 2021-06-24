@@ -162,7 +162,7 @@ public class MyPageServlet extends HttpServlet {
 		}
 
 		//処理結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/result.jsp");
 		dispatcher.forward(request, response);
 	}
 }
