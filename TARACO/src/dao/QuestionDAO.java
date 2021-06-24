@@ -92,7 +92,7 @@ public class QuestionDAO {
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				if (card.getQ_id() > 0) {
+				if (card.getQ_id() >= 0) {
 					pStmt.setNull(1, java.sql.Types.NULL);
 				} else {
 					pStmt.setInt(1, card.getQ_id());
