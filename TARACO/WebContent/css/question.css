@@ -11,7 +11,7 @@
 	text-align: left;
 	margin-left: 10%;
 	margin-right: 10%;
-	font-size: 50%
+	font-size: 70%;
 }
 
 .questionFerris {
@@ -44,14 +44,13 @@
 	border-collapse: collapse;
 	width: 15%;
 }
-
+.post_table th, .post_table td{
+	padding: 8px;
+}
 .post_text {
 	width: 100%;
 }
 
-.small {
-	font-size: 8px;
-}
 
 .questionSentences {
 	resize: vertical;
@@ -118,4 +117,7 @@
 	text-shadow: 1px 1px 2px #FF0000, -1px 1px 2px #FF0000, 1px -1px 2px
 		#FF0000, -1px -1px 2px #FF0000, 1px 0px 2px #FF0000, 0px 1px 2px
 		#FF0000, -1px 0px 2px #FF0000, 0px -1px 2px #FF0000;
+}
+#send_answer{
+	margin-top: 8px;
 }

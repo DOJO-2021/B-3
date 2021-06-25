@@ -17,7 +17,7 @@
 	<h1>${e.user_name}さんのプロフィール</h1>
 
 <input type="hidden" id="stars" value="${e.user_star}">
-	<table>
+	<table class="profile_table">
 		<tr>
 			<td>
 

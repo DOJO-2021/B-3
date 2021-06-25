@@ -16,7 +16,7 @@
 <table class="post_table">
 	<tr><th>投稿者:</th>
 	<td class ="post_table_td"><input class="post_text" type="text" name="Q_USER" value="${postQuestion.q_user}"placeholder="匿名希望の方は「匿名希望」と入力してください。" required></td></tr>
-	<tr><th>質問内容:</th><td class="small">※400字以内</td></tr>
+	<tr><th>質問内容:</th><td class="caution">※400字以内</td></tr>
 </table>
 	<textarea class="questionSentences" name="QUESTION" required>${postQuestion.q_content}</textarea>
 <table class="post_table">
@@ -25,7 +25,7 @@
 	<tr><th>削除用パスワード</th><td><input class="post_text"  id="q_delete"type="password" name="QUESTION_PASS" placeholder="英数半角数字で4桁"  required></td></tr>
 	<tr class="smallerror"><th></th><td><p id="errormsg"></p></td></tr>
 </table>
-<input type="submit" id="post_question"name="QUESTION_POST"value="アンケート投稿">
+<input type="submit" id="post_question"name="QUESTION_POST"value="アンケート投稿" class="submit">
 </form>
 <script src="/TARACO/js/q_post.js"></script>
 <!-- フッター -->

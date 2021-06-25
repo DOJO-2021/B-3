@@ -28,16 +28,18 @@
 			</button>
 		</form>
 	</div>
+	<p class="advice">昨年度までの受講生が、修了報告書の<strong>「後輩へのアドバイス」</strong>欄で
+	<br>記入した内容を検索・閲覧することができます。
+	<br>DOJO事務局の方は、掲載する内容の登録・更新・削除が可能です。</p>
 
-	<br>
 	<form method="POST" action="/TARACO/AdviceSearchServlet">
-		<table>
+		<table class="a_search">
 			<tr>
 				<th>フリーワード</th>
 				<td><input type="text" name="adv_content"></td>
 			</tr>
 			<tr>
-				<th>項目</th>
+				<th>受講コース</th>
 				<td><select name="adv_course">
 						<option value="" hidden>コースを選択してください</option>
 						<option value="パーソナルスキルコース">パーソナルスキルコース</option>
@@ -49,7 +51,7 @@
 
 			</tr>
 		</table>
-		<input type="submit" name="REGIST" value="検索"><br>
+		<input type="submit" name="REGIST" value="検索" class="submit"><br>
 	</form>
 	<br>
 	<br>

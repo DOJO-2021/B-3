@@ -68,7 +68,7 @@ public class ADVPWServlet extends HttpServlet {
 						}
 
 						// 結果ページにフォワードする
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/original_result.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/other/manage_result.jsp");
 						dispatcher.forward(request, response);
 					}
 				}

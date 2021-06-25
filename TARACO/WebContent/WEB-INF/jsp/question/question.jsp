@@ -16,7 +16,7 @@
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 	<h1>アンケート掲示板</h1>
 	<div class="gotoUpload">
-		<a href="QPostServlet"><button>アンケート投稿はこちら</button></a>
+		<a href="QPostServlet"><button class="submit">アンケート投稿はこちら</button></a>
 	</div>
 	<div class="caution">
 		<p>※アンケートは投稿されてから24時間後に回答を締め切ります。</p>

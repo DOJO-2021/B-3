@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,32 +10,42 @@
 <link rel="shortcut icon" href="/TARACO/images/favicon.ico">
 </head>
 <body>
-	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
+	<header><jsp:include page="/WEB-INF/jsp/other/header2.jsp" /></header>
 	<h1>アドバイス編集</h1>
-	<a href="/TARACO/ADVRegistServlet">新規登録</a>
-	<a href="/TARACO/ADVEditSearchServlet">既存データの編集</a><br><br>
+	<div class="nav2">
+		<a href="/TARACO/ADVRegistServlet" class="to">新規登録</a> <a
+			href="/TARACO/ADVEditSearchServlet" class="to">既存データの編集</a>
+	</div>
+	<div class="pw">
+		<form method="GET" action="/TARACO/ADVPWServlet">
+			<input type="submit" name="REGIST" class="edit_login_button"
+				value="PW変更はこちらから" class="submit"><br>
+			<br>
+		</form>
+	</div>
 
 	<form method="POST" action="/TARACO/ADVEditSearchServlet">
-		<table>
+		<table class="edit_table">
 			<tr>
-				<th>フリーワード</th><td><input type="text" name="adv_content"></td>
+				<th>フリーワード</th>
+				<td><input type="text" name="adv_content"></td>
 			</tr>
 			<tr>
-				<th>項目</th><td>
-				<select name="adv_course">
-				<option value="" hidden>コースを選択してください</option>
-				<option value="パーソナルスキルコース">パーソナルスキルコース</option>
-				<option value="IT基礎">IT基礎</option>
-				<option value="Java基礎">Java基礎</option>
-				<option value="開発演習">開発演習</option>
-				</select>
-				</td>
+				<th>受講コース</th>
+				<td><select name="adv_course">
+						<option value="" hidden>コースを選択してください</option>
+						<option value="パーソナルスキルコース">パーソナルスキルコース</option>
+						<option value="IT基礎">IT基礎</option>
+						<option value="Java基礎">Java基礎</option>
+						<option value="開発演習">開発演習</option>
+				</select></td>
 			</tr>
 		</table>
-		<input type="submit" name="REGIST" value="検索"><br>
+		<input type="submit" name="REGIST" value="検索" class="submit"><br>
 	</form>
-	<br><br>
+	<br>
+	<br>
 
-	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
+	<footer><jsp:include page="/WEB-INF/jsp/other/footer2.jsp" /></footer>
 </body>
 </html>

@@ -18,7 +18,7 @@
 	%>
 
 	<h1>マイページ</h1>
-	<p>*は必須項目</p>
+	<p id="asterisk">*は必須項目</p>
 
 	<form method="POST" enctype="multipart/form-data"
 		action="/TARACO/MyPageServlet" id="form">
@@ -100,8 +100,20 @@
 								onclick="clickBtn();" /></td>
 						</tr>
 					</table>
-
-
+				</td>
+				<td><input type="hidden" name="BEFORE_USER_PHOTO"
+					value="${myscope.user_photo}">
+					<ul style="list-style: none;">
+						<li style="font-weight: bold;">顔写真</li>
+						<li><img
+							src="/TARACO/images/user_photo/${myscope.user_photo}"
+							style="height: 250px;"></li>
+						<li><input type="file" name="USER_PHOTO"
+							accept=".png, .jpg, .jpeg"></li>
+					</ul></td>
+			</tr>
+			<tr>
+				<td>
 					<table id="adit_idpw" style="display: none;">
 						<tr>
 							<th>ID
@@ -115,43 +127,35 @@
 						</tr>
 						<tr>
 							<th>PW
-								<div class="msg" style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
+								<div class="msg"
+									style="display: inline-block; _display: inline;">※8～16文字の半角英数字</div>
 							</th>
 						</tr>
 						<tr>
-							<td><input type="password" name="USER_PW" value="${myscope.user_pw}"></td>
+							<td><input type="password" name="USER_PW"
+								value="${myscope.user_pw}"></td>
 						</tr>
 						<tr>
 							<th>PW確認
-								<div class="msg" style="display: inline-block; _display: inline;">※上記と同じ内容を入力してください</div>
+								<div class="msg"
+									style="display: inline-block; _display: inline;">※上記と同じ内容を入力してください</div>
 							</th>
 						</tr>
 						<tr>
-							<td><input type="password" name="PW_CONFIRM" value="${myscope.user_pw}"></td>
+							<td><input type="password" name="PW_CONFIRM"
+								value="${myscope.user_pw}"></td>
 						</tr>
 					</table>
 					<p id="errormsg"></p>
 					<p id="errormsg1"></p>
 				</td>
-
-
-
-				<td> <input type="hidden"name="BEFORE_USER_PHOTO" value="${myscope.user_photo}">
-					 <ul style="list-style: none;">
-					 	<li style="font-weight: bold;">顔写真</li>
-					 	<li><img src="/TARACO/images/user_photo/${myscope.user_photo}" style="height: 250px;" ></li>
-					 	<li><input type="file" name="USER_PHOTO" accept=".png, .jpg, .jpeg"></li>
-					 </ul>
-				</td>
-
-
 			</tr>
 		</table>
 
-		<input type="submit" name="SUBMIT" value="更新" onclick="Update()"> <input
-			type="submit" name="SUBMIT" value="アカウント削除" onclick="Delete()">
+		<input type="submit" name="SUBMIT" value="更新" onclick="Update()">
+		<input type="submit" name="SUBMIT" value="アカウント削除" onclick="Delete()">
 	</form>
-
+<br><br>
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 	<script src="/TARACO/js/mypage.js"></script>

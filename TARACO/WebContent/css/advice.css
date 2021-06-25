@@ -39,13 +39,68 @@ table{
 	margin-left: 10%;
 	margin-right: 10%;
 }
-
-/*検索結果を表に*/
-.result_table {
-	border: 1px solid #000000;
+/*検索フォームテーブル*/
+.advice{
+	font-size:15px;
 }
-
+strong{
+	color:#ff7f50;
+}
+.a_search{
+	margin-top: 35px;
+}
+.a_search th, .a_saerch td{
+	padding: 8px;
+}
+/*検索結果を表に*/
+.a_search2 th, .a_saerch2 td{
+	padding: 8px;
+}
+.result_table {
+	border: 3px dotted #fa8072;
+	border-radius: 20px;
+	margin: auto;
+	width: 750px;
+	margin-bottom: 5px;
+}
+.table1{
+	width: 100px;
+}
+.table2{
+	width: 200px;
+}
+.table3{
+	width: 100px;
+}
+.table4{
+	width: 100px;
+}
 /*文字を小さく*/
 .small{
 	font-size:8px;
+}
+/*運営のアドバイス登録画面*/
+.nav2{
+	margin-top: 50px;
+}
+.to{
+	text-decoration: none;
+	margin: auto 5px auto 5px;
+}
+.to:hover {
+	color: #7b8dac;
+	text-decoration: none;
+}
+.edit_table{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.edit_table th, .edit_table td{
+	padding: 8px;
+}
+/*運営のアドバイス検索結果*/
+.content{
+	width: 98%;
+	line-height: 150%;
+	font-size: 15px;
 }

@@ -13,16 +13,15 @@
 <body>
 	<header><jsp:include page="/WEB-INF/jsp/other/header.jsp" /></header>
 	<h1>アドバイス検索結果</h1>
-	<br>
 
 	<% String course=(String)(request.getAttribute("adv_course")); %>
 	<form method="POST" action="/TARACO/AdviceSearchServlet">
-		<table>
+		<table class="a_search2">
 			<tr>
 				<th>フリーワード</th><td><input type="text" name="adv_content"  value="${adv_content}"></td>
 			</tr>
 			<tr>
-				<th>項目</th>
+				<th>受講コース</th>
 				<td>
 				<select name="adv_course">
 				<option value=""hidden>コースを選択してください</option>
@@ -34,7 +33,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" name="REGIST" value="検索"><br>
+		<input type="submit" name="REGIST" value="検索" class="submit"><br>
 	</form>
 	<br>
 
@@ -48,16 +47,14 @@
 		<br>
 		<table class="result_table">
 		<tr>
-			<th>項目:</th><td><input type="text" name="adv_course" value="${e.adv_course}"></td>
-			<th>受講年度:</th><td><input type="text" name="adv_year" value="${e.adv_year}"></td>
+			<th class="table1">受講コース:</th><td class="table2">${e.adv_course}</td>
+			<th class="table3">受講年度:</th><td class="table4">${e.adv_year}年</td>
 		</tr>
 		<tr>
 			<th colspan="2">アドバイス本文</th>
 		</tr>
 		<tr>
-			<td colspan="4">
-			<textarea name="adv_content" cols="65" rows="6">${e.adv_content}</textarea>
-			</td>
+			<td colspan="4">${e.adv_content}</td>
 		</tr>
 		</table>
 	</c:forEach>

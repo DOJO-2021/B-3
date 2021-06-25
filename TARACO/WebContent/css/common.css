@@ -6,11 +6,17 @@ html {
 }
 
 body {
-	margin: 0 0 0 0;
+	margin: auto 0 auto 0;
+	background-color: #ffffe0;
+	font-size: 18px;
 }
 
 h1 {
 	text-align: center;
+	margin-top: 75px;
+}
+.submit{
+	font-size: 15px;
 }
 /*ヘッダー*/
 header {
@@ -21,6 +27,9 @@ header {
 	background-size: 15px 3px; /* グラデーションの幅・高さを指定 */
 	background-position: left bottom; /* 背景の開始位置を指定 */
 	background-repeat: repeat-x;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 .TARACO_icon {
@@ -75,6 +84,17 @@ header {
 	text-decoration: none;
 }
 
+/*運営用ヘッダー*/
+.header2 {
+	background-color: #add8e6;
+	height: 50px;
+	background-image: linear-gradient(to right, #1e90ff, #1e90ff 2px, transparent 2px,
+		transparent 8px); /* 幅2の線を作る */
+	background-size: 15px 3px; /* グラデーションの幅・高さを指定 */
+	background-position: left bottom; /* 背景の開始位置を指定 */
+	background-repeat: repeat-x;
+}
+
 /*フッター*/
 footer {
 	background-image: linear-gradient(to right, #ff4500, #ff4500 2px, transparent 2px,
@@ -85,6 +105,10 @@ footer {
 	background-color: #ffb6c1;
 	height: 45px;
 	margin-top: 20px;
+	margin-bottom: 0%;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 .copyright {
@@ -92,7 +116,7 @@ footer {
 	padding-top: 3px;
 	padding-left: 10px;
 	color: #3c454d;
-	font-size: 13px;
+	font-size: 15px;
 }
 
 .logout {
@@ -120,7 +144,26 @@ footer {
 	color: #5a9bc0;
 	text-decoration: none;
 }
+/*運営用フッター*/
+.footer2 {
+	background-image: linear-gradient(to right, #1e90ff, #1e90ff 2px, transparent 2px,
+		transparent 8px); /* 幅2の線を作る */
+	background-size: 15px 3px; /* グラデーションの幅・高さを指定 */
+	background-position: left top; /* 背景の開始位置を指定 */
+	background-repeat: repeat-x;
+	background-color: #add8e6;
+	height: 45px;
+	margin-top: 20px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
 /*ホーム*/
+.main {
+	margin: 120px 100px 50px 100px;
+}
+/*マイページへのリンク*/
 .mypage {
 	text-align: right;
 	margin-right: 30px;
@@ -146,14 +189,16 @@ footer {
 	color: #5a9bc0;
 	text-decoration: none;
 }
-
+/*三大機能*/
 #summary_table {
 	margin: 70px auto;
 	text-align: center;
-	width: 800px;
+	width: 1000px;
+	font-size: 18px;
 }
 
 #summary_table th, #summary_table td {
+	width: 250px;
 	padding: auto 8px;
 }
 
@@ -165,4 +210,5 @@ footer {
 	margin-bottom: 20px;
 	cursor: pointer;
 	cursor: hand;
+	font-size: 15px;
 }

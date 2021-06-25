@@ -33,7 +33,7 @@ const user = "${user.user_id}";
 	<form method="POST" action="/TARACO/QAnswerServlet">
 		<div class="deleteButton">
 			<input type="hidden" name="Q_ID" value="${question.q_id}"> <input
-				type="submit" onclick="deleteQuestion()" name="ANSWER_QUESTION" value="削除">
+				type="submit" onclick="deleteQuestion()" name="ANSWER_QUESTION" value="削除" class="submit">
 		</div>
 	</form>
 
@@ -69,8 +69,8 @@ const user = "${user.user_id}";
 			value="A" required>${question.q_choice_a}
 		</label><label> <input id="select_answer" type="radio" name="ANSWER"
 			value="B">${question.q_choice_b}
-		</label> <input type="hidden" name="Q_ID" value="${question.q_id}"> <input
-			id="send_answer" type="submit" name="ANSWER_QUESTION" value="回答">
+		</label> <input type="hidden" name="Q_ID" value="${question.q_id}"><br><input
+			id="send_answer" type="submit" name="ANSWER_QUESTION" value="回答" class="submit">
 	</form>
 	<script src="/TARACO/js/q_answer.js"></script>
 	<!-- フッター -->
