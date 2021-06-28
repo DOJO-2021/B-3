@@ -74,7 +74,8 @@
 		</table>
 	</div>
 
-
+	<br>
+	<br>
 	<!-- フッター -->
 	<footer><jsp:include page="/WEB-INF/jsp/other/footer.jsp" /></footer>
 	<script src="/TARACO/js/mypage.js"></script>

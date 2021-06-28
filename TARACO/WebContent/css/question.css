@@ -55,7 +55,7 @@
 .questionSentences {
 	resize: vertical;
 	width: 80%;
-	height: 128px;
+	height: auto;
 	vertical-align: top;
 	text-align: left;
 }
@@ -117,6 +117,7 @@
 	text-shadow: 1px 1px 2px #FF0000, -1px 1px 2px #FF0000, 1px -1px 2px
 		#FF0000, -1px -1px 2px #FF0000, 1px 0px 2px #FF0000, 0px 1px 2px
 		#FF0000, -1px 0px 2px #FF0000, 0px -1px 2px #FF0000;
+		margin: 12px;
 }
 #send_answer{
 	margin-top: 8px;
