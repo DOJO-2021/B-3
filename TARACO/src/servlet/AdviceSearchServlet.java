@@ -41,7 +41,7 @@ public class AdviceSearchServlet extends HttpServlet {
 		EditPw pw = new EditPw();
 		pw.setAdv_pw(eDAO.select()); //DAOのselect()メソッドで取得
 
-		//adv_pwをリクエストスコープpwscopeに格納する
+		//adv_pwをリクエストスコープpwscopeに格納する。
 		request.setAttribute("pwscope", pw);
 
 		// アドバイス検索ページにフォワードする
